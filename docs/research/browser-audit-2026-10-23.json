@@ -1,0 +1,52 @@
+{
+  "documentedRootServer": {
+    "canvasPresent": 1,
+    "errors": [
+      "Failed to load module script: Expected a JavaScript-or-Wasm module script but the server responded with a MIME type of \"text/vnd.trolltech.linguist\". Strict MIME type checking is enforced for module scripts per HTML spec.",
+      "Failed to load resource: the server responded with a status of 404 (File not found)"
+    ]
+  },
+  "probes": {
+    "cancel": {
+      "validBeforeCancel": true,
+      "board00": 1,
+      "score": 10,
+      "trayCount": 1
+    },
+    "storageAfterMove": null,
+    "reloaded": {
+      "score": 0,
+      "highScore": 0,
+      "board00": 0
+    },
+    "placeAfterGameover": {
+      "board11": 1,
+      "score": 10,
+      "status": "playing"
+    },
+    "foreignPiece": {
+      "board00": 1,
+      "score": 10,
+      "trayCount": 2
+    },
+    "scoreFour": 1010,
+    "scoreFive": 510,
+    "initialCanvas": {
+      "cssWidth": 390,
+      "cssHeight": 844,
+      "pixelWidth": 780,
+      "pixelHeight": 1688
+    }
+  },
+  "resize": {
+    "cssWidth": 844,
+    "cssHeight": 390,
+    "pixelWidth": 780,
+    "pixelHeight": 1688,
+    "dpr": 2
+  },
+  "browserVersion": "154.0.8037.57",
+  "runtimeErrors": [
+    "Failed to load resource: the server responded with a status of 404 (Not Found)"
+  ]
+}

@@ -1,0 +1,129 @@
+[
+  {
+    "repository": "akashmir/block-blast-pro",
+    "commit": "9824a976ab3dc81793716c47a7ba442c1aec058b",
+    "committed_at": "2025-10-23T04:32:19+05:30",
+    "subject": "chore: Update dependencies and configuration for improved performance and compatibility",
+    "license_files": [
+      "LICENSE"
+    ]
+  },
+  {
+    "repository": "manthanjj/block-blast",
+    "commit": "8b83722d9bb8a3d34398cf7386da0ca1df9cf1eb",
+    "committed_at": "2026-10-21T19:45:59+05:30",
+    "subject": "feat(game): implement Phase 1 8x8 interactive grid, score system, and puzzle theme",
+    "license_files": [
+      "LICENSE"
+    ]
+  },
+  {
+    "repository": "danteberishaj/block-blaster",
+    "commit": "3d4d5d93ed3ab3e63010132c8da8bbb09fd01134",
+    "committed_at": "2026-07-18T19:56:43+02:00",
+    "subject": "Merge pull request #2 from danteberishaj/codex/final-release-hardening",
+    "license_files": [
+      "LICENSE"
+    ]
+  },
+  {
+    "repository": "andrianllmm/byteblast",
+    "commit": "f67a7da82f6d830fc0ab442bc6fc71f606fc5ce3",
+    "committed_at": "2025-12-27T18:32:06+08:00",
+    "subject": "Update readme",
+    "license_files": [
+      "LICENSE"
+    ]
+  },
+  {
+    "repository": "haoliu-dev/block-blast-phone",
+    "commit": "8cf18eb45c4c4ea7b11283d55c51369e07d11ca4",
+    "committed_at": "2026-02-17T11:16:14-08:00",
+    "subject": "Change tempo duration to (5+n*5) seconds",
+    "license_files": [
+      "LICENSE"
+    ]
+  },
+  {
+    "repository": "Aerse/seed-block-blast",
+    "commit": "55f39ac79e6b5456c21d2adc159dc98c89593751",
+    "committed_at": "2025-01-14T17:13:54+08:00",
+    "subject": "粒子系统拆分",
+    "license_files": [
+      "LICENSE"
+    ]
+  },
+  {
+    "repository": "Kvc34/Block-Blast-With-Rotation",
+    "commit": "4e78787b3e87cd1d8b7c5c5dad573e811200d0a4",
+    "committed_at": "2026-10-14T14:35:11+03:00",
+    "subject": "Enhance piece rotation instructions in README",
+    "license_files": [
+      "LICENSE"
+    ]
+  },
+  {
+    "repository": "StaticQuasar931/BlockBlast",
+    "commit": "ee6d648ede6be94f8e09493c4cb34be0ee39b992",
+    "committed_at": "2025-05-04T00:27:12-07:00",
+    "subject": "Update index.html",
+    "license_files": []
+  },
+  {
+    "repository": "GSRHaX/BlockBlaster",
+    "commit": "2b6f61376546263fcbc5cbcfc7321ce8906fcbcb",
+    "committed_at": "2026-08-01T17:39:41-04:00",
+    "subject": "Update README description for BlockBlaster",
+    "license_files": []
+  },
+  {
+    "repository": "csd4ni3l/shatterstack",
+    "commit": "166e6c697f612db448db7ec54b1e3bef84b7258c",
+    "committed_at": "2026-07-28T18:01:41+02:00",
+    "subject": "chore: add mirror repository URLs",
+    "license_files": [
+      "LICENSE"
+    ]
+  },
+  {
+    "repository": "ahmet-Bonzo/Block-Blast-clone",
+    "commit": "64a1ab30059168b4cf6476b9008b8c6097af13c3",
+    "committed_at": "2025-10-22T13:18:39+03:00",
+    "subject": "Add initial empty commit",
+    "license_files": [
+      "LICENSE"
+    ]
+  },
+  {
+    "repository": "tokaa1/blockerino",
+    "commit": "488544878d4f19e16fad043450c13e5070de4689",
+    "committed_at": "2025-02-16T14:17:41-05:00",
+    "subject": "logo and line break animation",
+    "license_files": [
+      "LICENSE"
+    ]
+  },
+  {
+    "repository": "MrCerise/block-blast",
+    "commit": "b4214881f99708b6009b48bfe839c4d28bd0ce22",
+    "committed_at": "2026-08-29T17:26:26-06:00",
+    "subject": "Merge pull request #1 from AgentDeath532/main",
+    "license_files": [
+      "LICENSE"
+    ]
+  },
+  {
+    "repository": "Botkraker/block-blast-AI",
+    "commit": "b8f710d319d6f2065feb52ccaeca97d90bcbf9f0",
+    "committed_at": "2026-09-23T15:43:55+02:00",
+    "subject": "Ship the trained agent (120M steps) with the repo",
+    "license_files": []
+  },
+  {
+    "repository": "ZLouisMiguel/block-blast",
+    "commit": "f052d363bda10d9498e714b6fbe834c7fb91b9f7",
+    "committed_at": "2026-02-09T07:25:59+02:00",
+    "subject": "Updated description",
+    "license_files": []
+  }
+]
