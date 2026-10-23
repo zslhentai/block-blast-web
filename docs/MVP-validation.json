@@ -1,0 +1,101 @@
+{
+  "recorded_at": "2026-10-23T20:38:10.708661+08:00",
+  "tested_application_commit": "c99eeb9478c2910006ff6907d848f0d6b342ea1e",
+  "upstream_commit": "8cf18eb45c4c4ea7b11283d55c51369e07d11ca4",
+  "passed": {
+    "frozen_install": {
+      "command": "bash scripts/setup-cloud.sh",
+      "result": "bun install --frozen-lockfile passed"
+    },
+    "typecheck": {
+      "command": "bun run typecheck",
+      "exit_code": 0
+    },
+    "unit": {
+      "command": "bun run test",
+      "exit_code": 0,
+      "passed": 57,
+      "failed": 0,
+      "files": 10,
+      "assertions": 7170
+    },
+    "e2e": {
+      "command": "bun run test:e2e",
+      "exit_code": 0,
+      "passed": 33,
+      "failed": 0,
+      "skipped": 0,
+      "projects": [
+        "desktop-chromium",
+        "iphone-chromium",
+        "android-chromium"
+      ],
+      "note": "Device emulation and Chromium CDP touch events; not real iPhone, Safari or Android device validation."
+    },
+    "script_missing_guard": {
+      "command": "bun run test:e2e:guard",
+      "guard_exit_code": 0,
+      "blocked_positive_test_expected_exit_code": 1,
+      "expected_error": "GAME_SCRIPT_NOT_READY"
+    },
+    "production_build": {
+      "command": "bun run build (also run by E2E webServer)",
+      "exit_code": 0,
+      "tested_subpath": "/block-blast-web/"
+    },
+    "portable_build": {
+      "command": "bun run build:portable",
+      "exit_code": 0,
+      "bytes": 29060
+    },
+    "portable_browser_check": {
+      "passed": true,
+      "browser": "154.0.8037.57",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "loadedThenDisconnected": true,
+      "actualOfflinePlacements": 6,
+      "score": 98,
+      "restoredEntireStateWithOnlineReload": true,
+      "externalRequests": 0,
+      "runtimeErrors": [],
+      "directFileUrl": "Not verified: managed browser policy returned ERR_BLOCKED_BY_ADMINISTRATOR"
+    },
+    "upstream_license_unchanged": true
+  },
+  "build_files": [
+    {
+      "path": "dist/assets/index-6FCoZcw3.css",
+      "bytes": 2947,
+      "gzip_bytes": 1260
+    },
+    {
+      "path": "dist/assets/index-CyrIm-gk.js",
+      "bytes": 22995,
+      "gzip_bytes": 8761
+    },
+    {
+      "path": "dist/index.html",
+      "bytes": 3661,
+      "gzip_bytes": 1732
+    }
+  ],
+  "unexpected_remaining_test_failures": [],
+  "not_verified": [
+    "Real iPhone Safari",
+    "Real Android Chrome",
+    "Playwright WebKit (browser not installed)",
+    "Direct file: URL navigation (blocked by managed browser policy)",
+    "Hosted offline reload / Service Worker / PWA installation",
+    "GitHub-hosted CI execution and live Pages deployment",
+    "Long-running real-device performance, sound and battery behavior"
+  ],
+  "publication": {
+    "git_branch": "work",
+    "git_pushed": false,
+    "github_pages_deployed": false,
+    "environment_install_and_start_draft_saved": true
+  }
+}
