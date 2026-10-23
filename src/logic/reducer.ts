@@ -1,6 +1,6 @@
-import { GameState, GameAction, Shape, BOARD_SIZE } from './types';
-import { createEmptyBoard, createInitialState } from './state';
-import { createShapes, createRandomShape } from './shapes';
+import { type GameState, type GameAction } from './types';
+import { createInitialState } from './state';
+import { dealHand } from './dealer';
 import { canPlace, placeShapeOnBoard } from './placement';
 import { checkAndClearLines } from './lineClear';
 import { calculateScore } from './scoring';
@@ -8,89 +8,32 @@ import { checkGameOver } from './gameover';
 
 export function gameReducer(state: GameState, action: GameAction): GameState {
   switch (action.type) {
-    case 'START_GAME': {
-      return {
-        ...createInitialState(state.highScore),
-        status: 'playing',
-      };
-    }
-
+    case 'START_GAME': return state.status === 'idle' ? { ...state, status: 'playing' } : state;
+    case 'PAUSE': return state.status === 'playing' ? { ...state, status: 'paused' } : state;
+    case 'RESUME': return state.status === 'paused' ? { ...state, status: 'playing' } : state;
+    case 'RESTART': return { ...createInitialState(state.highScore, action.seed), status: 'playing' };
+    case 'CHECK_GAME_OVER':
+      return state.status === 'playing' && checkGameOver(state.board, state.shapes)
+        ? { ...state, status: 'gameover' } : state;
     case 'PLACE_SHAPE': {
-      const { shape, row, col } = action;
-      
-      if (!canPlace(state.board, shape, row, col)) {
-        return state;
+      if (state.status !== 'playing' || action.revision !== state.revision ||
+          !Number.isInteger(action.slot) || action.slot < 0 || action.slot >= 3) return state;
+      const shape = state.shapes[action.slot];
+      if (!shape || shape.id !== action.shapeId || !canPlace(state.board, shape, action.row, action.col)) return state;
+      const cleared = checkAndClearLines(placeShapeOnBoard(state.board, shape, action.row, action.col));
+      const dryMoves = cleared.linesCleared ? 0 : Math.min(3, state.dryMoves + 1);
+      const combo = cleared.linesCleared ? state.combo + 1 : dryMoves >= 3 ? 0 : state.combo;
+      const score = state.score + calculateScore(shape.cells.length, cleared.linesCleared, cleared.cells.length, combo).points;
+      let shapes = state.shapes.map((s, i) => i === action.slot ? null : s);
+      let { round, rngState } = state;
+      if (shapes.every(s => s === null)) {
+        round++;
+        ({ shapes, rngState } = dealHand(cleared.board, rngState, round));
       }
-
-      let newBoard = placeShapeOnBoard(state.board, shape, row, col);
-      const blockCount = shape.cells.length;
-
-      const { board: clearedBoard, linesCleared } = checkAndClearLines(newBoard);
-      newBoard = clearedBoard;
-
-      const { points } = calculateScore(blockCount, linesCleared);
-      const newScore = state.score + points;
-      const newLinesCleared = state.linesCleared + linesCleared;
-
-      const remainingShapes = state.shapes.filter(s => s.id !== shape.id);
-      let newShapes = remainingShapes;
-
-      if (remainingShapes.length === 0) {
-        newShapes = createShapes(3);
-        // 新形状生成后，不立即检查游戏结束
-        // 而是返回状态让玩家看到新形状
-        const newHighScore = Math.max(state.highScore, newScore);
-        return {
-          ...state,
-          board: newBoard,
-          shapes: newShapes,
-          score: newScore,
-          linesCleared: newLinesCleared,
-          status: 'playing', // 保持 playing，不立即 gameover
-          highScore: newHighScore,
-          pendingGameOverCheck: true, // 标记需要检查游戏结束
-        };
-      }
-
-      const isOver = checkGameOver(newBoard, newShapes);
-      const newHighScore = Math.max(state.highScore, newScore);
-
-      return {
-        ...state,
-        board: newBoard,
-        shapes: newShapes,
-        score: newScore,
-        linesCleared: newLinesCleared,
-        status: isOver ? 'gameover' : 'playing',
-        highScore: newHighScore,
-        pendingGameOverCheck: false,
-      };
+      return { ...state, board: cleared.board, shapes, round, rngState, score, combo, dryMoves,
+        highScore: Math.max(state.highScore, score), linesCleared: state.linesCleared + cleared.linesCleared,
+        moves: state.moves + 1, revision: state.revision + 1,
+        status: checkGameOver(cleared.board, shapes) ? 'gameover' : 'playing' };
     }
-
-    case 'CHECK_GAME_OVER': {
-      const isOver = checkGameOver(state.board, state.shapes);
-      return {
-        ...state,
-        status: isOver ? 'gameover' : 'playing',
-        pendingGameOverCheck: false,
-      };
-    }
-
-    case 'RESTART': {
-      return {
-        ...createInitialState(state.highScore),
-        status: 'playing',
-      };
-    }
-
-    case 'SET_HIGH_SCORE': {
-      return {
-        ...state,
-        highScore: action.score,
-      };
-    }
-
-    default:
-      return state;
   }
 }

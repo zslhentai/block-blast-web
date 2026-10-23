@@ -1,188 +1,109 @@
 import { describe, test, expect } from 'bun:test';
 import { gameReducer } from './reducer';
 import { createInitialState } from './state';
+import { type GameState, type GameAction, type Shape } from './types';
+import { canPlace } from './placement';
+import { checkGameOver } from './gameover';
+import { checkAndClearLines } from './lineClear';
 
-describe('reducer', () => {
-  test('START_GAME transitions to playing', () => {
-    const state = createInitialState();
-    const newState = gameReducer(state, { type: 'START_GAME' });
-    expect(newState.status).toBe('playing');
+const mono = (id = 'mono'): Shape => ({ id, color: 1, cells: [[0, 0]] });
+function fixture(): GameState {
+  return { ...createInitialState(), status: 'playing', shapes: [mono(), mono('other'), mono('third')] };
+}
+function place(state: GameState, row: number, col: number, slot = 0): GameAction {
+  return { type: 'PLACE_SHAPE', shapeId: state.shapes[slot]!.id, slot, row, col, revision: state.revision };
+}
+describe('authoritative reducer', () => {
+  test('START_GAME preserves the dealt hand, pause/resume preserves board', () => {
+    const idle = createInitialState(); const playing = gameReducer(idle, { type: 'START_GAME' });
+    expect(playing.status).toBe('playing'); expect(playing.shapes).toEqual(idle.shapes);
+    const paused = gameReducer(playing, { type: 'PAUSE' });
+    expect(gameReducer(paused, { type: 'RESUME' }).board).toEqual(playing.board);
   });
-
-  test('PLACE_SHAPE adds blocks to board', () => {
-    const state = { ...createInitialState(), status: 'playing' as const };
-    const shape = { id: 'test', cells: [[0, 0]] as [number, number][], color: 1 };
-    const newState = gameReducer(state, { type: 'PLACE_SHAPE', shape, row: 0, col: 0 });
-    expect(newState.board[0][0]).toBe(1);
-    expect(newState.score).toBe(10);
+  test('placement preserves three slots and changes only the consumed slot', () => {
+    const state = fixture(); const next = gameReducer(state, place(state, 0, 0, 1));
+    expect(next.score).toBe(1); expect(next.board[0][0]).toBe(1);
+    expect(next.shapes.map(s => s?.id ?? null)).toEqual(['mono', null, 'third']);
+    expect(state.board[0][0]).toBe(0);
   });
-
-  test('PLACE_SHAPE clears lines', () => {
-    const state = {
-      ...createInitialState(),
-      status: 'playing' as const,
-      board: Array.from({ length: 8 }, (_, i) => 
-        i === 0 ? [1, 1, 1, 1, 1, 1, 1, 1] : Array(8).fill(0)
-      ),
-    };
-    const shape = { id: 'test', cells: [[0, 0]] as [number, number][], color: 1 };
-    const newState = gameReducer(state, { type: 'PLACE_SHAPE', shape, row: 1, col: 0 });
-    expect(newState.linesCleared).toBe(1);
-    expect(newState.board[0].every(c => c === 0)).toBe(true);
+  test('invalid, foreign, stale, duplicate and non-playing actions do nothing', () => {
+    const state = fixture(); const action = place(state, 0, 0);
+    for (const invalid of [{ ...action, shapeId: 'foreign' }, { ...action, revision: -1 },
+      { ...action, row: -1 }, { ...action, slot: 3 }]) expect(gameReducer(state, invalid)).toBe(state);
+    for (const status of ['idle', 'paused', 'gameover'] as const) {
+      const stopped = { ...state, status }; expect(gameReducer(stopped, action)).toBe(stopped);
+    }
+    const next = gameReducer(state, action); expect(gameReducer(next, action)).toBe(next);
   });
-
-  test('RESTART resets game', () => {
-    const state = { ...createInitialState(), score: 100, status: 'gameover' as const };
-    const newState = gameReducer(state, { type: 'RESTART' });
-    expect(newState.score).toBe(0);
-    expect(newState.status).toBe('playing');
+  test('single-row clear is committed and scored before any animation', () => {
+    const state = fixture(); state.board[0] = [1, 1, 1, 1, 1, 1, 1, 0];
+    const next = gameReducer(state, place(state, 0, 7));
+    expect(next.linesCleared).toBe(1); expect(next.score).toBe(81);
+    expect(next.board[0]).toEqual(Array(8).fill(0));
   });
-
-  // ====== Corner Case Tests ======
-
-  test('PLACE_SHAPE when last shape is placed sets pendingGameOverCheck to true', () => {
-    // Create state with only 1 shape remaining
-    const state = {
-      ...createInitialState(),
-      status: 'playing' as const,
-      board: Array.from({ length: 8 }, () => Array(8).fill(0)),
-      shapes: [{ id: 'shape-1', cells: [[0, 0]] as [number, number][], color: 1 }],
-    };
-    
-    const shape = { id: 'shape-1', cells: [[0, 0]] as [number, number][], color: 1 };
-    const newState = gameReducer(state, { type: 'PLACE_SHAPE', shape, row: 0, col: 0 });
-    
-    // New shapes should be generated
-    expect(newState.shapes.length).toBe(3);
-    // pendingGameOverCheck should be true (delayed game over check)
-    expect(newState.pendingGameOverCheck).toBe(true);
-    // Status should still be playing (not gameover yet)
-    expect(newState.status).toBe('playing');
+  test('cross clear removes fifteen cells and scores 181', () => {
+    const state = fixture();
+    for (let i = 1; i < 8; i++) { state.board[0][i] = 1; state.board[i][0] = 1; }
+    const next = gameReducer(state, place(state, 0, 0));
+    expect(next.score).toBe(181); expect(next.linesCleared).toBe(2);
+    expect(next.board.flat().filter(Boolean)).toHaveLength(0);
   });
-
-  test('PLACE_SHAPE with remaining shapes does NOT set pendingGameOverCheck', () => {
-    const state = {
-      ...createInitialState(),
-      status: 'playing' as const,
-      board: Array.from({ length: 8 }, () => Array(8).fill(0)),
-      shapes: [
-        { id: 'shape-1', cells: [[0, 0]] as [number, number][], color: 1 },
-        { id: 'shape-2', cells: [[0, 0]] as [number, number][], color: 1 },
-      ],
-    };
-    
-    const shape = { id: 'shape-1', cells: [[0, 0]] as [number, number][], color: 1 };
-    const newState = gameReducer(state, { type: 'PLACE_SHAPE', shape, row: 0, col: 0 });
-    
-    // pendingGameOverCheck should NOT be set
-    expect(newState.pendingGameOverCheck).toBe(false);
-    // Status should be checked immediately
-    expect(newState.status).toBe('playing');
+  test('refill only after the third piece, after clearing the old board', () => {
+    const state = fixture(); state.shapes = [mono(), null, null];
+    state.board[0] = [1, 1, 1, 1, 1, 1, 1, 0];
+    const next = gameReducer(state, place(state, 0, 7));
+    expect(next.round).toBe(2); expect(next.shapes.filter(Boolean)).toHaveLength(3);
+    expect(next.board[0].every(c => !c)).toBe(true); expect(next.status).toBe('playing');
   });
-
-  test('CHECK_GAME_OVER transitions to gameover when no moves possible', () => {
-    // Create a state where no shapes can be placed
-    const state = {
-      ...createInitialState(),
-      status: 'playing' as const,
-      // Full board - no moves possible
-      board: Array.from({ length: 8 }, () => Array(8).fill(1)),
-      shapes: [{ id: 'shape-1', cells: [[0, 0]] as [number, number][], color: 1 }],
-      pendingGameOverCheck: true,
-    };
-    
-    const newState = gameReducer(state, { type: 'CHECK_GAME_OVER' });
-    
-    expect(newState.status).toBe('gameover');
-    expect(newState.pendingGameOverCheck).toBe(false);
+  test('two blocked remaining pieces end the game, one fitting piece keeps it alive', () => {
+    const state = fixture();
+    state.board = Array.from({ length: 8 }, (_, r) => Array.from({ length: 8 }, (_, c) => (r + c) % 2));
+    state.shapes = [{ id: 'domino', cells: [[0, 0], [0, 1]], color: 2 }, mono(), null];
+    expect(checkGameOver(state.board, state.shapes)).toBe(false);
+    const next = gameReducer(state, place(state, 0, 0, 1));
+    expect(next.status).toBe('gameover');
   });
-
-  test('CHECK_GAME_OVER stays playing when moves are possible', () => {
-    // Empty board - moves are possible
-    const state = {
-      ...createInitialState(),
-      status: 'playing' as const,
-      board: Array.from({ length: 8 }, () => Array(8).fill(0)),
-      shapes: [{ id: 'shape-1', cells: [[0, 0]] as [number, number][], color: 1 }],
-      pendingGameOverCheck: true,
-    };
-    
-    const newState = gameReducer(state, { type: 'CHECK_GAME_OVER' });
-    
-    expect(newState.status).toBe('playing');
-    expect(newState.pendingGameOverCheck).toBe(false);
+  test('a chain survives two dry placements, the third breaks it', () => {
+    let state = { ...fixture(), combo: 2 };
+    state = gameReducer(state, place(state, 0, 0)); expect(state.combo).toBe(2);
+    state = gameReducer(state, place(state, 1, 1, 1)); expect(state.combo).toBe(2);
+    state = gameReducer(state, place(state, 2, 2, 2)); expect(state.combo).toBe(0);
   });
-
-  test('CHECK_GAME_OVER does NOT trigger gameover for partial board that has moves', () => {
-    // Board with some blocks but still has space for single block
-    const state = {
-      ...createInitialState(),
-      status: 'playing' as const,
-      board: Array.from({ length: 8 }, (_, row) => 
-        row === 0 ? Array(8).fill(1) : Array(8).fill(0)
-      ),
-      shapes: [{ id: 'shape-1', cells: [[0, 0]] as [number, number][], color: 1 }],
-      pendingGameOverCheck: true,
-    };
-    
-    const newState = gameReducer(state, { type: 'CHECK_GAME_OVER' });
-    
-    // Should stay playing since we can place shapes
-    expect(newState.status).toBe('playing');
-    expect(newState.pendingGameOverCheck).toBe(false);
+  test('clear after two dry moves keeps the chain; restart preserves best', () => {
+    const state = { ...fixture(), combo: 2, dryMoves: 2, highScore: 999 };
+    state.board[0] = [1, 1, 1, 1, 1, 1, 1, 0];
+    const next = gameReducer(state, place(state, 0, 7));
+    expect(next.combo).toBe(3); expect(next.dryMoves).toBe(0); expect(next.score).toBe(121);
+    const reset = gameReducer(next, { type: 'RESTART', seed: 9 });
+    expect(reset.score).toBe(0); expect(reset.highScore).toBe(999); expect(reset.status).toBe('playing');
   });
-
-  test('PLACE_SHAPE with remaining shapes leaves correct count', () => {
-    const state = {
-      ...createInitialState(),
-      status: 'playing' as const,
-      board: Array.from({ length: 8 }, () => Array(8).fill(0)),
-      shapes: [
-        { id: 'shape-1', cells: [[0, 0]] as [number, number][], color: 1 },
-        { id: 'shape-2', cells: [[0, 0]] as [number, number][], color: 1 },
-        { id: 'shape-3', cells: [[0, 0]] as [number, number][], color: 1 },
-      ],
-    };
-    
-    const shape = { id: 'shape-1', cells: [[0, 0]] as [number, number][], color: 1 };
-    const newState = gameReducer(state, { type: 'PLACE_SHAPE', shape, row: 0, col: 0 });
-    
-    // Should have 2 remaining shapes (shape-2 and shape-3)
-    expect(newState.shapes.length).toBe(2);
-  });
-
-  test('pendingGameOverCheck is false initially', () => {
-    const state = createInitialState();
-    expect(state.pendingGameOverCheck).toBe(false);
-  });
-
-  test('pendingGameOverCheck is reset to false on RESTART', () => {
-    const state = {
-      ...createInitialState(),
-      status: 'gameover' as const,
-      pendingGameOverCheck: true,
-    };
-    
-    const newState = gameReducer(state, { type: 'RESTART' });
-    expect(newState.pendingGameOverCheck).toBe(false);
-  });
-
-  test('pendingGameOverCheck is false after normal placement (with remaining shapes)', () => {
-    const state = {
-      ...createInitialState(),
-      status: 'playing' as const,
-      board: Array.from({ length: 8 }, () => Array(8).fill(0)),
-      shapes: [
-        { id: 'shape-1', cells: [[0, 0]] as [number, number][], color: 1 },
-        { id: 'shape-2', cells: [[0, 0]] as [number, number][], color: 1 },
-        { id: 'shape-3', cells: [[0, 0]] as [number, number][], color: 1 },
-      ],
-    };
-    
-    const shape = { id: 'shape-1', cells: [[0, 0]] as [number, number][], color: 1 };
-    const newState = gameReducer(state, { type: 'PLACE_SHAPE', shape, row: 0, col: 0 });
-    
-    // pendingGameOverCheck should be false - immediate check done
-    expect(newState.pendingGameOverCheck).toBe(false);
+  test('seeded legal games conserve cells and replay exactly', () => {
+    for (let seed = 0; seed < 30; seed++) {
+      let a = { ...createInitialState(0, seed), status: 'playing' as GameState['status'] };
+      let b = structuredClone(a);
+      for (let step = 0; step < 100 && a.status === 'playing'; step++) {
+        let action: GameAction | undefined;
+        for (let slot = 0; slot < 3 && !action; slot++) {
+          const shape = a.shapes[slot]; if (!shape) continue;
+          for (let r = 0; r < 8 && !action; r++) for (let c = 0; c < 8 && !action; c++) {
+            if (canPlace(a.board, shape, r, c)) action = place(a, r, c, slot);
+          }
+        }
+        expect(action).toBeDefined(); if (!action || action.type !== 'PLACE_SHAPE') break;
+        const filled = a.board.flat().filter(Boolean).length;
+        const n = a.shapes[action.slot]!.cells.length;
+        const placed = a.board.map(row => [...row]);
+        for (const [dr, dc] of a.shapes[action.slot]!.cells) placed[action.row + dr][action.col + dc] = 1;
+        const union = new Set<string>();
+        for (let r = 0; r < 8; r++) if (placed[r].every(Boolean)) for (let c = 0; c < 8; c++) union.add(`${r},${c}`);
+        for (let c = 0; c < 8; c++) if (placed.every(row => row[c])) for (let r = 0; r < 8; r++) union.add(`${r},${c}`);
+        const next = gameReducer(a, action);
+        const after = next.board.flat().filter(Boolean).length;
+        expect(next.score).toBeGreaterThan(a.score);
+        expect(after).toBe(filled + n - union.size);
+        expect(checkAndClearLines(next.board).linesCleared).toBe(0);
+        b = gameReducer(b, action); expect(b).toEqual(next); a = next;
+      }
+    }
   });
 });

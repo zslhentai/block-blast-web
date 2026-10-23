@@ -9,7 +9,7 @@ describe('gameover', () => {
     expect(checkGameOver(board, shapes)).toBe(false);
   });
 
-  test('game over when no shapes available', () => {
+  test('an empty hand awaits refill rather than ending the game', () => {
     const board = createEmptyBoard();
     expect(checkGameOver(board, [])).toBe(false);
   });

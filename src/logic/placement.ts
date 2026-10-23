@@ -1,6 +1,7 @@
-import { Board, Shape, BOARD_SIZE } from './types';
+import { type Board, type Shape, BOARD_SIZE } from './types';
 
 export function canPlace(board: Board, shape: Shape, row: number, col: number): boolean {
+  if (!Number.isInteger(row) || !Number.isInteger(col) || shape.cells.length === 0) return false;
   for (const [dr, dc] of shape.cells) {
     const newRow = row + dr;
     const newCol = col + dc;

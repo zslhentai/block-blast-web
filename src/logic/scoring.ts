@@ -1,25 +1,13 @@
-export interface ScoreResult {
-  points: number;
-  isCombo: boolean;
-}
+export interface ScoreResult { points: number; isCombo: boolean }
 
-const POINTS_PER_BLOCK = 10;
-const POINTS_PER_LINE = 100;
-
-const COMBO_MULTIPLIER: Record<number, number> = {
-  2: 1.5,
-  3: 2.0,
-  4: 2.5,
-};
-
-export function calculateScore(blocksPlaced: number, linesCleared: number, isCombo: boolean = false): ScoreResult {
-  let points = blocksPlaced * POINTS_PER_BLOCK;
-  
-  if (linesCleared > 0) {
-    const baseLinePoints = linesCleared * POINTS_PER_LINE;
-    const multiplier = COMBO_MULTIPLIER[linesCleared] || 1;
-    points += Math.floor(baseLinePoints * multiplier);
-  }
-
-  return { points, isCombo: linesCleared > 1 || isCombo };
+// Project rules v1, not the proprietary game's unverified formula.
+export function calculateScore(
+  blocksPlaced: number, linesCleared: number, uniqueClearedCells = 0, combo = 0,
+): ScoreResult {
+  const multi = linesCleared >= 2 ? 5 * linesCleared * (linesCleared + 1) : 0;
+  const chain = linesCleared > 0 ? 20 * Math.max(0, combo - 1) : 0;
+  return {
+    points: blocksPlaced + 10 * uniqueClearedCells + multi + chain,
+    isCombo: linesCleared > 1 || (linesCleared > 0 && combo > 1),
+  };
 }

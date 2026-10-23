@@ -11,12 +11,17 @@ export type GameStatus = 'idle' | 'playing' | 'paused' | 'gameover';
 
 export interface GameState {
   board: Board;
-  shapes: Shape[];
+  shapes: (Shape | null)[];
   score: number;
   linesCleared: number;
   status: GameStatus;
   highScore: number;
-  pendingGameOverCheck: boolean;
+  combo: number;
+  dryMoves: number;
+  round: number;
+  moves: number;
+  rngState: number;
+  revision: number;
 }
 
 export interface Point {
@@ -26,13 +31,16 @@ export interface Point {
 
 export type GameAction =
   | { type: 'START_GAME' }
-  | { type: 'PLACE_SHAPE'; shape: Shape; row: number; col: number }
+  | { type: 'PLACE_SHAPE'; shapeId: string; slot: number; row: number; col: number; revision: number }
   | { type: 'CHECK_GAME_OVER' }
-  | { type: 'RESTART' }
-  | { type: 'SET_HIGH_SCORE'; score: number };
+  | { type: 'RESTART'; seed: number }
+  | { type: 'PAUSE' }
+  | { type: 'RESUME' };
 
 export const BOARD_SIZE = 8;
 export const SHAPES_TO_SPAWN = 3;
+export const RULE_VERSION = 1;
+export const CATALOGUE_VERSION = 1;
 
 export const COLORS = [
   '#FF6B6B',

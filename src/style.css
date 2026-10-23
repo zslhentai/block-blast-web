@@ -1,0 +1,19 @@
+:root { font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif; color: #f1f1fb; background: #1a1a2e; color-scheme: dark; }
+* { box-sizing: border-box; }
+body { margin: 0; overscroll-behavior: none; }
+.game-shell { width: min(100%, 520px); height: 100vh; height: 100svh; height: 100dvh; margin: auto; display: flex; flex-direction: column; padding: max(8px, env(safe-area-inset-top)) max(8px, env(safe-area-inset-right)) max(6px, env(safe-area-inset-bottom)) max(8px, env(safe-area-inset-left)); }
+header { padding: 4px 12px 0; flex: none; }
+.topline, .scoreline { display: flex; align-items: center; justify-content: space-between; gap: 8px; }
+h1 { font-size: 17px; margin: 0; font-weight: 650; } h1 span { display: block; color: #aaaac5; font-size: 11px; margin-top: 2px; font-weight: 400; }
+p { margin: 6px 0; line-height: 1.55; } .topline p { font-size: 12px; color: #c7c7dd; } .topline strong { color: #ffeaa7; margin-left: 4px; font-size: 18px; }
+.eyebrow { color: #aaaac5; font-size: 11px; margin: 3px 0 0; } #score { font-size: clamp(28px, 5vh, 42px); line-height: 1.15; font-weight: 750; font-variant-numeric: tabular-nums; } #combo { font-size: 12px; color: #c8c7e9; }
+nav { display: flex; gap: 8px; margin-top: 7px; }
+button { font: inherit; color: #eeeefa; background: #30304e; border: 1px solid #494969; border-radius: 9px; min-height: 44px; padding: 9px 16px; cursor: pointer; touch-action: manipulation; } button:active { background: #424264; } button:disabled { opacity: 0.45; cursor: default; } nav button { flex: 1; font-size: 13px; padding: 8px; } button:focus-visible, summary:focus-visible { outline: 2px solid #4ecdc4; outline-offset: 3px; }
+.playfield { position: relative; flex: 1; min-height: 0; width: 100%; }
+canvas { display: block; width: 100%; height: 100%; touch-action: none; user-select: none; -webkit-user-select: none; -webkit-touch-callout: none; }
+#feedback { position: absolute; top: 4px; left: 0; right: 0; text-align: center; font-size: 13px; pointer-events: none; color: #ffeaa7; }
+footer { flex: none; text-align: center; padding: 0 4px; color: #a0a0bc; font-size: 10px; } footer p { margin: 2px 0; } #save-status { min-height: 15px; }
+dialog { width: min(88vw, 360px); max-height: 86vh; overflow: auto; color: #f1f1fb; background: #262640; border: 1px solid #555577; border-radius: 16px; padding: 24px; box-shadow: 0 16px 60px #0006; } dialog::backdrop { background: #10101fc9; } dialog h2 { margin: 0 0 12px; font-size: 24px; } dialog p { font-size: 14px; color: #d1d1e1; } dialog > button { width: 100%; margin-top: 16px; background: #365b69; border-color: #5a8995; } .muted { color: #aaaac5; font-size: 12px; margin-top: 18px; } .final-score { font-size: 42px; color: #ffeaa7; font-weight: 750; }
+label { display: flex; min-height: 48px; align-items: center; justify-content: space-between; gap: 12px; } input[type="checkbox"] { width: 24px; height: 24px; accent-color: #4ecdc4; } details { margin-top: 12px; font-size: 13px; } summary { cursor: pointer; min-height: 36px; padding: 8px 0; } pre { white-space: pre-wrap; font-size: 10px; line-height: 1.4; color: #aaaac5; }
+@media (max-height: 560px) { h1 span, .eyebrow { display: none; } header { padding-top: 0; } #score { font-size: 26px; } .topline { min-height: 24px; } nav { margin-top: 3px; } footer p:last-child { display: none; } }
+@media (prefers-reduced-motion: reduce) { * { scroll-behavior: auto; } }

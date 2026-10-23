@@ -140,7 +140,11 @@ vite.config.ts.timestamp-*
 
 # Bun
 *.lock
+!bun.lock
 
 # Test results
 test-results/
 playwright-report/
+
+.tools/
+artifacts/

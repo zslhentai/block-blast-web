@@ -1,8 +1,11 @@
-import { Board, BOARD_SIZE } from './types';
+import { type Board, type Point, BOARD_SIZE } from './types';
 
 export interface LineClearResult {
   board: Board;
   linesCleared: number;
+  rows: number[];
+  cols: number[];
+  cells: Point[];
 }
 
 export function checkAndClearLines(board: Board): LineClearResult {
@@ -44,5 +47,9 @@ export function checkAndClearLines(board: Board): LineClearResult {
   return {
     board: newBoard,
     linesCleared: rowsToClear.length + colsToClear.length,
+    rows: rowsToClear,
+    cols: colsToClear,
+    cells: board.flatMap((row, r) => row.flatMap((_, c) =>
+      rowsToClear.includes(r) || colsToClear.includes(c) ? [{ row: r, col: c }] : [])),
   };
 }

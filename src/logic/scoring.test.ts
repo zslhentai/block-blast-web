@@ -1,29 +1,19 @@
 import { describe, test, expect } from 'bun:test';
 import { calculateScore } from './scoring';
 
-describe('scoring', () => {
-  test('base points for placing blocks', () => {
-    const result = calculateScore(4, 0);
-    expect(result.points).toBe(40);
+describe('project scoring v1', () => {
+  test('one point per placed cell, no clear bonus on a dry move', () => {
+    expect(calculateScore(4, 0, 0, 5).points).toBe(4);
   });
-
-  test('points for clearing lines', () => {
-    const result = calculateScore(0, 1);
-    expect(result.points).toBe(100);
+  test.each([[1, 1, 8, 81], [1, 2, 15, 181], [9, 6, 39, 609]])(
+    'placing %i with %i lines and %i unique cells gives %i', (n, lines, cells, points) => {
+      expect(calculateScore(n, lines, cells, 1).points).toBe(points);
+    });
+  test('second clear in a chain adds twenty', () => {
+    expect(calculateScore(1, 1, 8, 2).points).toBe(101);
   });
-
-  test('combo multiplier for 2 lines', () => {
-    const result = calculateScore(0, 2);
-    expect(result.points).toBe(300);
-  });
-
-  test('combo multiplier for 3 lines', () => {
-    const result = calculateScore(0, 3);
-    expect(result.points).toBe(600);
-  });
-
-  test('combo multiplier for 4+ lines', () => {
-    const result = calculateScore(0, 4);
-    expect(result.points).toBe(1000);
+  test('multi-line bonuses never fall back at five or six lines', () => {
+    const scores = [1, 2, 3, 4, 5, 6].map(lines => calculateScore(1, lines, lines * 8, 1).points);
+    scores.slice(1).forEach((score, i) => expect(score).toBeGreaterThan(scores[i]));
   });
 });

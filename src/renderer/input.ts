@@ -1,38 +1,27 @@
-import { Shape } from '../logic/types';
-import { CanvasConfig } from './canvas';
+import type { Shape } from '../logic/types';
+import type { CanvasConfig, Rect } from './canvas';
+import { shapeBounds } from './draw';
 
 export interface DragState {
-  isDragging: boolean;
-  shape: Shape | null;
-  startX: number;
-  startY: number;
+  pointerId: number;
+  pointerType: string;
+  shape: Shape;
+  slot: number;
+  revision: number;
   currentX: number;
   currentY: number;
-  previewRow: number;
-  previewCol: number;
-  isValidPlacement: boolean;
 }
-
-export function createInitialDragState(): DragState {
-  return {
-    isDragging: false,
-    shape: null,
-    startX: 0,
-    startY: 0,
-    currentX: 0,
-    currentY: 0,
-    previewRow: -1,
-    previewCol: -1,
-    isValidPlacement: false,
-  };
+export function toLocal(clientX: number, clientY: number, rect: { left: number; top: number; width: number; height: number }, config: CanvasConfig) {
+  return { x: (clientX - rect.left) * config.width / rect.width, y: (clientY - rect.top) * config.height / rect.height };
 }
-
-export function getGridPosition(x: number, y: number, config: CanvasConfig): { row: number; col: number } | null {
-  const { cellSize, gridOffsetX, gridOffsetY } = config;
-  const col = Math.floor((x - gridOffsetX) / cellSize);
-  const row = Math.floor((y - gridOffsetY) / cellSize);
-  if (row >= 0 && row < 8 && col >= 0 && col < 8) {
-    return { row, col };
-  }
-  return null;
+export function contains(rect: Rect, x: number, y: number): boolean {
+  return x >= rect.x && x <= rect.x + rect.width && y >= rect.y && y <= rect.y + rect.height;
+}
+export function projectDrag(drag: DragState, config: CanvasConfig) {
+  const { rows, cols } = shapeBounds(drag.shape);
+  const x = drag.currentX - cols * config.cellSize / 2;
+  const y = drag.pointerType === 'touch' || drag.pointerType === 'pen'
+    ? drag.currentY - rows * config.cellSize - config.cellSize * 1.15
+    : drag.currentY - rows * config.cellSize / 2;
+  return { x, y, row: Math.round((y - config.gridOffsetY) / config.cellSize), col: Math.round((x - config.gridOffsetX) / config.cellSize) };
 }
