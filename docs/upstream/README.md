@@ -1,0 +1,91 @@
+# Block Blast
+
+移动端方块消除游戏 (Block Blast) - 使用 Bun + TypeScript + HTML5 Canvas 开发。
+
+🎮 **[在线试玩](https://haoliu-dev.github.io/block-blast-phone/)**
+
+## 特性
+
+- 🎮 经典方块消除玩法
+- 📱 移动端优先设计，支持触屏操作
+- 🧪 完整的单元测试和 E2E 测试
+- 🔊 音效系统
+- 💾 本地存储（最高分）
+
+## 技术栈
+
+- **运行时**: Bun
+- **语言**: TypeScript (strict mode)
+- **渲染**: HTML5 Canvas
+- **测试**: Bun (单元测试) + Playwright (E2E)
+
+## 快速开始
+
+### 安装依赖
+
+```bash
+bun install
+```
+
+### 开发模式
+
+```bash
+bun run dev
+```
+
+访问 http://localhost:3000
+
+### 构建
+
+```bash
+bun run build
+```
+
+## 测试
+
+### 单元测试
+
+```bash
+bun test src/logic/
+```
+
+### E2E 测试
+
+```bash
+# 启动服务器
+python3 -m http.server 3000 &
+
+# 运行测试
+npx playwright test
+
+# 停止服务器
+pkill -f "python3 -m http.server"
+```
+
+## 项目结构
+
+```
+src/
+├── logic/           # 游戏逻辑（纯函数，可单元测试）
+│   ├── types.ts    # 类型定义
+│   ├── shapes.ts   # 形状生成
+│   ├── state.ts    # 状态管理
+│   ├── placement.ts # 放置逻辑
+│   ├── lineClear.ts # 行列消除
+│   ├── scoring.ts  # 得分计算
+│   ├── gameover.ts # 游戏结束检测
+│   └── reducer.ts  # 状态机
+├── renderer/       # Canvas 渲染层
+├── audio/          # 音效系统
+├── storage/        # 本地存储
+└── index.ts        # 入口文件
+tests/
+└── e2e/           # Playwright E2E 测试
+```
+
+## 开发规范
+
+- 使用 `pointerdown` / `pointermove` / `pointerup` 处理触屏
+- 禁止使用 `any`，所有类型必须显式定义
+- 游戏逻辑与渲染层必须解耦
+- 所有交互元素必须有 `data-testid` 属性
