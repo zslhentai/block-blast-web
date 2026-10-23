@@ -56,7 +56,11 @@ bun scripts/serve-dist.ts
 
 按终端提示访问端口 4173 下的 `/block-blast-web/`。该命令只用于本地静态预览，`dist/` 本身不依赖 Bun 服务。
 
-GitHub Actions 的 `Verify classic MVP` 执行冻结安装、类型检查、单测、E2E 和防假阳性检查，并上传 `portable-preview` 可下载试玩附件。需要在线发布时：先推送/合并提交，保证工作流在默认分支可见；在仓库 Settings → Pages 将 Source 设为 GitHub Actions，再手动运行 `Deploy verified game to GitHub Pages`。部署前会重复使用同一验证工作流。完成后以 Actions 返回的真实站点地址为准。本轮本地提交不等于已经推送或发布。
+GitHub Actions 的 `Verify classic MVP` 执行冻结安装、类型检查、单测、E2E 和防假阳性检查，并上传 `portable-preview` 可下载试玩附件。发布分支为 `work`：每次推送自动触发 `Deploy verified game to GitHub Pages`，重新运行全部验证，成功后才发布 `dist/`。其他分支和 PR 只验证、不发布；部署任务也会拒绝从其他分支手动发布，避免覆盖已验证版本。
+
+首次启用请在仓库 **Settings → Pages → Build and deployment → Source** 选择 **GitHub Actions**。若 `github-pages` 环境有限制，在 **Settings → Environments → github-pages → Deployment branches and tags** 允许 `work`，保留你需要的审批规则。仓库 **Settings → Actions → General** 也须允许本项目使用的 Actions。随后推送到 `work`，或在已有部署运行页面选择 **Re-run all jobs**。手动运行入口通常需要工作流先出现在默认分支；首次发布不依赖这个入口，使用 `work` 的 push 触发即可。
+
+Vite 保留 `base: './'`，构建后的 JS/CSS 使用相对路径；E2E 验证生产文件在 `/block-blast-web/` 下运行。预期站点地址是 `https://zslhentai.github.io/block-blast-web/`，是否已上线以 [部署工作流](https://github.com/zslhentai/block-blast-web/actions/workflows/deploy.yml) 的结果和实际访问验证为准。网络限制、Pages 未启用或环境审批未完成时，推送成功不代表发布成功。最新记录见 [部署说明](docs/DEPLOYMENT.md)。
 
 ## 已实现玩法
 

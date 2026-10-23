@@ -1,5 +1,7 @@
 name: Deploy verified game to GitHub Pages
 on:
+  push:
+    branches: [work]
   workflow_dispatch:
 permissions:
   contents: read
@@ -12,12 +14,15 @@ jobs:
   verify:
     uses: ./.github/workflows/tests.yml
   deploy:
+    if: github.ref == 'refs/heads/work'
     needs: verify
     runs-on: ubuntu-latest
     environment:
       name: github-pages
       url: ${{ steps.deployment.outputs.page_url }}
     steps:
+      - name: Check GitHub Pages configuration
+        uses: actions/configure-pages@v5
       - name: Deploy verified static artifact
         id: deployment
         uses: actions/deploy-pages@v4
