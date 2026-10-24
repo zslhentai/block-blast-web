@@ -21,6 +21,8 @@ const SHAPE_DEFINITIONS: Template[] = [
   { group: 'large', cells: [[0, 0], [0, 1], [0, 2], [1, 0], [1, 1], [1, 2], [2, 0], [2, 1], [2, 2]] },
   { group: 'large', cells: [[0, 0], [0, 1], [0, 2], [1, 0], [1, 1], [1, 2]] },
   { group: 'large', cells: [[0, 0], [0, 1], [0, 2], [1, 0], [2, 0]] },
+  // Confirmed diagonal pair; rotation/normalization yields exactly two directions.
+  { group: 'small', cells: [[0, 0], [1, 1]] },
 ];
 
 export function rotateShape(cells: Cells, rotation: number): Cells {

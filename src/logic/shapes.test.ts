@@ -3,9 +3,9 @@ import { CATALOGUE, createRandomShape, createShapes, shapeKey } from './shapes';
 import { createRandom } from './rng';
 
 describe('versioned shape catalogue and seeded sampling', () => {
-  test('37 normalized unique orientations, no duplicate cells', () => {
-    expect(CATALOGUE.length).toBe(37);
-    expect(new Set(CATALOGUE.map(e => e.key)).size).toBe(37);
+  test('39 normalized unique orientations, no duplicate cells', () => {
+    expect(CATALOGUE.length).toBe(39);
+    expect(new Set(CATALOGUE.map(e => e.key)).size).toBe(39);
     for (const { cells } of CATALOGUE) {
       expect(new Set(cells.map(c => c.join(','))).size).toBe(cells.length);
       expect(Math.min(...cells.map(([r]) => r))).toBe(0);
