@@ -2,7 +2,8 @@ import './style.css';
 import { GameRenderer } from './renderer/index';
 import { createInitialState } from './logic/state';
 import { type GameState } from './logic/types';
-import { soundManager } from './audio/sounds';
+import { GameAudioFeedback } from './audio/game-feedback';
+import { readAudioScene,audioSceneState } from './audio/scenes';
 import { MOTION } from './renderer/motion';
 import { GameStorage, DEFAULT_SETTINGS, STORAGE_KEY, parseSavedGame, type Settings, type StorageLike } from './storage/localStorage';
 
@@ -15,18 +16,20 @@ function randomSeed(): number {
   try { return crypto.getRandomValues(new Uint32Array(1))[0]; } catch { return Date.now() >>> 0; }
 }
 function init(): void {
+  const scene=readAudioScene(location.search);
+  const soundManager=new GameAudioFeedback(scene?.profile??'legacy');
   let browserStorage: StorageLike | undefined;
-  try { browserStorage = window.localStorage; } catch { /* Private browsing may disallow storage. */ }
+  try { if(!scene)browserStorage = window.localStorage; } catch { /* Private browsing may disallow storage. */ }
   let writerId = `tab-${randomSeed()}-${Date.now()}`;
   try {
-    writerId = sessionStorage.getItem('block-blast-web:tab-id') ?? writerId;
-    sessionStorage.setItem('block-blast-web:tab-id', writerId);
+    if(!scene){writerId = sessionStorage.getItem('block-blast-web:tab-id') ?? writerId;
+    sessionStorage.setItem('block-blast-web:tab-id', writerId);}
   } catch { /* The game can still run if session storage is unavailable. */ }
   const storage = new GameStorage(browserStorage, writerId);
   const saved = storage.load();
   const motionPreference = window.matchMedia('(prefers-reduced-motion: reduce)');
-  let settings: Settings = saved?.settings ?? { ...DEFAULT_SETTINGS, reducedMotion: motionPreference.matches };
-  const state = saved?.state ?? createInitialState(storage.best(), randomSeed());
+  let settings: Settings = saved?.settings ?? { ...DEFAULT_SETTINGS, soundEnabled:Boolean(scene), reducedMotion: motionPreference.matches };
+  const state = saved?.state ?? (scene?audioSceneState(scene.scene):createInitialState(storage.best(), randomSeed()));
   if (state.status === 'playing') state.status = 'paused';
   let externalUpdate = false;
   const menu = element<HTMLDialogElement>('menu');
@@ -35,6 +38,7 @@ function init(): void {
   const feedback = element('feedback');
   let feedbackTimer: ReturnType<typeof setTimeout> | undefined;
   const save = (next: GameState): void => {
+    if(scene){element('save-status').textContent='音效场景试听 · 不保存正式进度';return;}
     if (!externalUpdate) storage.save(next, settings);
     element('save-status').textContent = externalUpdate ? '另一个页面已更新进度，请刷新后继续'
       : storage.available ? '进度已自动保存' : '此浏览器暂不能保存，仍可继续游玩';
@@ -54,16 +58,16 @@ function init(): void {
   };
   const renderer = new GameRenderer(element<HTMLCanvasElement>('game-canvas'), state, {
     onStateChange: next => { sync(next); save(next); },
-    onFeedback: (kind, points, tier) => {
+    onFeedback: (kind, points, tier, move, at) => {
       if (renderer.getState().status !== 'playing') return;
-      soundManager.play(kind); clearTimeout(feedbackTimer);
+      soundManager.play(move,at); clearTimeout(feedbackTimer);
       feedback.textContent = kind === 'invalid' ? '这里放不下，换个位置试试' : kind === 'clear'
         ? `${tier ? '连击！' : '消除！'}+${points}` : `+${points}`;
       feedbackTimer = setTimeout(() => { feedback.textContent = ''; }, MOTION.feedbackTextMs);
     },
   });
   Object.defineProperty(window, 'blockBlast', { configurable: true,
-    value: Object.freeze({ getState: () => renderer.getState(), getLayout: () => renderer.getLayout(), getFeedback: () => renderer.getFeedback() }) });
+    value: Object.freeze({ getState: () => renderer.getState(), getLayout: () => renderer.getLayout(), getFeedback: () => renderer.getFeedback(), getAudio:()=>soundManager.snapshot() }) });
   const showMenu = (): void => {
     const current = renderer.getState();
     element('menu-title').textContent = current.status === 'idle' ? '方块小憩' : '休息一下';
@@ -77,6 +81,7 @@ function init(): void {
     if (current.status !== 'gameover' && current.moves > 0 && !window.confirm('开始新游戏会覆盖当前棋局，最高分和设置会保留。继续吗？')) return;
     menu.close(); over.close(); settingsDialog.close();
     feedback.textContent = ''; clearTimeout(feedbackTimer);
+    soundManager.reset();soundManager.init();
     renderer.dispatch({ type: 'RESTART', seed: randomSeed() });
   };
   element('continue').addEventListener('click', () => {
@@ -123,6 +128,7 @@ function init(): void {
   window.addEventListener('pagehide', suspend);
   window.addEventListener('pageshow', () => { if (renderer.getState().status === 'paused' && !settingsDialog.open) showMenu(); });
   window.addEventListener('storage', e => {
+    if(scene)return;
     if (e.key !== STORAGE_KEY || !e.newValue) return;
     const incoming = parseSavedGame(e.newValue);
     if (!incoming) return;
@@ -138,6 +144,7 @@ function init(): void {
   // Original copyright text is inlined by the build, including the portable page.
   element('license').textContent = LICENSE_TEXT;
   sync(state); save(state);
+  if(scene)menu.querySelector('.muted')!.textContent='固定场景试听 · 不读取或保存正式进度';
   if (state.status === 'idle' || state.status === 'paused') showMenu();
   for (const id of ['pause', 'new-game', 'settings-open']) element<HTMLButtonElement>(id).disabled = false;
   document.body.dataset.gameReady = 'true';

@@ -5,12 +5,12 @@ import { checkAndClearLines } from '../logic/lineClear';
 import { initCanvas, type CanvasConfig, clearCanvas } from './canvas';
 import { drawBoard, drawState, drawShapes } from './draw';
 import { type DragState, contains, projectDrag, toLocal } from './input';
-import { FeedbackTimeline, moveFeedback } from './feedback';
+import { FeedbackTimeline, moveFeedback, type MoveFeedback } from './feedback';
 import { drawFeedback, drawPreview } from './effects';
 
 interface RendererOptions {
   onStateChange: (state: GameState) => void;
-  onFeedback: (kind: 'place' | 'clear' | 'invalid', points: number, tier: number) => void;
+  onFeedback: (kind: 'place' | 'clear' | 'invalid', points: number, tier: number, move:MoveFeedback|null, at:number) => void;
 }
 export class GameRenderer {
   private readonly ctx: CanvasRenderingContext2D;
@@ -48,7 +48,7 @@ export class GameRenderer {
     const preview = this.drag ? projectDrag(this.drag, this.config) : null;
     return { reducedMotion: this.reducedMotion, activeMoves: frames.length, invalid: rejected !== null, previewChecks: this.previewChecks,
       framePending: this.frame !== 0,
-      moves: frames.map(f => ({ revision: f.move.revision, age: now - f.start, clearedCells: f.move.cleared.length,
+      moves: frames.map(f => ({ revision: f.move.revision, startAt:f.start, age: now - f.start, clearedCells: f.move.cleared.length,
         rows: [...f.move.rows], cols: [...f.move.cols], tier: f.move.tier, strength: f.move.strength, particles: f.particles.length,
         visibleClearedCells: f.move.cleared.filter(p=>this.feedback.owns(f.move.revision,p) && !this.state.board[p.row][p.col]).length })),
       preview: preview && this.drag ? { row: preview.row, col: preview.col,
@@ -69,8 +69,9 @@ export class GameRenderer {
     this.options.onStateChange(this.getState());
     const move = moveFeedback(before, after, action);
     if (move) {
-      if (!this.reducedMotion && after.status === 'playing') this.feedback.add(move, performance.now());
-      this.options.onFeedback(move.cleared.length ? 'clear' : 'place', move.points, move.tier);
+      const at=performance.now();
+      if (!this.reducedMotion && after.status === 'playing') this.feedback.add(move, at);
+      this.options.onFeedback(move.cleared.length ? 'clear' : 'place', move.points, move.tier, move, at);
     }
     if (after.status !== 'playing') this.feedback.reset();
     this.requestRender();
@@ -116,7 +117,7 @@ export class GameRenderer {
     this.dispatch({ type: 'PLACE_SHAPE', slot: drag.slot, shapeId: drag.shape.id, revision: drag.revision, row, col });
     if (this.state === before) {
       if (!this.reducedMotion) this.feedback.reject(drag.slot, performance.now());
-      this.options.onFeedback('invalid', 0, 0);
+      this.options.onFeedback('invalid', 0, 0, null, performance.now());
     }
     this.requestRender();
   };

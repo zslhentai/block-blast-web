@@ -1,0 +1,3 @@
+iframe{display:block;width:100%;height:740px;height:max(560px,85svh);border:1px solid #6686aa60;border-radius:16px;background:#35528e}
+pre{white-space:pre-wrap;overflow-wrap:anywhere}
+button[aria-pressed=true]{outline:2px solid #ffd572;outline-offset:2px}

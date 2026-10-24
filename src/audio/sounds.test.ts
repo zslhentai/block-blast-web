@@ -26,3 +26,11 @@ test('unsupported Web Audio fails silently without making feedback a gameplay de
   sound.setEnabled(true);
   expect(() => { sound.init(); sound.play('clear'); sound.suspend(); }).not.toThrow();
 });
+
+test('a late gesture resume cannot reactivate audio after pause or mute', async () => {
+  let state='suspended',suspended=0,finish:()=>void=()=>{};
+  const context={get state(){return state;},resume:()=>new Promise<void>(resolve=>{finish=()=>{state='running';resolve();};}),suspend:async()=>{state='suspended';suspended++;}} as unknown as AudioContext;
+  const sound=new SoundManager(()=>context);sound.setEnabled(true);sound.init();sound.suspend();finish();
+  await Promise.resolve();await Promise.resolve();
+  expect(state).toBe('suspended');expect(suspended).toBe(1);
+});

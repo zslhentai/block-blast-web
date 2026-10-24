@@ -17,7 +17,7 @@ export default defineConfig({
     this.emitFile({ type: 'asset', fileName: 'audio-lab/v2-report.md',
       source: readFileSync(new URL('./docs/audio-lab-v2/README.md', import.meta.url)) });
   } }],
-  build: { target: 'es2020', rollupOptions: { input: ['index.html', 'audio-lab/index.html', 'audio-lab/v2.html', 'audio-lab/samples.html'] } },
+  build: { target: 'es2020', rollupOptions: { input: ['index.html', 'audio-lab/index.html', 'audio-lab/v2.html', 'audio-lab/samples.html', 'audio-lab/scenes.html'] } },
   server: { port: 3000, strictPort: true },
   preview: { port: 4173, strictPort: true },
 });

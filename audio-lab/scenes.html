@@ -1,0 +1,10 @@
+<!doctype html>
+<html lang="zh-CN"><head><meta charset="UTF-8"/><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover"/><meta name="theme-color" content="#142348"/><title>真实棋局 · 音效 A/B</title></head>
+<body><main>
+<header><p class="eyebrow">方块小憩 · 场景试听</p><h1>在落子时比较声音</h1><p>选择同一棋局，分别用 A / B 完成一次放置。<br>先点棋盘内“开始游戏”启用声音。</p></header>
+<section class="controls"><label>棋局场景<select id="scenario" data-testid="scene-select"></select></label><div class="transport"><button id="legacy" data-testid="scene-legacy" aria-pressed="true">A · 现有音效</button><button id="samples" data-testid="scene-samples" class="secondary" aria-pressed="false">B · P2 / R1 候选</button><button id="reset" data-testid="scene-reset" class="secondary">重置同一棋局</button><button id="stop" data-testid="scene-stop" class="secondary">暂停试听</button></div><p id="instruction" data-testid="scene-instruction"></p><p class="hint">B 仅普通放置用 P2、单行用 R1；多线/Combo 尚无认可素材，保持现有音效回退。声音仍待你选择，未认定接近原版。</p></section>
+<iframe id="game" data-testid="scene-game" title="同一套经典游戏的固定试听棋局" allow="autoplay"></iframe>
+<p id="status" data-testid="scene-status" role="status">正在载入棋局…</p>
+<details><summary data-testid="scene-diagnostics">触发记录（验证用）</summary><pre id="diagnostics" data-testid="scene-diagnostics-data"></pre></details>
+<footer><p>场景使用正式游戏的渲染、输入和规则，不读写正式存档。切换 A/B 会重置同一棋局。</p><a data-testid="scene-library" href="./samples.html">素材来源、CC0 许可与原声 A/B</a> · <a data-testid="scene-play" href="../">返回正式游戏</a></footer>
+</main><script type="module" src="/src/audio-lab/scenes.ts"></script></body></html>
