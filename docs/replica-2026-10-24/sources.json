@@ -1,0 +1,74 @@
+[
+  {
+    "repo": "haoliu-dev/block-blast-phone",
+    "sha": "8cf18eb45c4c4ea7b11283d55c51369e07d11ca4",
+    "pushedAt": "2026-02-17T19:16:19Z",
+    "license": "MIT",
+    "licenseUrl": "https://github.com/haoliu-dev/block-blast-phone/blob/8cf18eb45c4c4ea7b11283d55c51369e07d11ca4/LICENSE",
+    "licenseHeading": [
+      "MIT License",
+      "Copyright (c) 2026 Hao Liu",
+      "Permission is hereby granted, free of charge, to any person obtaining a copy"
+    ]
+  },
+  {
+    "repo": "MrCerise/block-blast",
+    "sha": "b4214881f99708b6009b48bfe839c4d28bd0ce22",
+    "pushedAt": "2026-08-29T23:28:08Z",
+    "license": "MIT",
+    "licenseUrl": "https://github.com/MrCerise/block-blast/blob/b4214881f99708b6009b48bfe839c4d28bd0ce22/LICENSE",
+    "licenseHeading": [
+      "MIT License",
+      "Copyright (c) 2026 Block Blast Clone",
+      "Permission is hereby granted, free of charge, to any person obtaining a copy"
+    ]
+  },
+  {
+    "repo": "bgrenat/godot-game-dev-studio",
+    "sha": "cb2e2cb6bedeada7140d73a0f45a93db1964e634",
+    "pushedAt": "2026-10-12T15:39:23Z",
+    "license": "LGPL-3.0",
+    "licenseUrl": "https://github.com/bgrenat/godot-game-dev-studio/blob/cb2e2cb6bedeada7140d73a0f45a93db1964e634/LICENSE",
+    "licenseHeading": [
+      "                   GNU LESSER GENERAL PUBLIC LICENSE",
+      "                       Version 3, 29 June 2007",
+      " Copyright (C) 2007 Free Software Foundation, Inc. <https://fsf.org/>"
+    ]
+  },
+  {
+    "repo": "morluto/rea",
+    "sha": "3ce311757dd8ac444c8297b2871464536f93816d",
+    "pushedAt": "2026-10-24T08:19:06Z",
+    "license": "MIT",
+    "licenseUrl": "https://github.com/morluto/rea/blob/3ce311757dd8ac444c8297b2871464536f93816d/LICENSE",
+    "licenseHeading": [
+      "MIT License",
+      "Copyright (c) 2026 morluto",
+      "Permission is hereby granted, free of charge, to any person obtaining a copy"
+    ]
+  },
+  {
+    "repo": "Crain99/cc-reverse",
+    "sha": "070cafb3d16cd3ed9346587db41860335fdbd7a9",
+    "pushedAt": "2026-09-02T03:59:33Z",
+    "license": "MIT",
+    "licenseUrl": "https://github.com/Crain99/cc-reverse/blob/070cafb3d16cd3ed9346587db41860335fdbd7a9/LICENSE",
+    "licenseHeading": [
+      "MIT License",
+      "Copyright (c) 2025 Crain99",
+      "Permission is hereby granted, free of charge, to any person obtaining a copy"
+    ]
+  },
+  {
+    "repo": "Crain99/cocos-reverse-engineering-skill",
+    "sha": "3e920b0cbe975899d57946590e5c0448e4531b0c",
+    "pushedAt": "2026-04-22T02:57:07Z",
+    "license": "MIT",
+    "licenseUrl": "https://github.com/Crain99/cocos-reverse-engineering-skill/blob/3e920b0cbe975899d57946590e5c0448e4531b0c/LICENSE",
+    "licenseHeading": [
+      "MIT License",
+      "Copyright (c) 2025 Crain99",
+      "Permission is hereby granted, free of charge, to any person obtaining a copy"
+    ]
+  }
+]
