@@ -81,7 +81,7 @@ for recipe in json.loads((ROOT / 'scripts/sample-recipes.json').read_text()):
     hashes = {'original': hashlib.sha256(raw).hexdigest()}
     for key, data in [('A', a), ('B', b)]:
         hashes[key] = save(BANK / files[key], data, gain)
-    entry = {key: recipe[key] for key in ['id','group','code','title','note','pack','author','official','origin','repo','commit','path','url','gitBlob','license','licenseUrl']}
+    entry = {key: recipe[key] for key in ['id','group','code','title','note','pack','author','official','origin','repo','commit','path','url','gitBlob','license','licenseUrl','status']}
     entry.update({'review': '初筛，未做人工听审；相似度待用户确认', 'files': files, 'sha256': hashes,
                   'originalMetrics': metrics(full), 'previewRange': [start, raw_end],
                   'editedRange': [start, edited_end], 'sharedGainDb': 20 * math.log10(gain),

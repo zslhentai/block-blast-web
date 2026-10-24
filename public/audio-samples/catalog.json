@@ -19,6 +19,7 @@
       "gitBlob": "d59cffe03da391e6e7b802185c7990f2f2504557",
       "license": "CC0-1.0",
       "licenseUrl": "https://creativecommons.org/publicdomain/zero/1.0/",
+      "status": "rejected",
       "review": "初筛，未做人工听审；相似度待用户确认",
       "files": {
         "A": "preview/place-glass.wav",
@@ -71,7 +72,7 @@
       "group": "place",
       "code": "P2",
       "title": "木质轻碰",
-      "note": "更柔和的实体触感；与原版晶亮方向有差异，保留为低疲劳备选。",
+      "note": "你反馈这一条尚可，暂留作放置对照；A/B 尚未定稿，不代表已匹配原版。",
       "pack": "Kenney Impact Sounds",
       "author": "Kenney",
       "official": "https://kenney.nl/assets/impact-sounds",
@@ -83,6 +84,7 @@
       "gitBlob": "4bf6be62febf1de5f13b8bf33151118d8bb56c34",
       "license": "CC0-1.0",
       "licenseUrl": "https://creativecommons.org/publicdomain/zero/1.0/",
+      "status": "retained",
       "review": "初筛，未做人工听审；相似度待用户确认",
       "files": {
         "A": "preview/place-wood.wav",
@@ -147,6 +149,7 @@
       "gitBlob": "8f5efe5d686fedd1d1238b011ea9ef83daeacd32",
       "license": "CC0-1.0",
       "licenseUrl": "https://creativecommons.org/publicdomain/zero/1.0/",
+      "status": "rejected",
       "review": "初筛，未做人工听审；相似度待用户确认",
       "files": {
         "A": "preview/place-tick.wav",
@@ -211,6 +214,7 @@
       "gitBlob": "b1bf91f15024c4add55e44c2753c49330326c822",
       "license": "CC0-1.0",
       "licenseUrl": "https://creativecommons.org/publicdomain/zero/1.0/",
+      "status": "rejected",
       "review": "初筛，未做人工听审；相似度待用户确认",
       "files": {
         "A": "preview/single-bell.wav",
@@ -275,6 +279,7 @@
       "gitBlob": "0d65bd0c5fee5ea783845a0963a03cc5d16084cf",
       "license": "CC0-1.0",
       "licenseUrl": "https://creativecommons.org/publicdomain/zero/1.0/",
+      "status": "rejected",
       "review": "初筛，未做人工听审；相似度待用户确认",
       "files": {
         "A": "preview/multi-glass.wav",
@@ -339,6 +344,7 @@
       "gitBlob": "1d45f5fa830ffc9be27b54cac57b70a68b5b0686",
       "license": "CC0-1.0",
       "licenseUrl": "https://creativecommons.org/publicdomain/zero/1.0/",
+      "status": "rejected",
       "review": "初筛，未做人工听审；相似度待用户确认",
       "files": {
         "A": "preview/combo-pizzi.wav",
@@ -403,6 +409,7 @@
       "gitBlob": "90e67d0f36be94f2e46c49e6767072548fb758af",
       "license": "CC0-1.0",
       "licenseUrl": "https://creativecommons.org/publicdomain/zero/1.0/",
+      "status": "rejected",
       "review": "初筛，未做人工听审；相似度待用户确认",
       "files": {
         "A": "preview/combo-steel.wav",
@@ -467,6 +474,7 @@
       "gitBlob": "b203410a0a37a8f5207d779ef5ba238a59e858d2",
       "license": "CC0-1.0",
       "licenseUrl": "https://creativecommons.org/publicdomain/zero/1.0/",
+      "status": "rejected",
       "review": "初筛，未做人工听审；相似度待用户确认",
       "files": {
         "A": "preview/single-chime.wav",
@@ -531,6 +539,7 @@
       "gitBlob": "5be8c35489e1722d2abe778fe121bc4d0437ecba",
       "license": "CC0-1.0",
       "licenseUrl": "https://creativecommons.org/publicdomain/zero/1.0/",
+      "status": "rejected",
       "review": "初筛，未做人工听审；相似度待用户确认",
       "files": {
         "A": "preview/single-tree.wav",
@@ -595,6 +604,7 @@
       "gitBlob": "f3e92cad46ba49225c914df5b2d8c8a55ae474a7",
       "license": "CC0-1.0",
       "licenseUrl": "https://creativecommons.org/publicdomain/zero/1.0/",
+      "status": "rejected",
       "review": "初筛，未做人工听审；相似度待用户确认",
       "files": {
         "A": "preview/multi-tree.wav",
@@ -659,6 +669,7 @@
       "gitBlob": "ea9425b0ef11467a5c148e2ead235a823b972bf8",
       "license": "CC0-1.0",
       "licenseUrl": "https://creativecommons.org/publicdomain/zero/1.0/",
+      "status": "rejected",
       "review": "初筛，未做人工听审；相似度待用户确认",
       "files": {
         "A": "preview/multi-chimes.wav",
@@ -723,6 +734,7 @@
       "gitBlob": "26a57beb9b7ae9450e93c4ab6e3a34055c1dffc9",
       "license": "CC0-1.0",
       "licenseUrl": "https://creativecommons.org/publicdomain/zero/1.0/",
+      "status": "rejected",
       "review": "初筛，未做人工听审；相似度待用户确认",
       "files": {
         "A": "preview/combo-chimes.wav",
@@ -769,6 +781,71 @@
         }
       },
       "licenseFile": "licenses/vcsl-CC0.txt"
+    },
+    {
+      "id": "clear-casual",
+      "group": "single",
+      "code": "R1",
+      "title": "短和弦 · 录屏定向候选",
+      "note": "对照录屏 18.70–19.71 秒的单行消除，按短和弦与衰减节奏寻找。尚未听审；先听 A，再比较 B 的较短尾部，不保证听感相似。",
+      "pack": "Dustyroom Casual Game Sounds",
+      "author": "Dustyroom",
+      "official": "https://dustyroom.com/free-casual-game-sounds/",
+      "origin": "现成设计音效；作者说明使用录制、合成和处理制作，非本项目新合成",
+      "repo": "YagmurCemGul/my-awesome-game",
+      "commit": "bff6e4b702a0e13182f8adaf89572814e147dbc4",
+      "path": "Assets/CasualGameSounds/DM-CGS-12.wav",
+      "url": "https://raw.githubusercontent.com/YagmurCemGul/my-awesome-game/bff6e4b702a0e13182f8adaf89572814e147dbc4/Assets/CasualGameSounds/DM-CGS-12.wav",
+      "gitBlob": "2950b4cd61a254eaec52af263fa8e1065a931431",
+      "license": "CC0-1.0",
+      "licenseUrl": "https://creativecommons.org/publicdomain/zero/1.0/",
+      "status": "new",
+      "review": "初筛，未做人工听审；相似度待用户确认",
+      "files": {
+        "A": "preview/clear-casual.wav",
+        "B": "edited/clear-casual.wav",
+        "original": "original/clear-casual.wav"
+      },
+      "sha256": {
+        "original": "ab398512f9dd40b62abf94f8bced89d812c8f17367cbf9ebd87e6290e83aadb3",
+        "A": "7608629f1db10fe9cc052e40a4efbf05d6b6b471b0ba389e44b8c7b5523f417d",
+        "B": "f8cbdfefc81fae5e676bc2a1d19e3989294dddad5d93be645340b66ec450c70e"
+      },
+      "originalMetrics": {
+        "frames": 91068,
+        "duration": 1.89725,
+        "peak": 0.956916093826294,
+        "rms": 0.1890918967676694
+      },
+      "previewRange": [
+        0,
+        1.8
+      ],
+      "editedRange": [
+        0,
+        1.02
+      ],
+      "sharedGainDb": -9.534843295194651,
+      "highpassHz": 30,
+      "lowpassHz": 18000,
+      "eqDbAt3600": 0,
+      "fadeOutMs": 60,
+      "baselineEndFadeMs": 5,
+      "stats": {
+        "A": {
+          "frames": 86400,
+          "duration": 1.8,
+          "peak": 0.31925057933279954,
+          "rms": 0.06476744749058667
+        },
+        "B": {
+          "frames": 48960,
+          "duration": 1.02,
+          "peak": 0.33,
+          "rms": 0.08585073565361726
+        }
+      },
+      "licenseFile": "licenses/dustyroom-CC0.txt"
     }
   ]
 }

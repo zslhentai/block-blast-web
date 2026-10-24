@@ -5,6 +5,7 @@ export interface Sample {
   id: string; group: EventGroup; code: string; title: string; note: string; pack: string; author: string;
   official: string; origin: string; repo: string; commit: string; path: string; url: string; gitBlob: string;
   license: string; licenseUrl: string; review: string; files: Record<SampleVersion, string>;
+  status: 'new' | 'retained' | 'rejected';
   sha256: Record<SampleVersion, string>; originalMetrics: SampleMetrics;
   previewRange: [number, number]; editedRange: [number, number]; sharedGainDb: number;
   highpassHz: number; lowpassHz: number; eqDbAt3600: number; fadeOutMs: number;
@@ -24,7 +25,7 @@ export function isCatalog(value: unknown): value is Catalog {
     const s = item as Sample;
     if (typeof s.id !== 'string' || ids.has(s.id) || !/^[a-z0-9-]+$/.test(s.id)) return false;
     ids.add(s.id);
-    return Object.hasOwn(GROUPS, s.group) && ['code','title','note','pack','author','origin','review','licenseFile'].every(key => typeof (s as unknown as Record<string, unknown>)[key] === 'string')
+    return Object.hasOwn(GROUPS, s.group) && ['new','retained','rejected'].includes(s.status) && ['code','title','note','pack','author','origin','review','licenseFile'].every(key => typeof (s as unknown as Record<string, unknown>)[key] === 'string')
       && s.license === 'CC0-1.0' && [s.official, s.url, s.licenseUrl].every(url => typeof url === 'string' && url.startsWith('https://'))
       && ['A','B','original'].every(key => typeof s.files?.[key as SampleVersion] === 'string'
         && /^(preview|edited|original)\/[a-z0-9-]+\.(wav|ogg)$/.test(s.files[key as SampleVersion])

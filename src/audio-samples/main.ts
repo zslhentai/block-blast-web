@@ -8,7 +8,8 @@ const status = document.querySelector<HTMLElement>('#sample-status')!;
 const notice = document.querySelector<HTMLElement>('#catalog-status')!;
 const audio = document.querySelector<HTMLAudioElement>('#sample-audio')!;
 const player = new SamplePlayer(audio, message => { status.textContent = message; });
-let selected: EventGroup = 'place';
+const archive = new URLSearchParams(location.search).get('archive') === '1';
+let selected: EventGroup = archive ? 'place' : 'single';
 const list = document.querySelector('#sample-list')!;
 const tabs = document.querySelector('#groups')!;
 const groups = new Map<EventGroup, HTMLElement>();
@@ -31,11 +32,14 @@ function addLink(parent: HTMLElement, text: string, href: string, testid: string
 }
 function card(sample: Sample): HTMLElement {
   const article = document.createElement('article'); article.dataset.testid = `card-${sample.code}`;
+  article.id = sample.code;
   const code = document.createElement('div'); code.className = 'number'; code.textContent = `${sample.code} · ${sample.pack}`;
+  const review = document.createElement('span'); review.className = 'tag';
+  review.textContent = sample.status === 'new' ? '本轮新候选 · 待听审' : sample.status === 'retained' ? '用户暂留 · 尚未定稿' : '上轮已淘汰 · 仅归档';
   const heading = document.createElement('h2'); heading.textContent = sample.title;
   const note = document.createElement('p'); note.textContent = sample.note;
   const timing = document.createElement('span'); timing.className = 'tag'; timing.textContent = `A ${sample.stats.A.duration.toFixed(2)} s · B ${sample.stats.B.duration.toFixed(2)} s · ${sample.license}`;
-  article.append(code, heading, note, timing);
+  article.append(code, review, heading, note, timing);
   const actions = document.createElement('div'); actions.className = 'actions';
   const track = (version: SampleVersion) => ({ url: base + sample.files[version], label: `${sample.code} · ${version === 'A' ? 'A 原声选段' : version === 'B' ? 'B 加工版' : '完整原文件'}`, original: version === 'original' });
   for (const [mode, label] of [['A','听 A · 原声选段'],['B','听 B · 加工版'],['AB','A → B'],['BA','B → A']] as const) {
@@ -64,15 +68,22 @@ function card(sample: Sample): HTMLElement {
 }
 async function load(): Promise<void> {
   try {
-    const response = await fetch(base + 'catalog.json'); if (!response.ok) throw new Error('Catalog unavailable');
+    const response = await fetch(base + 'catalog.json', { cache: 'no-cache' }); if (!response.ok) throw new Error('Catalog unavailable');
     const value: unknown = await response.json(); if (!isCatalog(value)) throw new Error('Invalid catalog');
+    const visible = value.items.filter(sample => archive || sample.status !== 'rejected');
     for (const [key, label] of Object.entries(GROUPS)) {
       const group = key as EventGroup; const section = document.createElement('section'); section.hidden = group !== selected;
       section.setAttribute('aria-label', label); section.className = 'sample-cards';
-      for (const sample of value.items.filter(item => item.group === group)) section.append(card(sample));
+      const samples = visible.filter(item => item.group === group).sort((a,b) => Number(b.status === 'new') - Number(a.status === 'new'));
+      for (const sample of samples) section.append(card(sample));
+      if (!samples.length) {
+        const empty = document.createElement('p'); empty.dataset.testid = `empty-${group}`;
+        empty.textContent = '本轮没有找到足够有依据的新候选，暂不凑数。多行与 Combo 在录屏中叠音，尚不能分别确认其独立声音。';
+        section.append(empty);
+      }
       groups.set(group, section); list.append(section);
     }
-    notice.textContent = `${value.items.length} 个现成素材初筛 · 全部 CC0 · 人工听审待确认`;
+    notice.textContent = archive ? `${value.items.length} 个素材记录 · 上轮已淘汰项仅归档 · 全部 CC0` : '本轮 1 个新候选 R1 · 保留放置对照 P2 · 全部 CC0 · 听感待确认';
   } catch { notice.textContent = '素材目录未能加载，请刷新后重试。'; }
 }
 void load();

@@ -10,17 +10,17 @@ async function ready(page: Page): Promise<void> {
     document.addEventListener('playing', event => { if (event.target instanceof HTMLAudioElement) played.push(event.target.currentSrc); }, true);
     localStorage.setItem('sample-save-sentinel','preserved');
   });
-  await page.goto('audio-lab/samples.html');
-  await expect(page.getByTestId('catalog-status')).toContainText('12 个现成素材初筛');
+  await page.goto('audio-lab/samples.html?archive=1');
+  await expect(page.getByTestId('catalog-status')).toContainText('13 个素材记录');
 }
 async function played(page: Page, suffix: string): Promise<void> {
   await expect.poll(() => page.evaluate(suffix => (window as unknown as SamplesWindow).samplePlayed.some(url => url.endsWith(suffix)), suffix)).toBe(true);
 }
 
-test('all twelve original excerpts and edits decode and play from touch, with provenance and no save mutation', async ({ page, isMobile }) => {
+test('all thirteen original excerpts and edits decode and play from touch, with provenance and no save mutation', async ({ page, isMobile }) => {
   const errors: string[] = []; page.on('pageerror',e => errors.push(e.message));
   await ready(page); expect((await snapshot(page)).src).toBe('');
-  const cases = [ ['place',['P1','P2','P3'],['place-glass','place-wood','place-tick']], ['single',['S1','S2','S3'],['single-bell','single-chime','single-tree']], ['multi',['M1','M2','M3'],['multi-glass','multi-tree','multi-chimes']], ['combo',['C1','C2','C3'],['combo-pizzi','combo-steel','combo-chimes']] ] as const;
+  const cases = [ ['place',['P1','P2','P3'],['place-glass','place-wood','place-tick']], ['single',['R1','S1','S2','S3'],['clear-casual','single-bell','single-chime','single-tree']], ['multi',['M1','M2','M3'],['multi-glass','multi-tree','multi-chimes']], ['combo',['C1','C2','C3'],['combo-pizzi','combo-steel','combo-chimes']] ] as const;
   for (const [group,codes,ids] of cases) {
     await page.getByTestId(`group-${group}`).click();
     for (let i = 0; i < codes.length; i++) for (const version of ['A','B']) {
@@ -38,6 +38,34 @@ test('all twelve original excerpts and edits decode and play from touch, with pr
   await page.getByTestId('sample-stop').click(); expect(await snapshot(page)).toMatchObject({ paused: true, pending: 0, src: '' });
   expect(await page.evaluate(() => Object.fromEntries(Object.entries(localStorage)))).toEqual({ 'sample-save-sentinel':'preserved' });
   expect(await page.locator('canvas').count()).toBe(0); expect(errors).toEqual([]);
+});
+
+test('recording-guided shortlist defaults to R1, preserves P2 and keeps rejected samples in the archive', async ({ page, isMobile }) => {
+  await ready(page); await page.getByTestId('samples-current').click();
+  await expect(page.getByTestId('catalog-status')).toContainText('本轮 1 个新候选 R1');
+  await expect(page.getByTestId('card-R1')).toBeVisible();
+  await expect(page.getByTestId('card-R1')).toContainText('18.70–19.71');
+  await expect(page.getByTestId('card-S1')).toHaveCount(0);
+  const button=page.getByTestId('R1-AB');
+  if (isMobile) await button.tap(); else await button.click();
+  await played(page,'/preview/clear-casual.wav'); await played(page,'/edited/clear-casual.wav');
+  await expect(page.getByTestId('sample-status')).toContainText('试听完成');
+  await page.getByTestId('R1-details').click(); await page.getByTestId('R1-original').click();
+  await played(page,'/original/clear-casual.wav');
+  expect(await page.getByTestId('R1-source').getAttribute('href')).toBe('https://dustyroom.com/free-casual-game-sounds/');
+  await page.getByTestId('group-place').click(); await expect(page.getByTestId('card-P2')).toBeVisible();
+  await expect(page.getByTestId('card-P2')).toContainText('用户暂留'); expect((await snapshot(page)).src).toBe('');
+  await expect(page.getByTestId('card-P1')).toHaveCount(0);
+  for (const group of ['multi','combo']) {
+    await page.getByTestId(`group-${group}`).click(); await expect(page.getByTestId(`empty-${group}`)).toContainText('暂不凑数');
+  }
+  for (const [width,height] of [[320,568],[390,844],[412,915]]) {
+    await page.setViewportSize({width,height}); await page.getByTestId('group-single').click();
+    expect(await page.evaluate(()=>document.documentElement.scrollWidth<=innerWidth)).toBe(true);
+    await page.screenshot({path:test.info().outputPath(`reference-${width}x${height}.png`),fullPage:true});
+  }
+  await page.getByTestId('samples-archive').click();
+  await page.getByTestId('group-place').click(); await expect(page.getByTestId('card-P1')).toContainText('上轮已淘汰');
 });
 
 test('A/B and reverse order complete; replacement, stop and background discard pending playback', async ({ page }) => {

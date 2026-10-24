@@ -24,7 +24,8 @@
     "highpass": 80,
     "lowpass": 10000,
     "fadeMs": 30,
-    "eqDbAt3600": -1.5
+    "eqDbAt3600": -1.5,
+    "status": "rejected"
   },
   {
     "id": "place-wood",
@@ -42,7 +43,7 @@
     "group": "place",
     "code": "P2",
     "title": "木质轻碰",
-    "note": "更柔和的实体触感；与原版晶亮方向有差异，保留为低疲劳备选。",
+    "note": "你反馈这一条尚可，暂留作放置对照；A/B 尚未定稿，不代表已匹配原版。",
     "license": "CC0-1.0",
     "licenseUrl": "https://creativecommons.org/publicdomain/zero/1.0/",
     "start": 0,
@@ -51,7 +52,8 @@
     "highpass": 80,
     "lowpass": 10000,
     "fadeMs": 25,
-    "eqDbAt3600": -1.5
+    "eqDbAt3600": -1.5,
+    "status": "retained"
   },
   {
     "id": "place-tick",
@@ -78,7 +80,8 @@
     "highpass": 80,
     "lowpass": 10000,
     "fadeMs": 45,
-    "eqDbAt3600": -1.5
+    "eqDbAt3600": -1.5,
+    "status": "rejected"
   },
   {
     "id": "single-bell",
@@ -105,7 +108,8 @@
     "highpass": 80,
     "lowpass": 10000,
     "fadeMs": 65,
-    "eqDbAt3600": -1.5
+    "eqDbAt3600": -1.5,
+    "status": "rejected"
   },
   {
     "id": "multi-glass",
@@ -132,7 +136,8 @@
     "highpass": 120,
     "lowpass": 9000,
     "fadeMs": 35,
-    "eqDbAt3600": -2
+    "eqDbAt3600": -2,
+    "status": "rejected"
   },
   {
     "id": "combo-pizzi",
@@ -159,7 +164,8 @@
     "highpass": 60,
     "lowpass": 14000,
     "fadeMs": 35,
-    "eqDbAt3600": 0
+    "eqDbAt3600": 0,
+    "status": "rejected"
   },
   {
     "id": "combo-steel",
@@ -186,7 +192,8 @@
     "highpass": 60,
     "lowpass": 14000,
     "fadeMs": 85,
-    "eqDbAt3600": 0
+    "eqDbAt3600": 0,
+    "status": "rejected"
   },
   {
     "id": "single-chime",
@@ -213,7 +220,8 @@
     "highpass": 60,
     "lowpass": 15000,
     "fadeMs": 100,
-    "eqDbAt3600": 0
+    "eqDbAt3600": 0,
+    "status": "rejected"
   },
   {
     "id": "single-tree",
@@ -240,7 +248,8 @@
     "highpass": 60,
     "lowpass": 15000,
     "fadeMs": 100,
-    "eqDbAt3600": 0
+    "eqDbAt3600": 0,
+    "status": "rejected"
   },
   {
     "id": "multi-tree",
@@ -267,7 +276,8 @@
     "highpass": 60,
     "lowpass": 15000,
     "fadeMs": 130,
-    "eqDbAt3600": 0
+    "eqDbAt3600": 0,
+    "status": "rejected"
   },
   {
     "id": "multi-chimes",
@@ -294,7 +304,8 @@
     "highpass": 60,
     "lowpass": 15000,
     "fadeMs": 160,
-    "eqDbAt3600": 0
+    "eqDbAt3600": 0,
+    "status": "rejected"
   },
   {
     "id": "combo-chimes",
@@ -321,6 +332,35 @@
     "highpass": 60,
     "lowpass": 15000,
     "fadeMs": 160,
+    "eqDbAt3600": 0,
+    "status": "rejected"
+  },
+  {
+    "id": "clear-casual",
+    "key": "dustyroom",
+    "repo": "YagmurCemGul/my-awesome-game",
+    "commit": "bff6e4b702a0e13182f8adaf89572814e147dbc4",
+    "path": "Assets/CasualGameSounds/DM-CGS-12.wav",
+    "gitBlob": "2950b4cd61a254eaec52af263fa8e1065a931431",
+    "bytes": 507000,
+    "url": "https://raw.githubusercontent.com/YagmurCemGul/my-awesome-game/bff6e4b702a0e13182f8adaf89572814e147dbc4/Assets/CasualGameSounds/DM-CGS-12.wav",
+    "pack": "Dustyroom Casual Game Sounds",
+    "author": "Dustyroom",
+    "official": "https://dustyroom.com/free-casual-game-sounds/",
+    "origin": "现成设计音效；作者说明使用录制、合成和处理制作，非本项目新合成",
+    "group": "single",
+    "code": "R1",
+    "title": "短和弦 · 录屏定向候选",
+    "note": "对照录屏 18.70–19.71 秒的单行消除，按短和弦与衰减节奏寻找。尚未听审；先听 A，再比较 B 的较短尾部，不保证听感相似。",
+    "license": "CC0-1.0",
+    "licenseUrl": "https://creativecommons.org/publicdomain/zero/1.0/",
+    "status": "new",
+    "start": 0,
+    "previewSeconds": 1.8,
+    "editedSeconds": 1.02,
+    "highpass": 30,
+    "lowpass": 18000,
+    "fadeMs": 60,
     "eqDbAt3600": 0
   }
 ]
