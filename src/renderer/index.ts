@@ -16,6 +16,9 @@ export class GameRenderer {
   private readonly ctx: CanvasRenderingContext2D;
   private config: CanvasConfig;
   private drag: DragState | null = null;
+  private dragBounds: { left: number; top: number } | null = null;
+  private previewCache: { revision: number; shapeId: string; row: number; col: number; valid: boolean; clear: { row: number; col: number }[] } | null = null;
+  private previewChecks = 0;
   private frame = 0;
   private readonly feedback = new FeedbackTimeline();
   private reducedMotion = false;
@@ -33,6 +36,7 @@ export class GameRenderer {
     window.addEventListener('blur', this.cancelDrag);
     window.addEventListener('resize', this.resize);
     window.visualViewport?.addEventListener('resize', this.resize);
+    window.visualViewport?.addEventListener('scroll', this.cancelDrag);
     this.observer = new ResizeObserver(this.resize); this.observer.observe(canvas);
     this.render();
   }
@@ -42,10 +46,11 @@ export class GameRenderer {
     const now = performance.now();
     const { frames, rejected } = this.feedback.sample(now);
     const preview = this.drag ? projectDrag(this.drag, this.config) : null;
-    return { reducedMotion: this.reducedMotion, activeMoves: frames.length, invalid: rejected !== null,
+    return { reducedMotion: this.reducedMotion, activeMoves: frames.length, invalid: rejected !== null, previewChecks: this.previewChecks,
       framePending: this.frame !== 0,
       moves: frames.map(f => ({ revision: f.move.revision, age: now - f.start, clearedCells: f.move.cleared.length,
-        rows: [...f.move.rows], cols: [...f.move.cols], tier: f.move.tier, particles: f.particles.length })),
+        rows: [...f.move.rows], cols: [...f.move.cols], tier: f.move.tier, strength: f.move.strength, particles: f.particles.length,
+        visibleClearedCells: f.move.cleared.filter(p=>this.feedback.owns(f.move.revision,p) && !this.state.board[p.row][p.col]).length })),
       preview: preview && this.drag ? { row: preview.row, col: preview.col,
         x: preview.x, y: preview.y, valid: canPlace(this.state.board, this.drag.shape, preview.row, preview.col) } : null };
   }
@@ -84,6 +89,7 @@ export class GameRenderer {
     if (!shape) return;
     e.preventDefault();
     this.drag = { pointerId: e.pointerId, pointerType: e.pointerType, shape, slot, revision: this.state.revision, currentX: x, currentY: y };
+    const rect = this.canvas.getBoundingClientRect(); this.dragBounds = { left: rect.left, top: rect.top };
     try { this.canvas.setPointerCapture(e.pointerId); } catch { /* Synthetic input may not have an active pointer. */ }
     this.requestRender();
   };
@@ -100,6 +106,7 @@ export class GameRenderer {
     // commit coordinates measured against an earlier viewport or CSS size.
     const bounds = this.canvas.getBoundingClientRect();
     if (Math.abs(bounds.width - this.config.width) > 0.5 || Math.abs(bounds.height - this.config.height) > 0.5 ||
+        (this.dragBounds && (Math.abs(bounds.left-this.dragBounds.left) > .5 || Math.abs(bounds.top-this.dragBounds.top) > .5)) ||
         window.innerWidth !== this.viewport.width || window.innerHeight !== this.viewport.height ||
         window.devicePixelRatio !== this.viewport.dpr) { this.resize(); return; }
     const drag = this.drag;
@@ -116,7 +123,7 @@ export class GameRenderer {
   private onCancel = (e: PointerEvent): void => { if (this.drag?.pointerId === e.pointerId) this.cancelDrag(); };
   private onLostCapture = (e: PointerEvent): void => { if (this.drag?.pointerId === e.pointerId) this.cancelDrag(); };
   cancelDrag = (): void => {
-    const drag = this.drag; this.drag = null;
+    const drag = this.drag; this.drag = null; this.dragBounds = null; this.previewCache = null;
     if (drag) {
       try { if (this.canvas.hasPointerCapture(drag.pointerId)) this.canvas.releasePointerCapture(drag.pointerId); } catch { /* Already released by the browser. */ }
       this.requestRender();
@@ -133,9 +140,13 @@ export class GameRenderer {
     drawShapes(this.ctx, this.state.shapes, this.config, this.drag?.shape.id);
     if (this.drag) {
       const target = projectDrag(this.drag, this.config);
-      const valid = canPlace(this.state.board, this.drag.shape, target.row, target.col);
-      const clear = valid ? checkAndClearLines(placeShapeOnBoard(this.state.board, this.drag.shape, target.row, target.col)).cells : [];
-      drawPreview(this.ctx, this.drag.shape, target, valid, clear, this.config);
+      if (!this.previewCache || this.previewCache.revision !== this.state.revision || this.previewCache.shapeId !== this.drag.shape.id || this.previewCache.row !== target.row || this.previewCache.col !== target.col) {
+        const valid = canPlace(this.state.board, this.drag.shape, target.row, target.col);
+        const clear = valid ? checkAndClearLines(placeShapeOnBoard(this.state.board, this.drag.shape, target.row, target.col)).cells : [];
+        this.previewCache = { revision: this.state.revision, shapeId: this.drag.shape.id, row: target.row, col: target.col, valid, clear };
+        this.previewChecks++;
+      }
+      drawPreview(this.ctx, this.drag.shape, target, this.previewCache.valid, this.previewCache.clear, this.config);
     }
     if (active && this.state.status === 'playing') this.requestRender();
   }
@@ -146,5 +157,6 @@ export class GameRenderer {
     this.canvas.removeEventListener('lostpointercapture', this.onLostCapture);
     window.removeEventListener('blur', this.cancelDrag); window.removeEventListener('resize', this.resize);
     window.visualViewport?.removeEventListener('resize', this.resize);
+    window.visualViewport?.removeEventListener('scroll', this.cancelDrag);
   }
 }

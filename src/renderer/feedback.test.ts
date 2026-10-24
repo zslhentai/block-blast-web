@@ -3,7 +3,7 @@ import { createInitialState } from '../logic/state';
 import { gameReducer } from '../logic/reducer';
 import type { Board, GameAction, Shape } from '../logic/types';
 import { FeedbackTimeline, moveFeedback, feedbackDuration } from './feedback';
-import { MOTION } from './motion';
+import { MOTION, placementScale, FEEDBACK_STRENGTH } from './motion';
 
 const empty = (): Board => Array.from({ length: 8 }, () => Array<number>(8).fill(0));
 const mono: Shape = { id: 'one', color: 7, cells: [[0, 0]] };
@@ -38,12 +38,38 @@ test.each(['row', 'two-rows', 'two-columns', 'cross'])(
     expect(move.cols).toEqual(kind === 'two-columns' ? [0, 1] : kind === 'cross' ? [0] : []);
     expect(move.cleared.find(p => p.row === 0 && p.col === 0)?.color).toBe(7);
     expect(move.points).toBe(after.score); expect(move.tier).toBe(0);
+    expect(move.strength).toBe(kind==='row'?0:1);
   });
 
 test.each([[0, 0], [1, 1], [2, 2], [3, 2], [4, 3]] as const)('chain %i gives tier %i only on a real clear', (combo, tier) => {
   const board = empty(); board[0] = [0, 1, 1, 1, 1, 1, 1, 1];
   expect(transition(board, mono, combo).move.tier).toBe(tier);
   expect(transition(empty(), mono, combo).move.tier).toBe(0);
+});
+
+test('newer touches own each cell even after it is cleared again, including large saved revisions', () => {
+  const board=empty();board[0]=[0,1,1,1,1,1,1,1];
+  const first=transition(board).move, timeline=new FeedbackTimeline();
+  const revision=2**32+1;
+  timeline.add({...first,revision},0);
+  expect(timeline.owns(revision,{row:0,col:0})).toBe(true);
+  timeline.add({...first,revision:revision+1,placed:[{row:0,col:3,color:2}],cleared:[{row:0,col:3,color:2}]},20);
+  expect(timeline.owns(revision,{row:0,col:3})).toBe(false);
+  expect(timeline.owns(revision,{row:0,col:2})).toBe(true);
+  expect(timeline.owns(revision+1,{row:0,col:3})).toBe(true);
+  timeline.reset();expect(timeline.owns(revision+1,{row:0,col:3})).toBe(false);
+});
+
+test('ordinary/enhanced/reward feedback scales bounded particles and the placement settles exactly', () => {
+  const board=empty();board[0]=[0,1,1,1,1,1,1,1];
+  for(const [combo,strength] of [[0,0],[1,1],[2,2]] as const) {
+    const move=transition(board,mono,combo).move,timeline=new FeedbackTimeline();timeline.add(move,0);
+    expect(move.strength).toBe(strength);
+    expect(timeline.sample(1).frames[0].particles).toHaveLength(Math.min(FEEDBACK_STRENGTH[strength].particles,move.cleared.length*2));
+  }
+  expect(placementScale(0)).toBe(1);expect(placementScale(MOTION.placementMs)).toBe(1);
+  expect(placementScale(MOTION.placementMs*.28)).toBeCloseTo(1+MOTION.placementOvershoot);
+  expect(placementScale(MOTION.placementMs*.75)).toBeLessThan(placementScale(MOTION.placementMs*.4));
 });
 
 test('rejected, repeated and stale actions never generate a second feedback event', () => {

@@ -1,7 +1,7 @@
 import type { GameAction, GameState, Point } from '../logic/types';
 import { placeShapeOnBoard } from '../logic/placement';
 import { checkAndClearLines } from '../logic/lineClear';
-import { MOTION } from './motion';
+import { MOTION, FEEDBACK_STRENGTH } from './motion';
 
 export interface ColoredCell extends Point { color: number }
 export interface MoveFeedback {
@@ -13,6 +13,7 @@ export interface MoveFeedback {
   points: number;
   combo: number;
   tier: 0 | 1 | 2 | 3;
+  strength: 0 | 1 | 2;
 }
 export interface Particle extends Point { vx: number; vy: number; color: number }
 export interface FeedbackFrame { move: MoveFeedback; start: number; particles: Particle[] }
@@ -27,8 +28,9 @@ export function moveFeedback(before: GameState, after: GameState, action: GameAc
   const full = placeShapeOnBoard(before.board, shape, action.row, action.col);
   const clear = checkAndClearLines(full);
   const tier = !clear.linesCleared || after.combo < 2 ? 0 : after.combo < 3 ? 1 : after.combo < 5 ? 2 : 3;
+  const strength = !clear.linesCleared ? 0 : clear.linesCleared >= 3 || after.combo >= 3 ? 2 : clear.linesCleared >= 2 || after.combo >= 2 ? 1 : 0;
   return { revision: after.revision, placed, cleared: clear.cells.map(p => ({ ...p, color: full[p.row][p.col] })),
-    rows: clear.rows, cols: clear.cols, points: after.score - before.score, combo: after.combo, tier };
+    rows: clear.rows, cols: clear.cols, points: after.score - before.score, combo: after.combo, tier, strength };
 }
 
 export function feedbackDuration(move: MoveFeedback): number {
@@ -38,14 +40,18 @@ export function feedbackDuration(move: MoveFeedback): number {
 
 export class FeedbackTimeline {
   private frames: FeedbackFrame[] = [];
+  private readonly owners = new Float64Array(64);
   private rejected: { slot: number; start: number } | null = null;
   add(move: MoveFeedback, now: number): void {
     this.prune(now);
     if (this.frames.some(f => f.move.revision === move.revision)) return;
-    const particles = Array.from({ length: Math.min(MOTION.particlesPerMove, move.cleared.length * 2) }, (_, i) => {
-      const cell = move.cleared[i % move.cleared.length];
+    for (const cell of [...move.placed, ...move.cleared]) this.owners[cell.row * 8 + cell.col] = move.revision;
+    const count = Math.min(FEEDBACK_STRENGTH[move.strength].particles, MOTION.particlesPerMove, move.cleared.length * 2);
+    const particles = Array.from({ length: count }, (_, i) => {
+      const cell = move.cleared[Math.floor(i * move.cleared.length / count)];
       const phase = (move.revision * 97 + i * 137) % 360 * Math.PI / 180;
-      return { row: cell.row, col: cell.col, color: cell.color, vx: Math.cos(phase) * 1.6, vy: -0.6 + Math.sin(phase) * 1.4 };
+      const drift = FEEDBACK_STRENGTH[move.strength].drift;
+      return { row: cell.row, col: cell.col, color: cell.color, vx: Math.cos(phase) * 1.6 * drift, vy: (-0.6 + Math.sin(phase) * 1.4) * drift };
     });
     this.frames = [...this.frames, { move, start: now, particles }].slice(-MOTION.maxMoves);
     // Prefer recent particles when several moves arrive within one animation.
@@ -55,7 +61,8 @@ export class FeedbackTimeline {
     }
   }
   reject(slot: number, now: number): void { this.rejected = { slot, start: now }; }
-  reset(): void { this.frames = []; this.rejected = null; }
+  owns(revision: number, cell: Point): boolean { return this.owners[cell.row * 8 + cell.col] === revision; }
+  reset(): void { this.frames = []; this.rejected = null; this.owners.fill(0); }
   sample(now: number) {
     this.prune(now);
     return { frames: this.frames, rejected: this.rejected };
