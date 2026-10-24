@@ -12,11 +12,19 @@ interface RendererOptions {
   onStateChange: (state: GameState) => void;
   onFeedback: (kind: 'place' | 'clear' | 'invalid', points: number, tier: number, move:MoveFeedback|null, at:number) => void;
 }
+function visualViewportMetrics(){
+  const view=window.visualViewport;
+  return{scale:view?.scale??1,x:view?.offsetLeft??0,y:view?.offsetTop??0,width:view?.width??window.innerWidth,height:view?.height??window.innerHeight};
+}
+function visualViewportChanged(a:ReturnType<typeof visualViewportMetrics>,b:ReturnType<typeof visualViewportMetrics>):boolean{
+  return Math.abs(a.scale-b.scale)>.001 || (['x','y','width','height'] as const).some(key=>Math.abs(a[key]-b[key])>.5);
+}
 export class GameRenderer {
   private readonly ctx: CanvasRenderingContext2D;
   private config: CanvasConfig;
   private drag: DragState | null = null;
   private dragBounds: { left: number; top: number } | null = null;
+  private dragViewport:ReturnType<typeof visualViewportMetrics>|null=null;
   private previewCache: { revision: number; shapeId: string; row: number; col: number; valid: boolean; clear: { row: number; col: number }[] } | null = null;
   private previewChecks = 0;
   private frame = 0;
@@ -91,6 +99,7 @@ export class GameRenderer {
     e.preventDefault();
     this.drag = { pointerId: e.pointerId, pointerType: e.pointerType, shape, slot, revision: this.state.revision, currentX: x, currentY: y };
     const rect = this.canvas.getBoundingClientRect(); this.dragBounds = { left: rect.left, top: rect.top };
+    this.dragViewport=visualViewportMetrics();
     try { this.canvas.setPointerCapture(e.pointerId); } catch { /* Synthetic input may not have an active pointer. */ }
     this.requestRender();
   };
@@ -108,6 +117,7 @@ export class GameRenderer {
     const bounds = this.canvas.getBoundingClientRect();
     if (Math.abs(bounds.width - this.config.width) > 0.5 || Math.abs(bounds.height - this.config.height) > 0.5 ||
         (this.dragBounds && (Math.abs(bounds.left-this.dragBounds.left) > .5 || Math.abs(bounds.top-this.dragBounds.top) > .5)) ||
+        (this.dragViewport && visualViewportChanged(this.dragViewport,visualViewportMetrics())) ||
         window.innerWidth !== this.viewport.width || window.innerHeight !== this.viewport.height ||
         window.devicePixelRatio !== this.viewport.dpr) { this.resize(); return; }
     const drag = this.drag;
@@ -124,7 +134,7 @@ export class GameRenderer {
   private onCancel = (e: PointerEvent): void => { if (this.drag?.pointerId === e.pointerId) this.cancelDrag(); };
   private onLostCapture = (e: PointerEvent): void => { if (this.drag?.pointerId === e.pointerId) this.cancelDrag(); };
   cancelDrag = (): void => {
-    const drag = this.drag; this.drag = null; this.dragBounds = null; this.previewCache = null;
+    const drag = this.drag; this.drag = null; this.dragBounds = null; this.dragViewport=null;this.previewCache = null;
     if (drag) {
       try { if (this.canvas.hasPointerCapture(drag.pointerId)) this.canvas.releasePointerCapture(drag.pointerId); } catch { /* Already released by the browser. */ }
       this.requestRender();

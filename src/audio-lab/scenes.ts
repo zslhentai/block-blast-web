@@ -21,13 +21,16 @@ for(const name of ['legacy','samples'] as const)document.querySelector(`#${name}
 select.addEventListener('change',()=>reset(true));document.querySelector('#reset')!.addEventListener('click',()=>reset(true));
 const stop=()=>{try{frame.contentDocument?.getElementById('pause')?.click();}catch{/*frame is still loading*/}};
 document.querySelector('#stop')!.addEventListener('click',stop);
-const timer=setInterval(()=>{
+const update=()=>{
   try{
     const audio=frame.contentWindow?.blockBlast?.getAudio();if(!audio)return;
     const last=audio.recent.at(-1);
     if(last)status.textContent=`刚刚触发：${labels[last.event]} · ${last.path==='sample'?'候选采样':last.path==='fallback'?'现有音效回退':last.path==='muted'?'静音':last.path==='unavailable'?'浏览器未能播放':'现有音效'}`;
     diagnostics.textContent=JSON.stringify(audio,null,2);
   }catch{/*owned frame is navigating*/}
-},200);
-document.addEventListener('visibilitychange',()=>{if(document.hidden)stop();});
-window.addEventListener('pagehide',()=>{clearInterval(timer);stop();});reset();
+};
+let timer:ReturnType<typeof setInterval>|undefined;
+const startPolling=()=>{if(timer===undefined)timer=setInterval(update,200);update();};
+const stopPolling=()=>{clearInterval(timer);timer=undefined;stop();};
+document.addEventListener('visibilitychange',()=>{if(document.hidden)stopPolling();else startPolling();});
+window.addEventListener('pagehide',stopPolling);window.addEventListener('pageshow',startPolling);reset();startPolling();

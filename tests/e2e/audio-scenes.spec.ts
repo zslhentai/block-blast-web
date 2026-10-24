@@ -1,4 +1,5 @@
 import { test,expect } from '@playwright/test';
+import { writeFileSync } from 'node:fs';
 import { ready,drag } from './helpers';
 import { STORAGE_KEY } from '../../src/storage/localStorage';
 
@@ -6,8 +7,9 @@ async function open(page:import('@playwright/test').Page,scene:string,profile:st
   await page.goto(`./?audioLab=1&scene=${scene}&profile=${profile}`);await ready(page);await page.getByTestId('continue').click();
   if(profile==='samples')await expect.poll(()=>page.evaluate(()=>window.blockBlast!.getAudio().samples?.ready)).toBe(2);
 }
-test('real scene transitions dispatch place/single/multi/combo once at the same timestamp as the visual timeline',async({page})=>{
+test('real scene transitions dispatch place/single/multi/combo once at the same timestamp as the visual timeline',async({page},info)=>{
   test.setTimeout(60000);
+  const traces:unknown[]=[];
   await page.addInitScript(()=>{
     localStorage.setItem('scene-save-sentinel','preserved');
     const starts={samples:0,oscillators:0};Object.defineProperty(window,'audioSceneStarts',{value:starts});
@@ -28,7 +30,9 @@ test('real scene transitions dispatch place/single/multi/combo once at the same 
     expect(result.audio.recent[0].startedAt).toBeGreaterThanOrEqual(result.audio.recent[0].requestedAt);
     expect(result.state.moves).toBe(1);
     expect(await page.evaluate(()=>Object.fromEntries(Object.entries(localStorage)))).toEqual({'scene-save-sentinel':'preserved'});
+    traces.push({profile,scene,event:result.audio.recent[0],visualStart:result.fx.moves[0].startAt,sourcesStarted:result.starts,moves:result.state.moves,score:result.state.score});
   }
+  writeFileSync(info.outputPath('audio-events.json'),JSON.stringify({project:info.project.name,browser:page.context().browser()!.version(),limits:'Browser scheduling evidence, not speaker latency or perceptual listening. One native Chromium touch placement per fixed scene/profile.',traces},null,2)+'\n');
 });
 
 test('missing sample falls back now; reload retries, mute/cancel/background never replay stale audio',async({page})=>{
@@ -74,6 +78,9 @@ test('phone A/B controls use the same game in an isolated iframe and preserve th
   await page.getByTestId('scene-game').scrollIntoViewIfNeeded();await child.getByTestId('continue').click();
   expect(await page.evaluate(()=>document.querySelector<HTMLIFrameElement>('#game')!.contentWindow!.blockBlast!.getState())).toEqual(before);
   await page.getByTestId('scene-stop').click();await expect(child.getByTestId('menu')).toBeVisible();
+  await page.goto('about:blank');await page.goBack();
+  await page.getByTestId('scene-diagnostics-data').evaluate(element=>{element.textContent='waiting-for-return';});
+  await expect(page.getByTestId('scene-diagnostics-data')).toContainText('"profile"');
   expect(await page.evaluate(()=>localStorage.getItem('block-blast-web:run:v1'))).toBe('formal-save-sentinel');
   expect(await page.evaluate(()=>Object.keys(localStorage))).toEqual([STORAGE_KEY]);
   expect(await page.evaluate(()=>document.documentElement.scrollWidth<=innerWidth)).toBe(true);

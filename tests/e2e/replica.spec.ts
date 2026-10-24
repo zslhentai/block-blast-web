@@ -48,6 +48,14 @@ test('moving the canvas or visual viewport while a pointer is held cancels inste
     canvas.dispatchEvent(new PointerEvent('pointerup',{pointerId:72,pointerType:'touch',clientX:p.endX,clientY:p.endY,bubbles:true,cancelable:true}));
   },p);
   expect(await readState(page)).toEqual(before);
+  await page.evaluate(p=>{
+    const canvas=document.querySelector('canvas')!,view=window.visualViewport!;
+    canvas.dispatchEvent(new PointerEvent('pointerdown',{pointerId:73,pointerType:'touch',clientX:p.startX,clientY:p.startY,bubbles:true,cancelable:true}));
+    const scale=view.scale;Object.defineProperty(view,'scale',{configurable:true,value:1.25});
+    canvas.dispatchEvent(new PointerEvent('pointerup',{pointerId:73,pointerType:'touch',clientX:p.endX,clientY:p.endY,bubbles:true,cancelable:true}));
+    Object.defineProperty(view,'scale',{configurable:true,value:scale});
+  },p);
+  expect(await readState(page)).toEqual(before);
   await drag(page,0,3,3,true);expect((await readState(page)).board[3][3]).toBe(1);
 });
 
@@ -67,4 +75,19 @@ test('overlapping consecutive clears retire the older cell snapshot and same-cel
   for(let i=0;i<8;i++){await session.send('Input.dispatchTouchEvent',{type:'touchMove',touchPoints:[{x:p.endX+i*.02,y:p.endY}]});await page.clock.runFor(16);}
   expect(await page.evaluate(()=>window.blockBlast!.getFeedback().previewChecks)).toBe(count);
   await session.send('Input.dispatchTouchEvent',{type:'touchCancel',touchPoints:[]});await session.detach();
+});
+
+test('ending and short-screen settings have reproducible screenshots and reachable controls',async({page,context},info)=>{
+  await page.setViewportSize({width:393,height:852});
+  const board=Array.from({length:8},(_,r)=>Array.from({length:8},(_,c)=>(r+c)%2));
+  await fixture(page,{board,shapes:[{id:'last-fit',color:7,cells:[[0,0]]},{id:'blocked',color:2,cells:[[0,0],[0,1]]},null]});
+  await drag(page,0,0,0,true);await expect(page.getByTestId('gameover')).toBeVisible();
+  await page.screenshot({path:info.outputPath('gameover.png')});await page.close();
+  const short=await context.newPage();await short.setViewportSize({width:320,height:568});await fixture(short);
+  await short.getByTestId('settings-open').click();
+  const close=await short.getByTestId('settings-close').boundingBox();
+  expect(close!.height).toBeGreaterThanOrEqual(44);expect(close!.y).toBeGreaterThanOrEqual(0);expect(close!.y+close!.height).toBeLessThanOrEqual(568);
+  expect(await short.evaluate(()=>document.documentElement.scrollWidth<=innerWidth)).toBe(true);
+  await short.screenshot({path:info.outputPath('settings-short.png')});
+  await short.keyboard.press('Escape');expect((await readState(short)).status).toBe('playing');await short.close();
 });
