@@ -1,0 +1,395 @@
+{
+  "method": "Delivered WAV + actual per-voice convolution + actual bus filters/dynamics/soft ceiling, stereo Chromium OfflineAudioContext, 4-second buffers; max volume 70% except explicit zero-volume case. Not human or device listening.",
+  "results": [
+    {
+      "project": "desktop-chromium",
+      "scenario": "v2-place-A-max-volume.json",
+      "sampleRate": 44100,
+      "peak": 0.07315252721309662,
+      "rms": 0.0017702421519699447,
+      "tail": 0,
+      "stereoDifference": 0.01490529709446157,
+      "onset": 1.1055634851635412
+    },
+    {
+      "project": "desktop-chromium",
+      "scenario": "v2-place-B-max-volume.json",
+      "sampleRate": 48000,
+      "peak": 0.058890532702207565,
+      "rms": 0.002381447926491192,
+      "tail": 0,
+      "stereoDifference": 0.06489950310630771,
+      "onset": 2.176896123887942
+    },
+    {
+      "project": "desktop-chromium",
+      "scenario": "v2-single-A-max-volume.json",
+      "sampleRate": 44100,
+      "peak": 0.15883797407150269,
+      "rms": 0.006340025692583077,
+      "tail": 0,
+      "stereoDifference": 0.0968622626337551,
+      "onset": 13.833712298965729
+    },
+    {
+      "project": "desktop-chromium",
+      "scenario": "v2-single-B-max-volume.json",
+      "sampleRate": 48000,
+      "peak": 0.18884992599487305,
+      "rms": 0.007856190226958095,
+      "tail": 0,
+      "stereoDifference": 0.47748139366763304,
+      "onset": 21.815109524427328
+    },
+    {
+      "project": "desktop-chromium",
+      "scenario": "v2-multi-A-max-volume.json",
+      "sampleRate": 44100,
+      "peak": 0.1858055293560028,
+      "rms": 0.007894743320806377,
+      "tail": 0,
+      "stereoDifference": 0.10014456441947965,
+      "onset": 17.82797454371222
+    },
+    {
+      "project": "desktop-chromium",
+      "scenario": "v2-multi-B-max-volume.json",
+      "sampleRate": 48000,
+      "peak": 0.182621568441391,
+      "rms": 0.009039040371000033,
+      "tail": 0,
+      "stereoDifference": 0.6962817802800662,
+      "onset": 25.195209062711886
+    },
+    {
+      "project": "desktop-chromium",
+      "scenario": "v2-combo-A-max-volume.json",
+      "sampleRate": 44100,
+      "peak": 0.15229088068008423,
+      "rms": 0.00901994392547847,
+      "tail": 0,
+      "stereoDifference": 0.1605099465002999,
+      "onset": 12.51520308070428
+    },
+    {
+      "project": "desktop-chromium",
+      "scenario": "v2-combo-B-max-volume.json",
+      "sampleRate": 48000,
+      "peak": 0.16886626183986664,
+      "rms": 0.009790291945461575,
+      "tail": 0,
+      "stereoDifference": 0.5061965339390859,
+      "onset": 17.290778763358723
+    },
+    {
+      "project": "desktop-chromium",
+      "scenario": "stress-place-A-max-volume.json",
+      "sampleRate": 48000,
+      "peak": 0.2471623420715332,
+      "rms": 0.013491049266954222,
+      "tail": 0,
+      "stereoDifference": 0.3515212373139854,
+      "onset": 1.2337426552067206
+    },
+    {
+      "project": "desktop-chromium",
+      "scenario": "stress-place-B-max-volume.json",
+      "sampleRate": 48000,
+      "peak": 0.2005903273820877,
+      "rms": 0.014901472006131589,
+      "tail": 0,
+      "stereoDifference": 1.2921316844322457,
+      "onset": 2.176896123887942
+    },
+    {
+      "project": "desktop-chromium",
+      "scenario": "stress-clears-A-max-volume.json",
+      "sampleRate": 48000,
+      "peak": 0.25410398840904236,
+      "rms": 0.02494815078802038,
+      "tail": 0,
+      "stereoDifference": 1.3883334157037681,
+      "onset": 14.50993473079981
+    },
+    {
+      "project": "desktop-chromium",
+      "scenario": "stress-clears-B-max-volume.json",
+      "sampleRate": 48000,
+      "peak": 0.2559119462966919,
+      "rms": 0.02637205288558807,
+      "tail": 0,
+      "stereoDifference": 3.9266551723211927,
+      "onset": 21.815109524427328
+    },
+    {
+      "project": "desktop-chromium",
+      "scenario": "v2-combo-B-muted.json",
+      "sampleRate": 48000,
+      "peak": 0,
+      "rms": 0,
+      "tail": 0,
+      "stereoDifference": 0,
+      "onset": 0
+    },
+    {
+      "project": "iphone-chromium",
+      "scenario": "v2-place-A-max-volume.json",
+      "sampleRate": 44100,
+      "peak": 0.07315252721309662,
+      "rms": 0.0017702421519699447,
+      "tail": 0,
+      "stereoDifference": 0.01490529709446157,
+      "onset": 1.1055634851635412
+    },
+    {
+      "project": "iphone-chromium",
+      "scenario": "v2-place-B-max-volume.json",
+      "sampleRate": 48000,
+      "peak": 0.058890532702207565,
+      "rms": 0.002381447926491192,
+      "tail": 0,
+      "stereoDifference": 0.06489950310630771,
+      "onset": 2.176896123887942
+    },
+    {
+      "project": "iphone-chromium",
+      "scenario": "v2-single-A-max-volume.json",
+      "sampleRate": 44100,
+      "peak": 0.15883797407150269,
+      "rms": 0.006340025692583077,
+      "tail": 0,
+      "stereoDifference": 0.0968622626337551,
+      "onset": 13.833712298965729
+    },
+    {
+      "project": "iphone-chromium",
+      "scenario": "v2-single-B-max-volume.json",
+      "sampleRate": 48000,
+      "peak": 0.18884992599487305,
+      "rms": 0.007856190226958095,
+      "tail": 0,
+      "stereoDifference": 0.47748139366763304,
+      "onset": 21.815109524427328
+    },
+    {
+      "project": "iphone-chromium",
+      "scenario": "v2-multi-A-max-volume.json",
+      "sampleRate": 44100,
+      "peak": 0.1858055293560028,
+      "rms": 0.007894743320806377,
+      "tail": 0,
+      "stereoDifference": 0.10014456441947965,
+      "onset": 17.82797454371222
+    },
+    {
+      "project": "iphone-chromium",
+      "scenario": "v2-multi-B-max-volume.json",
+      "sampleRate": 48000,
+      "peak": 0.182621568441391,
+      "rms": 0.009039040371000033,
+      "tail": 0,
+      "stereoDifference": 0.6962817802800662,
+      "onset": 25.195209062711886
+    },
+    {
+      "project": "iphone-chromium",
+      "scenario": "v2-combo-A-max-volume.json",
+      "sampleRate": 44100,
+      "peak": 0.15229088068008423,
+      "rms": 0.00901994392547847,
+      "tail": 0,
+      "stereoDifference": 0.1605099465002999,
+      "onset": 12.51520308070428
+    },
+    {
+      "project": "iphone-chromium",
+      "scenario": "v2-combo-B-max-volume.json",
+      "sampleRate": 48000,
+      "peak": 0.16886626183986664,
+      "rms": 0.009790291945461575,
+      "tail": 0,
+      "stereoDifference": 0.5061965339390859,
+      "onset": 17.290778763358723
+    },
+    {
+      "project": "iphone-chromium",
+      "scenario": "stress-place-A-max-volume.json",
+      "sampleRate": 48000,
+      "peak": 0.2471623420715332,
+      "rms": 0.013491049266954222,
+      "tail": 0,
+      "stereoDifference": 0.3515212373139854,
+      "onset": 1.2337426552067206
+    },
+    {
+      "project": "iphone-chromium",
+      "scenario": "stress-place-B-max-volume.json",
+      "sampleRate": 48000,
+      "peak": 0.2005903422832489,
+      "rms": 0.014901472394494842,
+      "tail": 0,
+      "stereoDifference": 1.2921314770361805,
+      "onset": 2.176896123887942
+    },
+    {
+      "project": "iphone-chromium",
+      "scenario": "stress-clears-A-max-volume.json",
+      "sampleRate": 48000,
+      "peak": 0.25410404801368713,
+      "rms": 0.024948151537096636,
+      "tail": 0,
+      "stereoDifference": 1.3883319795240587,
+      "onset": 14.50993473079981
+    },
+    {
+      "project": "iphone-chromium",
+      "scenario": "stress-clears-B-max-volume.json",
+      "sampleRate": 48000,
+      "peak": 0.2559119462966919,
+      "rms": 0.026372052118524503,
+      "tail": 0,
+      "stereoDifference": 3.9266564358527742,
+      "onset": 21.815109524427328
+    },
+    {
+      "project": "iphone-chromium",
+      "scenario": "v2-combo-B-muted.json",
+      "sampleRate": 48000,
+      "peak": 0,
+      "rms": 0,
+      "tail": 0,
+      "stereoDifference": 0,
+      "onset": 0
+    },
+    {
+      "project": "android-chromium",
+      "scenario": "v2-place-A-max-volume.json",
+      "sampleRate": 44100,
+      "peak": 0.07315252721309662,
+      "rms": 0.0017702421519699447,
+      "tail": 0,
+      "stereoDifference": 0.01490529709446157,
+      "onset": 1.1055634851635412
+    },
+    {
+      "project": "android-chromium",
+      "scenario": "v2-place-B-max-volume.json",
+      "sampleRate": 48000,
+      "peak": 0.058890532702207565,
+      "rms": 0.002381447926491192,
+      "tail": 0,
+      "stereoDifference": 0.06489950310630771,
+      "onset": 2.176896123887942
+    },
+    {
+      "project": "android-chromium",
+      "scenario": "v2-single-A-max-volume.json",
+      "sampleRate": 44100,
+      "peak": 0.15883797407150269,
+      "rms": 0.006340025692583077,
+      "tail": 0,
+      "stereoDifference": 0.0968622626337551,
+      "onset": 13.833712298965729
+    },
+    {
+      "project": "android-chromium",
+      "scenario": "v2-single-B-max-volume.json",
+      "sampleRate": 48000,
+      "peak": 0.18884992599487305,
+      "rms": 0.007856190226958095,
+      "tail": 0,
+      "stereoDifference": 0.47748139366763304,
+      "onset": 21.815109524427328
+    },
+    {
+      "project": "android-chromium",
+      "scenario": "v2-multi-A-max-volume.json",
+      "sampleRate": 44100,
+      "peak": 0.1858055293560028,
+      "rms": 0.007894743320806377,
+      "tail": 0,
+      "stereoDifference": 0.10014456441947965,
+      "onset": 17.82797454371222
+    },
+    {
+      "project": "android-chromium",
+      "scenario": "v2-multi-B-max-volume.json",
+      "sampleRate": 48000,
+      "peak": 0.182621568441391,
+      "rms": 0.009039040371000033,
+      "tail": 0,
+      "stereoDifference": 0.6962817802800662,
+      "onset": 25.195209062711886
+    },
+    {
+      "project": "android-chromium",
+      "scenario": "v2-combo-A-max-volume.json",
+      "sampleRate": 44100,
+      "peak": 0.15229088068008423,
+      "rms": 0.00901994392547847,
+      "tail": 0,
+      "stereoDifference": 0.1605099465002999,
+      "onset": 12.51520308070428
+    },
+    {
+      "project": "android-chromium",
+      "scenario": "v2-combo-B-max-volume.json",
+      "sampleRate": 48000,
+      "peak": 0.16886626183986664,
+      "rms": 0.009790291945461575,
+      "tail": 0,
+      "stereoDifference": 0.5061965339390859,
+      "onset": 17.290778763358723
+    },
+    {
+      "project": "android-chromium",
+      "scenario": "stress-place-A-max-volume.json",
+      "sampleRate": 48000,
+      "peak": 0.2471623420715332,
+      "rms": 0.013491049266954222,
+      "tail": 0,
+      "stereoDifference": 0.3515212373139854,
+      "onset": 1.2337426552067206
+    },
+    {
+      "project": "android-chromium",
+      "scenario": "stress-place-B-max-volume.json",
+      "sampleRate": 48000,
+      "peak": 0.20059022307395935,
+      "rms": 0.014901472969922641,
+      "tail": 0,
+      "stereoDifference": 1.2921316760047818,
+      "onset": 2.176896123887942
+    },
+    {
+      "project": "android-chromium",
+      "scenario": "stress-clears-A-max-volume.json",
+      "sampleRate": 48000,
+      "peak": 0.25410404801368713,
+      "rms": 0.02494815867225302,
+      "tail": 0,
+      "stereoDifference": 1.3883328807158704,
+      "onset": 14.50993473079981
+    },
+    {
+      "project": "android-chromium",
+      "scenario": "stress-clears-B-max-volume.json",
+      "sampleRate": 48000,
+      "peak": 0.2559119462966919,
+      "rms": 0.026372052118524503,
+      "tail": 0,
+      "stereoDifference": 3.9266564358527742,
+      "onset": 21.815109524427328
+    },
+    {
+      "project": "android-chromium",
+      "scenario": "v2-combo-B-muted.json",
+      "sampleRate": 48000,
+      "peak": 0,
+      "rms": 0,
+      "tail": 0,
+      "stereoDifference": 0,
+      "onset": 0
+    }
+  ]
+}

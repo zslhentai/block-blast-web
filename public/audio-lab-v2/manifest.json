@@ -1,0 +1,87 @@
+{
+  "generator": "scripts/build-audio-lab-v2.ts",
+  "provenance": "Original deterministic time-domain synthesis, no recorded or third-party audio input.",
+  "encoding": "PCM16 mono 48000 Hz",
+  "assets": [
+    {
+      "name": "place-A.wav",
+      "sampleRate": 48000,
+      "frames": 10560,
+      "peak": 0.5600000023841858,
+      "rms": 0.0459631866018194,
+      "energy": 22.30920935858916,
+      "dc": -0.00002434061700756012,
+      "sha256": "c609bdc183e2c6a4e899d518bde0789332aa2edcf191cb73eaf3a1f179e1d1b1"
+    },
+    {
+      "name": "place-B.wav",
+      "sampleRate": 48000,
+      "frames": 10560,
+      "peak": 0.3979542553424835,
+      "rms": 0.04596318675503558,
+      "energy": 22.309209507322613,
+      "dc": -0.000008830879306759,
+      "sha256": "bac3eb554634a0e2cb2a580bb3260d7537abcb5b24d49c318d6dd4388975fb50"
+    },
+    {
+      "name": "single-A.wav",
+      "sampleRate": 48000,
+      "frames": 36480,
+      "peak": 0.5600000023841858,
+      "rms": 0.04843310795480597,
+      "energy": 85.57354171598574,
+      "dc": 0.000018977361718267235,
+      "sha256": "e28a598092e36a7ffded2b607131c59429196275fde26b98b001af354f78a0a4"
+    },
+    {
+      "name": "single-B.wav",
+      "sampleRate": 48000,
+      "frames": 36480,
+      "peak": 0.5359860062599182,
+      "rms": 0.04843310796221159,
+      "energy": 85.57354174215482,
+      "dc": -0.000004582006469264529,
+      "sha256": "27de7a5377f5f0121accffcfb1fc918205fd35815f4a62c87028ca18042dc659"
+    },
+    {
+      "name": "multi-A.wav",
+      "sampleRate": 48000,
+      "frames": 41280,
+      "peak": 0.5600000023841858,
+      "rms": 0.04422341004725086,
+      "energy": 80.73170864343686,
+      "dc": 0.0000016664631877692461,
+      "sha256": "66c817007529cc0b61f81882ded3429e5a4ee88063571fdd95ccd5193d17c6b7"
+    },
+    {
+      "name": "multi-B.wav",
+      "sampleRate": 48000,
+      "frames": 41280,
+      "peak": 0.4179143011569977,
+      "rms": 0.04422341009618042,
+      "energy": 80.73170882208284,
+      "dc": 0.0000015262162306242056,
+      "sha256": "33217bbadbccd887e7063fdc95d6a27e3e92ee68c78e239f8fce4547e46e2a8a"
+    },
+    {
+      "name": "combo-A.wav",
+      "sampleRate": 48000,
+      "frames": 43200,
+      "peak": 0.5600000023841858,
+      "rms": 0.04818339149330147,
+      "energy": 100.29481412241987,
+      "dc": 0.0000034648483451047595,
+      "sha256": "7f54c1af95b4f0a78d2f167b5121385c86fa2b5e96f7c4239249be61fd9f7ee2"
+    },
+    {
+      "name": "combo-B.wav",
+      "sampleRate": 48000,
+      "frames": 43200,
+      "peak": 0.5013967752456665,
+      "rms": 0.04818339152006734,
+      "energy": 100.2948142338474,
+      "dc": 0.000003935686033497516,
+      "sha256": "3bf046083f1836e3ebdc500863eb96827ca02cc8831da744318ae3d34fab92bb"
+    }
+  ]
+}
