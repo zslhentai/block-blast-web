@@ -95,3 +95,102 @@
 首次手势创建/恢复 AudioContext，再开始异步解码；加载未完成、404 或格式失败时，当次事件立即回退旧声。加载完成只更新缓存，不追播刚才的声音。重置/重载可重试失败资源。暂停、静音、隐藏或离开停止活动及退场声部；修复旧 SoundManager 的异步 resume 在暂停之后才完成而意外恢复上下文的问题。
 
 验证：严格类型、全量 124 单元测试、9 项场景 Chromium E2E 通过。浏览器实际 BufferSource/Oscillator 启动次数与事件数一致，视觉/音频请求时间戳相同；验证七场景双配置、缺失资源回退和重试、取消/静音/后台无旧事件补播、嵌入框真实 CDP 触控及正式存档 sentinel 不变。当前没有真实 Safari 音频解锁或手机听辨证据。
+
+原录屏本轮仍可读取：55.783 秒 HEVC / AAC 44.1 kHz 双声道，SHA-256 `54091cd78a5288785db7726154cac90e9b05424f2544035e43f5627503e49422`。FFmpeg 重新解码与前次 PCM 一致；复核 4.95–5.10 / 6.19–6.34 秒放置、18.70–19.71 秒单线及 25.22 / 27.12 秒连击窗口。约 150 ms 放置与消除主音组只是测量描述，混合的多线/Combo 不能拆成独立原声。沿用[录屏事件与音轨报告](../audio-study-2026-10-24/report.md)、[采样对照及许可](../audio-samples/README.md)，不把无法人工听辨的工具输出写成主观音色判断；没有公开该商业音轨或其裁切片段。
+
+## E/F：移动端、确定性证据与资源验收
+
+保留 V1.1 静态方向：与 `d5690d6` 比较，`draw.ts` / `theme.ts` / `canvas.ts` / `src/style.css` 字节不变。释放前额外核对 visualViewport 的缩放、偏移和可视尺寸，即使浏览器 resize 事件尚未到达也取消过期拖拽。试听父页面隐藏/离开后停止轮询，返回后恢复诊断，不自动补播或恢复游戏。
+
+全量 **124 单元、204 E2E** 通过，无跳过或重试后通过；随后对最终视口/后台修补、性能记录和关键帧做定向复验。类型检查、阻断生产脚本的防假阳性检查、生产构建、便携构建和断网六次放置/恢复存档检查均通过。E2E 加载实际生产文件并使用 `/block-blast-web/` 子路径，保留两代合成实验室及采样库回归。最终提交还必须由现有 Actions 对同一提交完整复验后发布。
+
+### 截图入口
+
+以下为 Playwright 原始 PNG，不做后期处理，文件尺寸/哈希见 `validation.json`。动画截图使用固定棋盘和虚拟时钟；压力测试单独使用真实时钟。
+
+| 检查 | 证据 |
+| --- | --- |
+| 三种手机比例 | [320×568](keyframes/empty-320x568.png)、[393×852](keyframes/empty-393x852.png)、[412×915](keyframes/empty-412x915.png)，对应测试检查棋盘正方形、手牌与按钮可见、无横向溢出和原生模拟触控落点 |
+| 中盘、同一倒角和拖拽 | [混色](keyframes/mixed-393x852.png)、[拾取](keyframes/drag-393x852.png)、[合法预览](keyframes/preview-valid.png)、[非法预览](keyframes/preview-invalid.png) |
+| 单行节奏 | [45 ms 高亮](keyframes/single-row-045ms.png)、[210 ms 渐隐](keyframes/single-row-210ms.png)、[结束](keyframes/single-row-settled.png) |
+| 多行、列、交叉 | [双行 45 ms](keyframes/two-rows-045ms.png)、[双行 210 ms](keyframes/two-rows-210ms.png)、[双列](keyframes/two-columns-210ms.png)、[交叉 45 ms](keyframes/cross-045ms.png)、[交叉 210 ms](keyframes/cross-210ms.png)、[交叉结束](keyframes/cross-settled.png) |
+| Combo 分级 | [×2](keyframes/combo-tier-1-240ms.png)、[×3](keyframes/combo-tier-2-240ms.png)、[×5](keyframes/combo-tier-3-240ms.png)，标签处于棋盘/手牌间隙；拖拽时隐藏大字 |
+| 连续操作、终局、短屏设置 | [重叠消除](keyframes/overlapping-clears.png)、[终局](keyframes/gameover.png)、[320×568 设置](keyframes/settings-short.png) |
+| 同一游戏场景试听 | [A/B 页面](keyframes/game-scene-ab.png)，音画事件记录另见 `audio-events-*.json` |
+
+与仓库已有 V1.1 PNG 逐像素对照：320/393 空盘、393 中盘及拖拽均无差异，确认未顺带改静态视觉和预览。412 截图旧 DPR 2.625、新截图 DPR 3，原始像素尺寸不同，不作逐像素一致结论；同一 CSS 棋盘比例和触控断言仍通过。不能把这些对 V1.1 的结果称作对商业原版的还原率。
+
+### 性能与压力结果
+
+Linux Chromium 154.0.8037.57，每配置三个真实时钟批次，各 500 次落子 + 100 次显式重开，另有自然终局重开。每次合成 PointerEvent 必须精确提交一步；全部 39 朝向另由原生 CDP 触控测试覆盖。压力测试的自动点击/合成指针并非真实手指路径。
+
+| 模拟配置 | 落子 / 重开 | 绘制 P95 / 最大 ms | 一次完整输入处理 P95 / 最大 ms | 四次 GC 后堆增长 |
+| --- | --- | --- | --- | --- |
+| 桌面 | 1500 / 354 | 2.2 / 8.9 | 3.6 / 21.8 | 508648 字节 |
+| iPhone 配置 | 1500 / 365 | 2.3 / 39.7 | 3.0 / 26.2 | 508908 字节 |
+| Android 配置 | 1500 / 365 | 1.0 / 6.5 | 1.3 / 3.4 | 512408 字节 |
+
+原始记录：[桌面](performance-desktop.json)、[iPhone 配置](performance-iphone.json)、[Android 配置](performance-android.json)。输入计时包含三个指针处理、规则计算与同步存档，不包含硬件采样到屏幕的延迟。绘制计时包含该 rAF 回调，不包含 GPU 合成/显示。运行 UA 为模拟值，不能作为实际 Safari 引擎证明。
+
+本次分段测量操作窗口内未记录到 >50 ms 长任务；整页加载/强制 GC 窗口各有一次 92–176 ms 长任务。此前并行全量测试也出现过长帧，因此不能承诺稳定 60 FPS。iPhone 配置本次有两帧绘制超过 16.7 ms。每组仅新建一个 JS 离屏棋盘缓存，反馈同时≤3、粒子≤48，800 ms 空闲后活动反馈为零、rAF 停止。堆的约 0.5 MB 增量含浏览器热身和测量数组，三个批次不足以证明无泄漏；它验证有界快速操作和重复重开，不替代手机长时间耐久。
+
+音频记录：[桌面](audio-events-desktop.json)、[iPhone 配置](audio-events-iphone.json)、[Android 配置](audio-events-android.json)，各含七场景×两配置。逐项包含 revision、事件、图像起点、调度请求、实际浏览器启动计数和回退路径；每场景一次提交只起一个声音，请求到浏览器启动调用本次最大 6.2 ms，不宣称扬声器实测同步。采样声部/退场声部上限、快速重叠、解码失败、迟到 resume、静音及后台清理分别由单元与 E2E 验证。Safari 首次手势解锁、手机喇叭听感和安全区/地址栏变化仍需真实设备验收。本机 WebKit 未安装，不冒称运行过 WebKit 或真机。
+
+## G：提交、发布与回退
+
+| 检查点 | 提交 | 范围 |
+| --- | --- | --- |
+| 开始前 | `e6f9f10` | 原采样筛选基线，完整原历史保留 |
+| 基线记录 | `80d72f4` | 外部源码证据、能力清单、离线模拟工具与旧数据 |
+| A | `b6ff4f3` | 同形手牌、独立加权且不保解的发牌、模拟和测试 |
+| B/C | `dd6c24d` | 坐标竞态、预览缓存、三级反馈及旧格所有权 |
+| D | `4d36bcc` | 隔离的场景 A/B、共享时间戳、有限采样及回退 |
+| E/F | `9e98d51` | 视口缩放竞态、试听返回生命周期、压力及验收记录出口 |
+| 验收档案 | 本文所在提交 | 原始关键帧、音画事件、性能和源码哈希，不改游戏实现 |
+
+[验收清单及完整源码哈希](validation.json)绑定实现提交 `9e98d5139b8e78a2c9b7c4855df0cb8378ef4f99`。最后档案提交仅添加证据和文档；发布工作流仍会重跑整个最终树。回退应从最新功能提交向前有序 revert、重新测试后发布，或从上述节点建立修复分支；不 reset/强推远端，不以初始提交覆盖历史。音效场景关闭或不带 `audioLab=1` 时使用现有正式声音，无需倒退存档或规则。
+
+发布使用现有 [Verify classic MVP](https://github.com/zslhentai/block-blast-web/actions/workflows/tests.yml) 与 [Deploy verified game to GitHub Pages](https://github.com/zslhentai/block-blast-web/actions/workflows/deploy.yml)。后者依赖同一提交的完整验证和静态产物，只有 verify 成功才执行 deploy；记录 Actions 的 commit/run/conclusion 和 deployment URL，而不把 git push 成功当作部署成功。本云环境的出站策略不允许直接请求 `zslhentai.github.io`，因此站点最终可达性需与平台部署结果分开报告，不改代理/TLS 来绕过限制。
+
+正式地址：<https://zslhentai.github.io/block-blast-web/>；场景试听：<https://zslhentai.github.io/block-blast-web/audio-lab/scenes.html>；[原采样 A/B 库](https://zslhentai.github.io/block-blast-web/audio-lab/samples.html)及前两版实验室保留。
+
+源码入口：[原网页基础](https://github.com/haoliu-dev/block-blast-phone/tree/8cf18eb45c4c4ea7b11283d55c51369e07d11ca4)、[Android 独立复刻](https://github.com/MrCerise/block-blast/tree/b4214881f99708b6009b48bfe839c4d28bd0ce22)、[Game Feel 指导](https://github.com/bgrenat/godot-game-dev-studio/blob/cb2e2cb6bedeada7140d73a0f45a93db1964e634/skills/gamedev-game-feel/SKILL.md)、[REA](https://github.com/morluto/rea/tree/3ce311757dd8ac444c8297b2871464536f93816d)、[cc-reverse](https://github.com/Crain99/cc-reverse/tree/070cafb3d16cd3ed9346587db41860335fdbd7a9)、[Cocos Skill](https://github.com/Crain99/cocos-reverse-engineering-skill/tree/3e920b0cbe975899d57946590e5c0448e4531b0c)。许可证及实际复用边界见上表，不随上游后续变化漂移。
+
+## 原版与当前实现逐项对照
+
+| 项目 | 原版证据及确定性 | 本轮实现 / 仍存差异 |
+| --- | --- | --- |
+| 棋盘、同时行列 | 六张原图均为 8×8；IMG_8325/8327/8328 有消除反馈 | 8×8 正方形、同次行列并集，无坍塌；交叉格计分/绘制均去重 |
+| 同形手牌 | 8323 两个横三格、8326 两个竖两格，直接可见 | 本轮已修正；每格槽的身份仍独立 |
+| 形状完整性 | 可见线、方形、拐角及另附斜对角截图；未取得原版完整池 | 保留现有 39 朝向含双向斜对角，不声称覆盖商业原版所有形状；未添加未经确认形状 |
+| 补牌 | 录屏与既有研究支持用完整组三块再补 | 沿用三固定槽，用完才补，规则结果不等待动画结束 |
+| 隐藏发牌与难度 | 没有合法原版算法源码或足够统计证据 | 明示独立家族/体积加权替代，非保解；大样本模拟描述局长变化，家庭实际难度仍需试玩 |
+| 放置计分 | 录屏有放置后增分，但完整原版计分表未证实 | 每格 +1，清除每并集格 +10，多线及 Combo 沿用项目 v1 公式；最高分继续保留 |
+| 连击规则 | 录屏出现 Combo 2/3，标签与消除有叠加，不能还原全部断连窗口 | 继续采用允许间隔两步不消除、第三步断连的替代；非法/取消/暂停不推进步数 |
+| 拾取与拖拽 | 录屏约 1.4→1.6 秒可见手牌放大到棋盘格级别，但实际手指轨迹和触发时刻不确定 | 保留即时满格拾取、直接跟手与 1.15 格抬升，不加追随延迟；释放映射与取消竞态有模拟证据，不能称真机手感一致 |
+| 落点预览 | 用户明确要求 V1.1、不喜欢 V2 浅色外框 | 透明格预览与浮动块保留，无新增预览描边/替代强光 |
+| 静态视觉 | V1.1 已被用户真机验收方向；8323 布局、8326 倒角、8324 设置为参考 | `draw/theme/canvas/style` 与 V1.1 字节一致，未为像素追逐重排；原版专有字体/标志不复制，中文/长辈可触达性优先 |
+| 单线、多线、交叉 | 原图表现为保留橙色材质的局部光与少量亮点；静态图不确定时长 | 三档克制强度、短保持/收束、有界粒子、旧格所有权；不是原版纸屑形状或逐帧还原 |
+| Combo / 分数 | 原图较大的蓝色气泡字可覆盖棋盘底部 | 以间隙内分级字、短缩放、光色与局部粒子表达，不遮下一步落点；真实分数即刻更新，不模仿延迟计数 |
+| 音色 | 已解码录屏支持事件/主音组分析，当前不能可靠人工听辨 | 正式仍为旧声；P2/R1 仅场景 A/B，多线/Combo 素材未选定。调度完成不等于听感高保真 |
+| 移动端 | 原图/录屏来自手机，无法由此证明所有浏览器兼容 | Chromium 模拟三种常见屏幕、DPR 1/3/2.625、重排/缩放取消；本环境 WebKit 未安装，无真实 iPhone Safari/安卓设备验收 |
+
+## 可重复验收入口与后续约束
+
+```sh
+bun run typecheck
+bun run test
+bun run test:e2e
+bun run test:e2e:guard
+bun run build
+bun run build:portable
+bun run test:portable
+# 仅重跑体验相关用例（同一生产子路径、同一测试程序）
+bun run test:experience
+# 轻量开发模拟；发布研究采用 --games=10000 --limit=240
+bun run test:balance
+```
+
+Playwright 用固定存档 fixture 和虚拟时钟捕捉空盘/中盘/拖拽/消除/Combo/终局；没有新增可任意改写正式游戏状态的全局调试入口。真实时钟压力测试另行记录绘制耗时、长任务、四个回收后堆内存点、画布创建量和空闲后 rAF 停止，不能把虚拟时钟截图用作 FPS 证据。
+
+后续必须保留：V1.1 静态方向、无浅色落点外框、独立且不强保解的发牌、现有 MIT/来源/存档、音效素材审批状态。不要把本轮合理替代方案升级成“原版已证实”；P2 暂留、R1 待选、其余旧候选已淘汰，不应重新推荐淘汰项或强行接入。声音材质、手机扬声器音量、真实手指补偿、Safari 地址栏/安全区和长时间手机耐久仍需真机判断，其他客观开发不因这些事项停工。

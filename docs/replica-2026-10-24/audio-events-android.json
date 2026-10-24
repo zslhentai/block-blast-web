@@ -1,0 +1,273 @@
+{
+  "project": "android-chromium",
+  "browser": "154.0.8037.57",
+  "limits": "Browser scheduling evidence, not speaker latency or perceptual listening. One native Chromium touch placement per fixed scene/profile.",
+  "traces": [
+    {
+      "profile": "legacy",
+      "scene": "place",
+      "event": {
+        "event": "place",
+        "revision": 1,
+        "lines": 0,
+        "requestedAt": 1023.8999999985099,
+        "startedAt": 1025.5999999977648,
+        "path": "legacy"
+      },
+      "visualStart": 1023.8999999985099,
+      "sourcesStarted": {
+        "samples": 0,
+        "oscillators": 1
+      },
+      "moves": 1,
+      "score": 3
+    },
+    {
+      "profile": "legacy",
+      "scene": "single",
+      "event": {
+        "event": "single",
+        "revision": 1,
+        "lines": 1,
+        "requestedAt": 624.1999999992549,
+        "startedAt": 625,
+        "path": "legacy"
+      },
+      "visualStart": 624.1999999992549,
+      "sourcesStarted": {
+        "samples": 0,
+        "oscillators": 1
+      },
+      "moves": 1,
+      "score": 81
+    },
+    {
+      "profile": "legacy",
+      "scene": "rows",
+      "event": {
+        "event": "multi",
+        "revision": 1,
+        "lines": 2,
+        "requestedAt": 470,
+        "startedAt": 473,
+        "path": "legacy"
+      },
+      "visualStart": 470,
+      "sourcesStarted": {
+        "samples": 0,
+        "oscillators": 1
+      },
+      "moves": 1,
+      "score": 192
+    },
+    {
+      "profile": "legacy",
+      "scene": "columns",
+      "event": {
+        "event": "multi",
+        "revision": 1,
+        "lines": 2,
+        "requestedAt": 412.79999999701977,
+        "startedAt": 413.79999999701977,
+        "path": "legacy"
+      },
+      "visualStart": 412.79999999701977,
+      "sourcesStarted": {
+        "samples": 0,
+        "oscillators": 1
+      },
+      "moves": 1,
+      "score": 192
+    },
+    {
+      "profile": "legacy",
+      "scene": "cross",
+      "event": {
+        "event": "multi",
+        "revision": 1,
+        "lines": 2,
+        "requestedAt": 513,
+        "startedAt": 517.6999999992549,
+        "path": "legacy"
+      },
+      "visualStart": 513,
+      "sourcesStarted": {
+        "samples": 0,
+        "oscillators": 1
+      },
+      "moves": 1,
+      "score": 181
+    },
+    {
+      "profile": "legacy",
+      "scene": "combo2",
+      "event": {
+        "event": "combo",
+        "revision": 1,
+        "lines": 1,
+        "requestedAt": 379.5,
+        "startedAt": 380.30000000074506,
+        "path": "legacy"
+      },
+      "visualStart": 379.5,
+      "sourcesStarted": {
+        "samples": 0,
+        "oscillators": 1
+      },
+      "moves": 1,
+      "score": 101
+    },
+    {
+      "profile": "legacy",
+      "scene": "combo3",
+      "event": {
+        "event": "combo",
+        "revision": 1,
+        "lines": 1,
+        "requestedAt": 608.5,
+        "startedAt": 611.5999999977648,
+        "path": "legacy"
+      },
+      "visualStart": 608.5,
+      "sourcesStarted": {
+        "samples": 0,
+        "oscillators": 1
+      },
+      "moves": 1,
+      "score": 121
+    },
+    {
+      "profile": "samples",
+      "scene": "place",
+      "event": {
+        "event": "place",
+        "revision": 1,
+        "lines": 0,
+        "requestedAt": 706.5,
+        "startedAt": 707,
+        "path": "sample"
+      },
+      "visualStart": 706.5,
+      "sourcesStarted": {
+        "samples": 1,
+        "oscillators": 0
+      },
+      "moves": 1,
+      "score": 3
+    },
+    {
+      "profile": "samples",
+      "scene": "single",
+      "event": {
+        "event": "single",
+        "revision": 1,
+        "lines": 1,
+        "requestedAt": 508.19999999925494,
+        "startedAt": 508.5,
+        "path": "sample"
+      },
+      "visualStart": 508.19999999925494,
+      "sourcesStarted": {
+        "samples": 1,
+        "oscillators": 0
+      },
+      "moves": 1,
+      "score": 81
+    },
+    {
+      "profile": "samples",
+      "scene": "rows",
+      "event": {
+        "event": "multi",
+        "revision": 1,
+        "lines": 2,
+        "requestedAt": 365.29999999701977,
+        "startedAt": 366.0999999977648,
+        "path": "fallback"
+      },
+      "visualStart": 365.29999999701977,
+      "sourcesStarted": {
+        "samples": 0,
+        "oscillators": 1
+      },
+      "moves": 1,
+      "score": 192
+    },
+    {
+      "profile": "samples",
+      "scene": "columns",
+      "event": {
+        "event": "multi",
+        "revision": 1,
+        "lines": 2,
+        "requestedAt": 410.1000000014901,
+        "startedAt": 410.9000000022352,
+        "path": "fallback"
+      },
+      "visualStart": 410.1000000014901,
+      "sourcesStarted": {
+        "samples": 0,
+        "oscillators": 1
+      },
+      "moves": 1,
+      "score": 192
+    },
+    {
+      "profile": "samples",
+      "scene": "cross",
+      "event": {
+        "event": "multi",
+        "revision": 1,
+        "lines": 2,
+        "requestedAt": 501.1000000014901,
+        "startedAt": 501.80000000074506,
+        "path": "fallback"
+      },
+      "visualStart": 501.1000000014901,
+      "sourcesStarted": {
+        "samples": 0,
+        "oscillators": 1
+      },
+      "moves": 1,
+      "score": 181
+    },
+    {
+      "profile": "samples",
+      "scene": "combo2",
+      "event": {
+        "event": "combo",
+        "revision": 1,
+        "lines": 1,
+        "requestedAt": 481.3999999985099,
+        "startedAt": 482.30000000074506,
+        "path": "fallback"
+      },
+      "visualStart": 481.3999999985099,
+      "sourcesStarted": {
+        "samples": 0,
+        "oscillators": 1
+      },
+      "moves": 1,
+      "score": 101
+    },
+    {
+      "profile": "samples",
+      "scene": "combo3",
+      "event": {
+        "event": "combo",
+        "revision": 1,
+        "lines": 1,
+        "requestedAt": 497.0999999977648,
+        "startedAt": 497.8999999985099,
+        "path": "fallback"
+      },
+      "visualStart": 497.0999999977648,
+      "sourcesStarted": {
+        "samples": 0,
+        "oscillators": 1
+      },
+      "moves": 1,
+      "score": 121
+    }
+  ]
+}

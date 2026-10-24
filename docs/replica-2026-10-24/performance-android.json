@@ -1,0 +1,55 @@
+{
+  "project": "android-chromium",
+  "browser": "154.0.8037.57",
+  "placements": 1500,
+  "restarts": 365,
+  "heaps": [
+    1986596,
+    2352116,
+    2473844,
+    2499004
+  ],
+  "postGCHeapGrowth": 512408,
+  "render": {
+    "draws": 568,
+    "p50Ms": 0.6000000014901161,
+    "p95Ms": 1,
+    "maxMs": 6.5,
+    "over16ms": 0
+  },
+  "inputHandlers": {
+    "samples": 1500,
+    "p50Ms": 0.5,
+    "p95Ms": 1.2999999970197678,
+    "maxMs": 3.399999998509884
+  },
+  "frameIntervals": {
+    "p50Ms": 16.699999999999818,
+    "p95Ms": 16.799999999999272
+  },
+  "longTasksAll": 1,
+  "maxLongTaskAll": 92,
+  "driverLongTasks": [],
+  "driverWindows": [
+    [
+      453.70000000298023,
+      3552.2000000029802
+    ],
+    [
+      4393,
+      7485.900000002235
+    ],
+    [
+      8324.20000000298,
+      11419.60000000149
+    ]
+  ],
+  "canvasCreated": 1,
+  "userAgent": "Mozilla/5.0 (Linux; Android 14; Pixel 7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/145.0.7632.6 Mobile Safari/537.36",
+  "dpr": 2.625,
+  "viewport": {
+    "width": 412,
+    "height": 839
+  },
+  "limits": "Real-clock Linux Chromium under automation, not device FPS. Synthetic pointer stress, native touch is covered separately. Driver long tasks exclude loading and forced-GC windows. Heap includes browser warm-up and this instrumentation; three batches are a bounded probe, not a 30-minute phone endurance test."
+}
