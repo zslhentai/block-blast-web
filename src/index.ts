@@ -41,7 +41,7 @@ function init(): void {
   const sync = (next: GameState): void => {
     element('score').textContent = String(next.score);
     element('best-score').textContent = String(next.highScore);
-    element('combo').textContent = next.combo ? `连击 ×${next.combo}${next.dryMoves ? ` · 已间隔 ${next.dryMoves} 步` : ''}` : '慢慢来，想好再放';
+    element('combo').textContent = next.combo ? `连击 ×${next.combo}${next.dryMoves ? ` · 已间隔 ${next.dryMoves} 步` : ''}` : '';
     document.body.dataset.status = next.status;
     if (next.status === 'gameover') {
       menu.close(); settingsDialog.close();

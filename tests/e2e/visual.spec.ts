@@ -9,9 +9,15 @@ const referenceHand: Shape[] = [
 ];
 
 for (const [width, height] of [[320, 568], [393, 852], [412, 915]]) {
-  test(`visual V1: ${width}×${height} fits, displays and accepts touch at the drawn cells`, async ({ page }, info) => {
+  test(`visual V1.1: ${width}×${height} fits, displays and accepts touch at the drawn cells`, async ({ page }, info) => {
     await page.setViewportSize({ width, height });
     await fixture(page, { highScore: 0, shapes: referenceHand });
+    await expect(page.getByTestId('combo')).toBeEmpty();
+    await expect(page.getByText('慢慢来，想好再放')).toHaveCount(0);
+    for (const id of ['pause', 'new-game']) {
+      const button = await page.getByTestId(id).boundingBox();
+      expect(button!.width).toBeGreaterThanOrEqual(96); expect(button!.height).toBeGreaterThanOrEqual(44);
+    }
     await page.evaluate(() => new Promise<void>(resolve => requestAnimationFrame(() => requestAnimationFrame(() => resolve()))));
     const metrics = await page.evaluate(() => {
       const canvas = document.querySelector('canvas')!;
@@ -61,6 +67,12 @@ for (const [width, height] of [[320, 568], [393, 852], [412, 915]]) {
     });
     expect(pixel[2]).toBeGreaterThan(pixel[0] * 2); expect(pixel[3]).toBe(255);
     await page.screenshot({ path: info.outputPath(`placed-${width}x${height}.png`) });
+    // The enlarged five-cell horizontal piece must still be selectable and land
+    // in the displayed cells, including at the short-phone width limit.
+    await drag(page, 0, 5, 1, true);
+    const afterLong = await readState(page);
+    expect(afterLong.board[5]).toEqual([0, 1, 1, 1, 1, 1, 0, 0]);
+    expect(afterLong.score).toBe(8);
     await page.getByTestId('settings-open').click();
     expect((await readState(page)).status).toBe('paused');
     await page.getByTestId('sound').check(); await page.getByTestId('reduced-motion').check();
@@ -74,11 +86,11 @@ for (const [width, height] of [[320, 568], [393, 852], [412, 915]]) {
     await page.screenshot({ path: info.outputPath(`settings-${width}x${height}.png`) });
     await page.getByTestId('settings-close').click();
     expect((await readState(page)).status).toBe('playing');
-    expect((await readState(page)).board).toEqual(after.board);
+    expect((await readState(page)).board).toEqual(afterLong.board);
   });
 }
 
-test('visual V1: shared material on a mixed board, tray and captured touch drag', async ({ page }, info) => {
+test('visual V1.1: shared material on a mixed board, tray and captured touch drag', async ({ page }, info) => {
   await page.setViewportSize({ width: 393, height: 852 });
   const board = Array.from({ length: 8 }, () => Array<number>(8).fill(0));
   for (let r = 3; r < 8; r++) board[r][1] = 2;
@@ -102,4 +114,22 @@ test('visual V1: shared material on a mixed board, tray and captured touch drag'
   await session.send('Input.dispatchTouchEvent', { type: 'touchEnd', touchPoints: [] }); await session.detach();
   const after = await readState(page);
   expect(after.board[3][5]).toBe(7); expect(after.board[4][5]).toBe(7); expect(after.score).toBe(85);
+});
+
+test('five-cell vertical touch placement and an ending chain do not shift score or layout', async ({ page }) => {
+  await page.setViewportSize({ width: 393, height: 852 });
+  await fixture(page, { combo: 2, dryMoves: 2, shapes: [
+    { id: 'vertical-five', color: 1, cells: [[0, 0], [1, 0], [2, 0], [3, 0], [4, 0]] },
+    referenceHand[1], referenceHand[2],
+  ] });
+  await expect(page.getByTestId('combo')).toHaveText('连击 ×2 · 已间隔 2 步');
+  const scoreBefore = await page.getByTestId('score').boundingBox();
+  const layoutBefore = await page.evaluate(() => window.blockBlast!.getLayout());
+  await drag(page, 0, 0, 0, true);
+  const next = await readState(page);
+  expect(next.board.map(row => row[0])).toEqual([1, 1, 1, 1, 1, 0, 0, 0]);
+  expect(next.score).toBe(5); expect(next.combo).toBe(0);
+  await expect(page.getByTestId('combo')).toBeEmpty();
+  expect(await page.getByTestId('score').boundingBox()).toEqual(scoreBefore);
+  expect(await page.evaluate(() => window.blockBlast!.getLayout())).toEqual(layoutBefore);
 });

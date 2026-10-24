@@ -13,9 +13,10 @@ export function calculateLayout(width: number, height: number): CanvasConfig {
   // Leave room for the outer rim, a gap and even a five-cell vertical piece.
   // This exact inner grid is also used by hit testing and drag projection.
   const boardSize = Math.max(1, Math.min(width * 0.92, 480, (height - 28) / 1.5));
-  const trayCell = Math.max(1, Math.min(boardSize / 8 * 0.45, (width * 0.3 - 12) / 5));
+  // Include both side margins and the cast shadow of the longest (five-cell) piece.
+  const trayCell = Math.max(1, Math.min(boardSize / 8 * 0.54, (width * 0.3 - 2) / 5.15));
   const trayHeight = Math.max(48, trayCell * 5 + 8);
-  const gap = Math.max(12, boardSize * 0.14);
+  const gap = Math.max(12, boardSize * 0.10);
   const top = Math.max(6, Math.min(16, (height - boardSize - gap - trayHeight) * 0.12));
   return { width, height, cellSize: boardSize / 8, gridOffsetX: (width - boardSize) / 2, gridOffsetY: top,
     trayCell,

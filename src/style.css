@@ -14,14 +14,15 @@ body {
   display: flex; flex-direction: column;
   padding: max(8px, env(safe-area-inset-top)) max(8px, env(safe-area-inset-right)) max(6px, env(safe-area-inset-bottom)) max(8px, env(safe-area-inset-left));
 }
-header { position: relative; flex: 0 0 clamp(122px, 21.5vh, 194px); padding: clamp(12px, 4.7vh, 44px) 8px 0; }
+header { position: relative; flex: 0 0 clamp(112px, 20vh, 184px); padding: clamp(12px, 4.2vh, 40px) 8px 0; }
 .topline { display: flex; align-items: center; justify-content: space-between; gap: 12px; }
 .best { display: flex; align-items: center; gap: 3px; margin: 0; min-width: 0; color: #ffc335; filter: drop-shadow(0 2px 1px #1d366d66); }
 .crown { flex: none; width: 39px; height: 36px; }
 #best-score { font-size: clamp(19px, 5.7vw, 27px); font-weight: 800; font-variant-numeric: tabular-nums; overflow-wrap: anywhere; }
-.scoreline { position: absolute; left: 0; right: 0; bottom: 0; text-align: center; pointer-events: none; }
+.scoreline { position: absolute; left: 0; right: 0; bottom: 18px; text-align: center; pointer-events: none; }
 #score { display: block; max-width: 100%; font-size: clamp(40px, 6.5vh, 60px); line-height: 1.08; font-weight: 800; letter-spacing: -1.5px; font-variant-numeric: tabular-nums; text-shadow: 0 3px 2px #1d376d66; overflow-wrap: anywhere; }
-#combo { font-size: 11px; line-height: 1.4; color: #d5e2ff; margin: 7px 0 0; }
+#combo { position: absolute; top: 100%; left: 0; right: 0; font-size: 11px; line-height: 1.4; color: #d5e2ff; margin: 4px 0 0; }
+#combo:empty { display: none; }
 button { font: inherit; cursor: pointer; touch-action: manipulation; min-height: 44px; color: #fff; }
 button:disabled { opacity: 0.45; cursor: default; }
 button:focus-visible, summary:focus-visible, canvas:focus-visible { outline: 3px solid #ffe189; outline-offset: 3px; }
@@ -33,7 +34,7 @@ canvas { display: block; width: 100%; height: 100%; touch-action: none; user-sel
 #feedback { position: absolute; bottom: 4px; left: 0; right: 0; margin: 0; text-align: center; font-size: 13px; min-height: 20px; pointer-events: none; color: #ffe697; text-shadow: 0 1px 2px #25437e; }
 footer { flex: none; text-align: center; padding: 0 4px; }
 nav { display: flex; justify-content: center; gap: 18px; }
-nav button { display: inline-flex; align-items: center; justify-content: center; gap: 6px; min-width: 96px; padding: 5px 12px; font-size: 12px; border: 1px solid #a7c3ff30; border-radius: 12px; color: #e2ecff; background: #25457c30; }
+nav button { display: inline-flex; align-items: center; justify-content: center; gap: 6px; min-width: 96px; padding: 5px 12px; font-size: 12px; border: 1px solid transparent; border-radius: 12px; color: #cbdaf5; background: transparent; }
 nav button span { font-size: 20px; line-height: 1; }
 nav button:active { background: #25457c77; }
 #save-status { font-size: 10px; line-height: 1.4; margin: 5px 0 0; min-height: 14px; color: #c2d2f2; }
@@ -73,16 +74,16 @@ dialog .muted { color: #d3dfff; font-size: 11px; margin-top: 18px; }
 details { margin-top: 10px; font-size: 13px; border-top: 1px solid #24368088; }
 summary { cursor: pointer; min-height: 44px; padding: 12px 0; color: #fff; }
 pre { white-space: pre-wrap; overflow-wrap: anywhere; font-size: 10px; line-height: 1.5; color: #d3dfff; }
-@supports (height: 100dvh) { header { flex-basis: clamp(122px, 21.5dvh, 194px); padding-top: clamp(12px, 4.7dvh, 44px); } #score { font-size: clamp(40px, 6.5dvh, 60px); } }
+@supports (height: 100dvh) { header { flex-basis: clamp(112px, 20dvh, 184px); padding-top: clamp(12px, 4.2dvh, 40px); } #score { font-size: clamp(40px, 6.5dvh, 60px); } }
 @media (max-height: 650px) {
-  header { flex-basis: 122px; padding-top: 8px; }
-  .scoreline { bottom: 8px; } #score { font-size: 39px; } #combo { margin-top: 4px; font-size: 10px; }
+  header { flex-basis: 112px; padding-top: 8px; }
+  .scoreline { bottom: 14px; } #score { font-size: 39px; } #combo { font-size: 10px; }
   .crown { width: 32px; height: 30px; } #best-score { font-size: 21px; }
   .setting-row { min-height: 64px; }
 }
 @media (max-height: 450px) {
   header { flex-basis: 72px; padding-top: 0; }
   .scoreline { left: 30%; right: 30%; bottom: 7px; } #score { font-size: 32px; } #combo { display: none; }
-  footer nav button { min-height: 36px; } #save-status { margin-top: 2px; }
+  #save-status { margin-top: 2px; }
 }
 @media (prefers-reduced-motion: reduce) { * { scroll-behavior: auto; } }

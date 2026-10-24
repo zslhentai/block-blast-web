@@ -47,11 +47,11 @@ function paintBoard(ctx: CanvasRenderingContext2D, config: CanvasConfig): void {
     const x = gridOffsetX + col * cellSize + gap;
     const y = gridOffsetY + row * cellSize + gap;
     const groove = ctx.createLinearGradient(0, y, 0, y + cellSize);
-    groove.addColorStop(0, '#1e274d'); groove.addColorStop(0.14, '#252f59');
-    groove.addColorStop(0.84, '#242e57'); groove.addColorStop(1, '#20294f');
+    groove.addColorStop(0, '#25325a'); groove.addColorStop(0.18, '#314573');
+    groove.addColorStop(0.80, '#2d3e6a'); groove.addColorStop(1, '#25345b');
     roundedRect(ctx, x, y, cellSize - gap * 2, cellSize - gap * 2, cellSize * 0.07);
     ctx.fillStyle = groove; ctx.fill();
-    ctx.strokeStyle = '#27325b'; ctx.lineWidth = 0.6; ctx.stroke();
+    ctx.strokeStyle = '#3a4c7c'; ctx.lineWidth = 0.8; ctx.stroke();
   }
   ctx.restore();
 }
@@ -64,7 +64,7 @@ export function drawBlock(ctx: CanvasRenderingContext2D, x: number, y: number, s
   const bevel = side * 0.145;
   const l = x + inset, t = y + inset, r = l + side, b = t + side;
   ctx.save(); ctx.globalAlpha *= alpha;
-  ctx.fillStyle = '#17294b66';
+  ctx.fillStyle = '#14274c88';
   ctx.fillRect(l + size * 0.055, t + size * 0.075, side, side);
   ctx.fillStyle = material.edge; ctx.fillRect(l, t, side, side);
   const face = ctx.createLinearGradient(0, t + bevel, 0, b - bevel);
@@ -81,7 +81,7 @@ export function drawBlock(ctx: CanvasRenderingContext2D, x: number, y: number, s
   facet(material.bottom, [[l, b], [l + bevel, b - bevel], [r - bevel, b - bevel], [r, b]]);
   ctx.strokeStyle = material.edge; ctx.lineWidth = Math.max(0.5, size * 0.014);
   ctx.strokeRect(l, t, side, side);
-  ctx.strokeStyle = '#ffffff45'; ctx.lineWidth = Math.max(0.5, size * 0.012);
+  ctx.strokeStyle = '#ffffff65'; ctx.lineWidth = Math.max(0.5, size * 0.012);
   ctx.beginPath(); ctx.moveTo(l + 1, t + 0.7); ctx.lineTo(r - 1, t + 0.7); ctx.stroke();
   ctx.restore();
 }

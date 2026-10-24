@@ -1,0 +1,151 @@
+{
+  "baseCommit": "197498cb38a08c61936d8cda570a2965a9327d9e",
+  "engine": "Chromium",
+  "browserVersion": "154.0.8037.57",
+  "realDevice": false,
+  "typecheck": "passed",
+  "unitTests": 61,
+  "e2eTests": 48,
+  "productionBuild": "passed",
+  "comparisons": [
+    {
+      "viewport": {
+        "width": 320,
+        "height": 568
+      },
+      "project": "iphone-chromium",
+      "dpr": 3,
+      "v1": {
+        "grid": {
+          "x": 46.33333333333333,
+          "y": 136,
+          "side": 227.33333333333334
+        },
+        "trayCell": 12.787500000000001,
+        "trayCenterY": 431.12875
+      },
+      "v1_1": {
+        "grid": {
+          "x": 43,
+          "y": 126,
+          "side": 234
+        },
+        "trayCell": 15.795000000000002,
+        "trayCenterY": 426.8875
+      },
+      "trayCellGrowthPercent": 23.519061583577706,
+      "horizontalOverflow": false,
+      "verticalOverflow": false
+    },
+    {
+      "viewport": {
+        "width": 393,
+        "height": 852
+      },
+      "project": "iphone-chromium",
+      "dpr": 3,
+      "v1": {
+        "grid": {
+          "x": 23.079999999999984,
+          "y": 202.077688,
+          "side": 346.84000000000003
+        },
+        "trayCell": 19.509750000000004,
+        "trayCenterY": 650.249663
+      },
+      "v1_1": {
+        "grid": {
+          "x": 23.079999999999984,
+          "y": 191.25718067961165,
+          "side": 346.84000000000003
+        },
+        "trayCell": 21.57281553398058,
+        "trayCenterY": 630.7132195145632
+      },
+      "trayCellGrowthPercent": 10.574535983190847,
+      "horizontalOverflow": false,
+      "verticalOverflow": false
+    },
+    {
+      "viewport": {
+        "width": 412,
+        "height": 915
+      },
+      "project": "android-chromium",
+      "dpr": 2.625,
+      "v1": {
+        "grid": {
+          "x": 23.840000000000003,
+          "y": 216.185224,
+          "side": 364.32
+        },
+        "trayCell": 20.493,
+        "trayCenterY": 686.742524
+      },
+      "v1_1": {
+        "grid": {
+          "x": 23.840000000000003,
+          "y": 206.94199300970874,
+          "side": 364.32
+        },
+        "trayCell": 22.679611650485434,
+        "trayCenterY": 668.3930221359224
+      },
+      "trayCellGrowthPercent": 10.670041723932243,
+      "horizontalOverflow": false,
+      "verticalOverflow": false
+    }
+  ],
+  "screenshots": [
+    {
+      "file": "empty-320x568.png",
+      "project": "iphone-chromium",
+      "dpr": 3,
+      "pixelDimensions": [
+        960,
+        1704
+      ],
+      "sha256": "ce2bcfe9916c4c299cbb99c2a6b71053984eaa16d551b74252cb1f6d9d705265"
+    },
+    {
+      "file": "empty-393x852.png",
+      "project": "iphone-chromium",
+      "dpr": 3,
+      "pixelDimensions": [
+        1179,
+        2556
+      ],
+      "sha256": "7932354db15ddd29e22b1ddd4494504edc841e503746974ee98ca06c3f27468b"
+    },
+    {
+      "file": "empty-412x915.png",
+      "project": "android-chromium",
+      "dpr": 2.625,
+      "pixelDimensions": [
+        1082,
+        2402
+      ],
+      "sha256": "cd111fca96deeae56eabc12a7d3e0b100ac91e3eababa05cf76bf11c81182e45"
+    },
+    {
+      "file": "mixed-393x852.png",
+      "project": "iphone-chromium",
+      "dpr": 3,
+      "pixelDimensions": [
+        1179,
+        2556
+      ],
+      "sha256": "3c206ee5009c580e5c0443e9da82e2c5c8896e78138a9867e9060d320c998513"
+    },
+    {
+      "file": "drag-393x852.png",
+      "project": "iphone-chromium",
+      "dpr": 3,
+      "pixelDimensions": [
+        1179,
+        2556
+      ],
+      "sha256": "fcfedb4c20409bd6e8ab07be0b49dc9daed5756006a2afd5613b29c1fe867fe7"
+    }
+  ]
+}
