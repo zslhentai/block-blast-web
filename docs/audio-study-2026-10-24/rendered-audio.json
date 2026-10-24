@@ -1,0 +1,113 @@
+{
+  "method": "Actual audition page synthesizer rendered into Chromium OfflineAudioContext; default candidate gain 0.35; two-second mono buffer; no subjective or physical-device listening.",
+  "results": [
+    {
+      "project": "desktop-chromium",
+      "cue": "place",
+      "peak": 0.053025636821985245,
+      "rms": 0.001988485762285237,
+      "dc": -1.2915112965920307e-06,
+      "tail": 0,
+      "sampleRate": 44100
+    },
+    {
+      "project": "desktop-chromium",
+      "cue": "single",
+      "peak": 0.07000276446342468,
+      "rms": 0.005494683544112563,
+      "dc": -4.459179993660182e-06,
+      "tail": 0,
+      "sampleRate": 48000
+    },
+    {
+      "project": "desktop-chromium",
+      "cue": "multi",
+      "peak": 0.06296457350254059,
+      "rms": 0.006142140074289012,
+      "dc": -5.056019946726735e-06,
+      "tail": 0,
+      "sampleRate": 44100
+    },
+    {
+      "project": "desktop-chromium",
+      "cue": "combo",
+      "peak": 0.0891173779964447,
+      "rms": 0.005988849472693633,
+      "dc": -3.6037155564371825e-06,
+      "tail": 0,
+      "sampleRate": 48000
+    },
+    {
+      "project": "iphone-chromium",
+      "cue": "place",
+      "peak": 0.053025636821985245,
+      "rms": 0.0019884857618358487,
+      "dc": -1.291511367196455e-06,
+      "tail": 0,
+      "sampleRate": 44100
+    },
+    {
+      "project": "iphone-chromium",
+      "cue": "single",
+      "peak": 0.07000276446342468,
+      "rms": 0.005494683550704083,
+      "dc": -4.459181987823015e-06,
+      "tail": 0,
+      "sampleRate": 48000
+    },
+    {
+      "project": "iphone-chromium",
+      "cue": "multi",
+      "peak": 0.06296456605195999,
+      "rms": 0.006142140070677759,
+      "dc": -5.056019939272143e-06,
+      "tail": 0,
+      "sampleRate": 44100
+    },
+    {
+      "project": "iphone-chromium",
+      "cue": "combo",
+      "peak": 0.0891173928976059,
+      "rms": 0.005988849479932013,
+      "dc": -3.6037127553615887e-06,
+      "tail": 0,
+      "sampleRate": 48000
+    },
+    {
+      "project": "android-chromium",
+      "cue": "place",
+      "peak": 0.053025636821985245,
+      "rms": 0.001988485756743257,
+      "dc": -1.2915116473455713e-06,
+      "tail": 0,
+      "sampleRate": 44100
+    },
+    {
+      "project": "android-chromium",
+      "cue": "single",
+      "peak": 0.07000276446342468,
+      "rms": 0.00549468354040502,
+      "dc": -4.459181306115528e-06,
+      "tail": 0,
+      "sampleRate": 48000
+    },
+    {
+      "project": "android-chromium",
+      "cue": "multi",
+      "peak": 0.06296456605195999,
+      "rms": 0.006142140064916168,
+      "dc": -5.056019615262802e-06,
+      "tail": 0,
+      "sampleRate": 44100
+    },
+    {
+      "project": "android-chromium",
+      "cue": "combo",
+      "peak": 0.0891173779964447,
+      "rms": 0.005988849478308139,
+      "dc": -3.6037125887929967e-06,
+      "tail": 0,
+      "sampleRate": 48000
+    }
+  ]
+}

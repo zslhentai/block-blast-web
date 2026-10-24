@@ -1,0 +1,242 @@
+{
+  "method": "Mono mean, 10 ms RMS windows, threshold 0.002 (-54 dBFS), merge silent gaps <=70 ms; AAC timing/threshold uncertainty, not exact engine trigger times.",
+  "sampleRate": 44100,
+  "channels": 2,
+  "duration": 55.77433106575964,
+  "events": [
+    {
+      "start": 1.53,
+      "end": 1.67,
+      "peakDbFS": -9.0,
+      "rmsDbFS": -23.5
+    },
+    {
+      "start": 2.38,
+      "end": 3.39,
+      "peakDbFS": -8.6,
+      "rmsDbFS": -23.9
+    },
+    {
+      "start": 4.95,
+      "end": 5.1,
+      "peakDbFS": -9.0,
+      "rmsDbFS": -29.2
+    },
+    {
+      "start": 5.2,
+      "end": 5.34,
+      "peakDbFS": -8.9,
+      "rmsDbFS": -23.5
+    },
+    {
+      "start": 6.19,
+      "end": 6.34,
+      "peakDbFS": -9.3,
+      "rmsDbFS": -29.2
+    },
+    {
+      "start": 6.67,
+      "end": 6.81,
+      "peakDbFS": -9.0,
+      "rmsDbFS": -23.5
+    },
+    {
+      "start": 7.81,
+      "end": 9.08,
+      "peakDbFS": -8.0,
+      "rmsDbFS": -23.2
+    },
+    {
+      "start": 9.78,
+      "end": 9.92,
+      "peakDbFS": -9.2,
+      "rmsDbFS": -28.8
+    },
+    {
+      "start": 10.1,
+      "end": 10.25,
+      "peakDbFS": -8.9,
+      "rmsDbFS": -23.8
+    },
+    {
+      "start": 11.4,
+      "end": 11.54,
+      "peakDbFS": -8.9,
+      "rmsDbFS": -28.7
+    },
+    {
+      "start": 11.73,
+      "end": 11.87,
+      "peakDbFS": -8.9,
+      "rmsDbFS": -23.6
+    },
+    {
+      "start": 12.83,
+      "end": 12.97,
+      "peakDbFS": -8.9,
+      "rmsDbFS": -28.7
+    },
+    {
+      "start": 13.6,
+      "end": 13.75,
+      "peakDbFS": -8.9,
+      "rmsDbFS": -23.8
+    },
+    {
+      "start": 16.94,
+      "end": 17.21,
+      "peakDbFS": -28.7,
+      "rmsDbFS": -48.5
+    },
+    {
+      "start": 18.7,
+      "end": 19.71,
+      "peakDbFS": -9.6,
+      "rmsDbFS": -24.6
+    },
+    {
+      "start": 20.02,
+      "end": 20.17,
+      "peakDbFS": -8.9,
+      "rmsDbFS": -23.8
+    },
+    {
+      "start": 20.62,
+      "end": 21.63,
+      "peakDbFS": -8.7,
+      "rmsDbFS": -23.9
+    },
+    {
+      "start": 23.88,
+      "end": 24.02,
+      "peakDbFS": -8.8,
+      "rmsDbFS": -28.8
+    },
+    {
+      "start": 24.5,
+      "end": 24.65,
+      "peakDbFS": -8.9,
+      "rmsDbFS": -23.8
+    },
+    {
+      "start": 25.22,
+      "end": 26.23,
+      "peakDbFS": -8.8,
+      "rmsDbFS": -23.4
+    },
+    {
+      "start": 27.12,
+      "end": 28.13,
+      "peakDbFS": -6.7,
+      "rmsDbFS": -22.9
+    },
+    {
+      "start": 33.78,
+      "end": 33.92,
+      "peakDbFS": -9.1,
+      "rmsDbFS": -28.8
+    },
+    {
+      "start": 34.51,
+      "end": 34.65,
+      "peakDbFS": -8.9,
+      "rmsDbFS": -23.5
+    },
+    {
+      "start": 35.59,
+      "end": 35.73,
+      "peakDbFS": -9.2,
+      "rmsDbFS": -28.8
+    },
+    {
+      "start": 36.06,
+      "end": 36.67,
+      "peakDbFS": -8.9,
+      "rmsDbFS": -28.7
+    },
+    {
+      "start": 37.96,
+      "end": 38.1,
+      "peakDbFS": -9.0,
+      "rmsDbFS": -28.9
+    },
+    {
+      "start": 38.68,
+      "end": 39.35,
+      "peakDbFS": -19.0,
+      "rmsDbFS": -35.5
+    },
+    {
+      "start": 40.21,
+      "end": 40.35,
+      "peakDbFS": -8.9,
+      "rmsDbFS": -23.5
+    },
+    {
+      "start": 42.97,
+      "end": 44.23,
+      "peakDbFS": -5.7,
+      "rmsDbFS": -22.2
+    },
+    {
+      "start": 46.29,
+      "end": 46.43,
+      "peakDbFS": -9.0,
+      "rmsDbFS": -23.5
+    },
+    {
+      "start": 47.09,
+      "end": 47.23,
+      "peakDbFS": -8.9,
+      "rmsDbFS": -28.7
+    },
+    {
+      "start": 47.48,
+      "end": 47.62,
+      "peakDbFS": -8.9,
+      "rmsDbFS": -23.5
+    },
+    {
+      "start": 48.3,
+      "end": 48.45,
+      "peakDbFS": -9.1,
+      "rmsDbFS": -29.1
+    },
+    {
+      "start": 48.72,
+      "end": 48.86,
+      "peakDbFS": -8.9,
+      "rmsDbFS": -23.5
+    },
+    {
+      "start": 49.61,
+      "end": 49.75,
+      "peakDbFS": -8.9,
+      "rmsDbFS": -28.8
+    },
+    {
+      "start": 50.32,
+      "end": 50.46,
+      "peakDbFS": -9.0,
+      "rmsDbFS": -23.5
+    },
+    {
+      "start": 51.36,
+      "end": 51.5,
+      "peakDbFS": -9.2,
+      "rmsDbFS": -28.9
+    },
+    {
+      "start": 51.9,
+      "end": 52.04,
+      "peakDbFS": -8.9,
+      "rmsDbFS": -23.5
+    },
+    {
+      "start": 54.38,
+      "end": 54.65,
+      "peakDbFS": -27.9,
+      "rmsDbFS": -48.5
+    }
+  ]
+}

@@ -1,0 +1,39 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+  <meta name="theme-color" content="#142348" />
+  <title>Block Blast · 音效试听</title>
+</head>
+<body>
+  <main>
+    <header><p class="eyebrow">BLOCK BLAST · SOUND STUDY 01</p><h1>听见每一步</h1>
+      <p>根据原版录屏的节奏与频谱制作的原创声音。<br>这是一间独立试听室，正式游戏音效尚未替换。</p>
+    </header>
+    <section class="controls" aria-label="试听设置">
+      <label for="volume">候选音量 <output id="volume-value" for="volume">35%</output></label>
+      <input data-testid="volume" id="volume" type="range" min="0" max="70" step="1" value="35" />
+      <p class="hint">先调低手机媒体音量，再点击试听。当前版对照保留原音量，不受此滑杆影响。</p>
+      <label for="level">Combo 等级</label>
+      <select data-testid="level" id="level"><option value="2">Combo 2</option><option value="3">Combo 3</option><option value="4">Combo 4 · 外推候选</option></select>
+    </section>
+    <section class="cards" aria-label="四种反馈">
+      <article><div class="number">01</div><h2>普通放置</h2><p>轻巧清脆的一声，亮音后迅速收尾。</p><span class="tag">140 ms · 明亮短音＋轻触瞬态</span><div class="actions"><button data-testid="play-place" data-cue="place">试听候选</button><button class="secondary" data-testid="current-place" data-current="place">听当前版</button></div></article>
+      <article><div class="number">02</div><h2>单行消除</h2><p>柔和明亮的和声，清晰起音后自然收尾。</p><span class="tag">732 ms · 短气流＋三音共鸣</span><div class="actions"><button data-testid="play-single" data-cue="single">试听候选</button><button class="secondary" data-testid="current-single" data-current="single">听当前版</button></div></article>
+      <article><div class="number">03</div><h2>多行消除</h2><p>更饱满的展开，用层次而非突增音量表达奖励。</p><span class="tag">884 ms · 错开起音＋轻扫尾声</span><div class="actions"><button data-testid="play-multi" data-cue="multi">试听候选</button><button class="secondary" data-testid="current-multi" data-current="multi">听当前版</button></div></article>
+      <article><div class="number">04</div><h2>Combo 连击</h2><p>和声逐级升高，叠加三颗短亮音。</p><span class="tag">850 ms · 消除底声＋上行点缀</span><div class="actions"><button data-testid="play-combo" data-cue="combo">试听候选</button><button class="secondary" data-testid="current-combo" data-current="combo">听当前版</button></div></article>
+    </section>
+    <section class="transport" aria-label="播放控制"><button data-testid="sequence" id="sequence">连续听四种</button><button data-testid="stop" id="stop" class="secondary">停止</button><p id="status" data-testid="audio-status" role="status" aria-live="polite">点击任一试听按钮开始</p></section>
+    <details><summary data-testid="study-summary">录屏研究与试听说明</summary><div class="study">
+      <p>已解码原版约 55.77 秒的双声道音轨，并用波形、频谱与画面逐帧对应；没有直接使用原版音频素材。音色描述是频谱结构的解释，仍需你在真机上听审。</p>
+      <p>普通落子后约 140 ms 的亮音，与拿起方块时的低中频短音不同。单行消除约 1 秒，含长衰减和声；Combo 2、3 的主音高组逐级上移。录屏中的多行与 Combo 同时发生，无法完全拆分两者的原版声音。多行候选的分层和 Combo 4 均为设计推测。</p>
+      <p>当前正式版只有放置和消除的短正弦提示音，因此后三个“听当前版”会播放相同的消除声。请交替点击候选与当前版，并与自己的原版录屏比较；本页不播放或发布原版录音。</p>
+      <p>点击按钮即开启浏览器音频；切到后台会停止，回来后需要再次点击。各次试听自动切换，不叠加上一段。这里的音量设置不会写入游戏存档。</p>
+      <p><a data-testid="report-link" href="./report.md" target="_blank" rel="noopener">查看完整分析报告（Markdown）</a> · <a data-testid="game-link" href="../index.html">打开正式游戏</a></p>
+    </div></details>
+    <footer>请比较：落子是否扎实？消除尾声是否过长？Combo 是否悦耳？<br>收到你的试听确认后，再单独接入游戏。</footer>
+  </main>
+  <script type="module" src="/src/audio-lab/main.ts"></script>
+</body>
+</html>

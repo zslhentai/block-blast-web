@@ -4,6 +4,8 @@
 
 V2 在同一套静态视觉上增加落点提示、放置轻弹、行列消除、有限粒子、分级 Combo 和加分反馈，支持音效关闭与系统减少动态效果；[动画参数、关键帧与验收记录](docs/feedback-v2/README.md)说明触发条件及真机验证范围。
 
+音效研究候选在 [独立试听页](https://zslhentai.github.io/block-blast-web/audio-lab/index.html)，支持四类声音、当前版对照和 Combo 等级。正式游戏音效尚未替换，等待真机试听确认。[录屏分析报告](docs/audio-study-2026-10-24/report.md)区分了测量、画面观察与设计推测。
+
 基于 [haoliu-dev/block-blast-phone](https://github.com/haoliu-dev/block-blast-phone)，固定提交 `8cf18eb45c4c4ea7b11283d55c51369e07d11ca4` 二次开发。原始 MIT 许可见 [LICENSE](LICENSE)，来源和改动边界见 [docs/upstream/SOURCE.md](docs/upstream/SOURCE.md)。研究报告见 [docs/research](docs/research)。
 
 ## 开发和验证
