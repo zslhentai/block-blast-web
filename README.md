@@ -1,6 +1,6 @@
 # 方块小憩 · 经典模式 MVP
 
-面向家人日常娱乐的 8×8 方块消除网页游戏。无广告、无内购、无账号、无必需后端。手机竖屏优先，支持鼠标和触控。视觉暂保留上游的基础 Canvas 风格。
+面向家人日常娱乐的 8×8 方块消除网页游戏。无广告、无内购、无账号、无必需后端。手机竖屏优先，支持鼠标和触控。视觉 V1 采用蓝色渐变、皇冠最高分、中央分数、深蓝凹槽棋盘和统一倒角方块；[验收记录与手机尺寸截图](docs/visual-v1/README.md)说明实现效果及验证边界。
 
 基于 [haoliu-dev/block-blast-phone](https://github.com/haoliu-dev/block-blast-phone)，固定提交 `8cf18eb45c4c4ea7b11283d55c51369e07d11ca4` 二次开发。原始 MIT 许可见 [LICENSE](LICENSE)，来源和改动边界见 [docs/upstream/SOURCE.md](docs/upstream/SOURCE.md)。研究报告见 [docs/research](docs/research)。
 

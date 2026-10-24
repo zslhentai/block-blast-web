@@ -1,0 +1,443 @@
+[
+  {
+    "title": "visual V1: 320×568 fits, displays and accepts touch at the drawn cells",
+    "project": "desktop-chromium",
+    "metrics": {
+      "viewport": {
+        "width": 320,
+        "height": 568
+      },
+      "dpr": 1,
+      "grid": {
+        "x": 46.33333333333333,
+        "y": 136,
+        "side": 227.33333333333334
+      },
+      "pieces": [
+        {
+          "width": 63.93750000000001,
+          "height": 12.787500000000001,
+          "left": 36.83125,
+          "right": 100.76875000000001,
+          "top": 424.735,
+          "bottom": 437.52250000000004
+        },
+        {
+          "width": 38.362500000000004,
+          "height": 12.787500000000001,
+          "left": 140.81875,
+          "right": 179.18124999999998,
+          "top": 424.735,
+          "bottom": 437.52250000000004
+        },
+        {
+          "width": 38.362500000000004,
+          "height": 12.787500000000001,
+          "left": 232.01874999999998,
+          "right": 270.38125,
+          "top": 424.735,
+          "bottom": 437.52250000000004
+        }
+      ],
+      "scoreCenter": 160,
+      "scoreBottom": 104,
+      "footerTop": 499,
+      "horizontalOverflow": false,
+      "verticalOverflow": false,
+      "backingWidth": 304,
+      "expectedBackingWidth": 304
+    }
+  },
+  {
+    "title": "visual V1: 393×852 fits, displays and accepts touch at the drawn cells",
+    "project": "desktop-chromium",
+    "metrics": {
+      "viewport": {
+        "width": 393,
+        "height": 852
+      },
+      "dpr": 1,
+      "grid": {
+        "x": 23.079999999999984,
+        "y": 202.077688,
+        "side": 346.84000000000003
+      },
+      "pieces": [
+        {
+          "width": 97.54875000000001,
+          "height": 19.509750000000004,
+          "left": 34.62562499999999,
+          "right": 132.174375,
+          "top": 640.494788,
+          "bottom": 660.004538
+        },
+        {
+          "width": 58.52925000000001,
+          "height": 19.509750000000004,
+          "left": 167.23537499999998,
+          "right": 225.764625,
+          "top": 640.494788,
+          "bottom": 660.004538
+        },
+        {
+          "width": 58.52925000000001,
+          "height": 19.509750000000004,
+          "left": 280.335375,
+          "right": 338.86462500000005,
+          "top": 640.494788,
+          "bottom": 660.004538
+        }
+      ],
+      "scoreCenter": 196.5,
+      "scoreBottom": 168.78125,
+      "footerTop": 783,
+      "horizontalOverflow": false,
+      "verticalOverflow": false,
+      "backingWidth": 377,
+      "expectedBackingWidth": 377
+    }
+  },
+  {
+    "title": "visual V1: 412×915 fits, displays and accepts touch at the drawn cells",
+    "project": "desktop-chromium",
+    "metrics": {
+      "viewport": {
+        "width": 412,
+        "height": 915
+      },
+      "dpr": 1,
+      "grid": {
+        "x": 23.840000000000003,
+        "y": 216.185224,
+        "side": 364.32
+      },
+      "pieces": [
+        {
+          "width": 102.46499999999999,
+          "height": 20.493,
+          "left": 35.9675,
+          "right": 138.4325,
+          "top": 676.4960239999999,
+          "bottom": 696.989024
+        },
+        {
+          "width": 61.479,
+          "height": 20.493,
+          "left": 175.26049999999998,
+          "right": 236.7395,
+          "top": 676.4960239999999,
+          "bottom": 696.989024
+        },
+        {
+          "width": 61.479,
+          "height": 20.493,
+          "left": 294.06050000000005,
+          "right": 355.53950000000003,
+          "top": 676.4960239999999,
+          "bottom": 696.989024
+        }
+      ],
+      "scoreCenter": 206,
+      "scoreBottom": 179.609375,
+      "footerTop": 846,
+      "horizontalOverflow": false,
+      "verticalOverflow": false,
+      "backingWidth": 396,
+      "expectedBackingWidth": 396
+    }
+  },
+  {
+    "title": "visual V1: 320×568 fits, displays and accepts touch at the drawn cells",
+    "project": "iphone-chromium",
+    "metrics": {
+      "viewport": {
+        "width": 320,
+        "height": 568
+      },
+      "dpr": 3,
+      "grid": {
+        "x": 46.33333333333333,
+        "y": 136,
+        "side": 227.33333333333334
+      },
+      "pieces": [
+        {
+          "width": 63.93750000000001,
+          "height": 12.787500000000001,
+          "left": 36.83125,
+          "right": 100.76875000000001,
+          "top": 424.735,
+          "bottom": 437.52250000000004
+        },
+        {
+          "width": 38.362500000000004,
+          "height": 12.787500000000001,
+          "left": 140.81875,
+          "right": 179.18124999999998,
+          "top": 424.735,
+          "bottom": 437.52250000000004
+        },
+        {
+          "width": 38.362500000000004,
+          "height": 12.787500000000001,
+          "left": 232.01874999999998,
+          "right": 270.38125,
+          "top": 424.735,
+          "bottom": 437.52250000000004
+        }
+      ],
+      "scoreCenter": 160,
+      "scoreBottom": 104,
+      "footerTop": 499,
+      "horizontalOverflow": false,
+      "verticalOverflow": false,
+      "backingWidth": 912,
+      "expectedBackingWidth": 912
+    }
+  },
+  {
+    "title": "visual V1: 393×852 fits, displays and accepts touch at the drawn cells",
+    "project": "iphone-chromium",
+    "metrics": {
+      "viewport": {
+        "width": 393,
+        "height": 852
+      },
+      "dpr": 3,
+      "grid": {
+        "x": 23.079999999999984,
+        "y": 202.077688,
+        "side": 346.84000000000003
+      },
+      "pieces": [
+        {
+          "width": 97.54875000000001,
+          "height": 19.509750000000004,
+          "left": 34.62562499999999,
+          "right": 132.174375,
+          "top": 640.494788,
+          "bottom": 660.004538
+        },
+        {
+          "width": 58.52925000000001,
+          "height": 19.509750000000004,
+          "left": 167.23537499999998,
+          "right": 225.764625,
+          "top": 640.494788,
+          "bottom": 660.004538
+        },
+        {
+          "width": 58.52925000000001,
+          "height": 19.509750000000004,
+          "left": 280.335375,
+          "right": 338.86462500000005,
+          "top": 640.494788,
+          "bottom": 660.004538
+        }
+      ],
+      "scoreCenter": 196.5,
+      "scoreBottom": 168.78125,
+      "footerTop": 783,
+      "horizontalOverflow": false,
+      "verticalOverflow": false,
+      "backingWidth": 1131,
+      "expectedBackingWidth": 1131
+    }
+  },
+  {
+    "title": "visual V1: 412×915 fits, displays and accepts touch at the drawn cells",
+    "project": "iphone-chromium",
+    "metrics": {
+      "viewport": {
+        "width": 412,
+        "height": 915
+      },
+      "dpr": 3,
+      "grid": {
+        "x": 23.840000000000003,
+        "y": 216.185224,
+        "side": 364.32
+      },
+      "pieces": [
+        {
+          "width": 102.46499999999999,
+          "height": 20.493,
+          "left": 35.9675,
+          "right": 138.4325,
+          "top": 676.4960239999999,
+          "bottom": 696.989024
+        },
+        {
+          "width": 61.479,
+          "height": 20.493,
+          "left": 175.26049999999998,
+          "right": 236.7395,
+          "top": 676.4960239999999,
+          "bottom": 696.989024
+        },
+        {
+          "width": 61.479,
+          "height": 20.493,
+          "left": 294.06050000000005,
+          "right": 355.53950000000003,
+          "top": 676.4960239999999,
+          "bottom": 696.989024
+        }
+      ],
+      "scoreCenter": 206,
+      "scoreBottom": 179.609375,
+      "footerTop": 846,
+      "horizontalOverflow": false,
+      "verticalOverflow": false,
+      "backingWidth": 1188,
+      "expectedBackingWidth": 1188
+    }
+  },
+  {
+    "title": "visual V1: 320×568 fits, displays and accepts touch at the drawn cells",
+    "project": "android-chromium",
+    "metrics": {
+      "viewport": {
+        "width": 320,
+        "height": 568
+      },
+      "dpr": 2.625,
+      "grid": {
+        "x": 46.33333333333333,
+        "y": 136,
+        "side": 227.33333333333334
+      },
+      "pieces": [
+        {
+          "width": 63.93750000000001,
+          "height": 12.787500000000001,
+          "left": 36.83125,
+          "right": 100.76875000000001,
+          "top": 424.735,
+          "bottom": 437.52250000000004
+        },
+        {
+          "width": 38.362500000000004,
+          "height": 12.787500000000001,
+          "left": 140.81875,
+          "right": 179.18124999999998,
+          "top": 424.735,
+          "bottom": 437.52250000000004
+        },
+        {
+          "width": 38.362500000000004,
+          "height": 12.787500000000001,
+          "left": 232.01874999999998,
+          "right": 270.38125,
+          "top": 424.735,
+          "bottom": 437.52250000000004
+        }
+      ],
+      "scoreCenter": 160,
+      "scoreBottom": 104,
+      "footerTop": 499,
+      "horizontalOverflow": false,
+      "verticalOverflow": false,
+      "backingWidth": 798,
+      "expectedBackingWidth": 798
+    }
+  },
+  {
+    "title": "visual V1: 393×852 fits, displays and accepts touch at the drawn cells",
+    "project": "android-chromium",
+    "metrics": {
+      "viewport": {
+        "width": 393,
+        "height": 852
+      },
+      "dpr": 2.625,
+      "grid": {
+        "x": 23.079999999999984,
+        "y": 202.077688,
+        "side": 346.84000000000003
+      },
+      "pieces": [
+        {
+          "width": 97.54875000000001,
+          "height": 19.509750000000004,
+          "left": 34.62562499999999,
+          "right": 132.174375,
+          "top": 640.494788,
+          "bottom": 660.004538
+        },
+        {
+          "width": 58.52925000000001,
+          "height": 19.509750000000004,
+          "left": 167.23537499999998,
+          "right": 225.764625,
+          "top": 640.494788,
+          "bottom": 660.004538
+        },
+        {
+          "width": 58.52925000000001,
+          "height": 19.509750000000004,
+          "left": 280.335375,
+          "right": 338.86462500000005,
+          "top": 640.494788,
+          "bottom": 660.004538
+        }
+      ],
+      "scoreCenter": 196.5,
+      "scoreBottom": 168.78125,
+      "footerTop": 783,
+      "horizontalOverflow": false,
+      "verticalOverflow": false,
+      "backingWidth": 990,
+      "expectedBackingWidth": 990
+    }
+  },
+  {
+    "title": "visual V1: 412×915 fits, displays and accepts touch at the drawn cells",
+    "project": "android-chromium",
+    "metrics": {
+      "viewport": {
+        "width": 412,
+        "height": 915
+      },
+      "dpr": 2.625,
+      "grid": {
+        "x": 23.840000000000003,
+        "y": 216.185224,
+        "side": 364.32
+      },
+      "pieces": [
+        {
+          "width": 102.46499999999999,
+          "height": 20.493,
+          "left": 35.9675,
+          "right": 138.4325,
+          "top": 676.4960239999999,
+          "bottom": 696.989024
+        },
+        {
+          "width": 61.479,
+          "height": 20.493,
+          "left": 175.26049999999998,
+          "right": 236.7395,
+          "top": 676.4960239999999,
+          "bottom": 696.989024
+        },
+        {
+          "width": 61.479,
+          "height": 20.493,
+          "left": 294.06050000000005,
+          "right": 355.53950000000003,
+          "top": 676.4960239999999,
+          "bottom": 696.989024
+        }
+      ],
+      "scoreCenter": 206,
+      "scoreBottom": 179.609375,
+      "footerTop": 846,
+      "horizontalOverflow": false,
+      "verticalOverflow": false,
+      "backingWidth": 1040,
+      "expectedBackingWidth": 1040
+    }
+  }
+]

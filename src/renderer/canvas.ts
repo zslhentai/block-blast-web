@@ -10,12 +10,17 @@ export interface CanvasConfig {
 }
 // CSS pixels are the only input/layout coordinate system; DPR is for drawing.
 export function calculateLayout(width: number, height: number): CanvasConfig {
-  const boardSize = Math.max(1, Math.min(width - 24, 480, (height - 36) / 1.38, height - 124));
-  const trayHeight = Math.max(88, boardSize * 0.38);
-  const top = Math.max(8, (height - boardSize - trayHeight - 20) / 2);
+  // Leave room for the outer rim, a gap and even a five-cell vertical piece.
+  // This exact inner grid is also used by hit testing and drag projection.
+  const boardSize = Math.max(1, Math.min(width * 0.92, 480, (height - 28) / 1.5));
+  const trayCell = Math.max(1, Math.min(boardSize / 8 * 0.45, (width * 0.3 - 12) / 5));
+  const trayHeight = Math.max(48, trayCell * 5 + 8);
+  const gap = Math.max(12, boardSize * 0.14);
+  const top = Math.max(6, Math.min(16, (height - boardSize - gap - trayHeight) * 0.12));
   return { width, height, cellSize: boardSize / 8, gridOffsetX: (width - boardSize) / 2, gridOffsetY: top,
-    trayCell: Math.max(1, Math.min(boardSize / 8 * 0.58, (width / 3 - 16) / 5)),
-    slots: Array.from({ length: 3 }, (_, i) => ({ x: i * width / 3, y: top + boardSize + 20, width: width / 3, height: trayHeight })) };
+    trayCell,
+    slots: Array.from({ length: 3 }, (_, i) => ({ x: width * (0.05 + i * 0.3), y: top + boardSize + gap,
+      width: width * 0.3, height: trayHeight })) };
 }
 export function initCanvas(canvas: HTMLCanvasElement): CanvasConfig {
   const rect = canvas.getBoundingClientRect();
@@ -28,6 +33,6 @@ export function initCanvas(canvas: HTMLCanvasElement): CanvasConfig {
   return calculateLayout(rect.width, rect.height);
 }
 export function clearCanvas(ctx: CanvasRenderingContext2D, width: number, height: number): void {
-  ctx.fillStyle = '#1a1a2e';
-  ctx.fillRect(0, 0, width, height);
+  // The page owns the continuous blue background, including the HUD and tray.
+  ctx.clearRect(0, 0, width, height);
 }

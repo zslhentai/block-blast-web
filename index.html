@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
-  <meta name="theme-color" content="#1a1a2e" />
+  <meta name="theme-color" content="#35528e" />
   <meta name="description" content="无广告的经典方块消除小游戏，自动保存进度，无需账号。" />
   <link rel="icon" href="data:," />
   <title>方块小憩 · 经典模式</title>
@@ -11,19 +11,29 @@
 <body>
   <main class="game-shell" data-testid="game-shell">
     <header>
-      <div class="topline"><h1>方块小憩 <span>经典模式</span></h1><p>最高分 <strong id="best-score" data-testid="best-score">0</strong></p></div>
-      <div class="scoreline"><div><p class="eyebrow">本局得分</p><output id="score" data-testid="score">0</output></div><p id="combo" data-testid="combo">慢慢来，想好再放</p></div>
-      <nav aria-label="游戏操作">
-        <button id="pause" data-testid="pause" disabled>暂停</button>
-        <button id="new-game" data-testid="new-game" disabled>新游戏</button>
-        <button id="settings-open" data-testid="settings-open" disabled>设置</button>
-      </nav>
+      <h1 class="sr-only">方块小憩 · 经典模式</h1>
+      <div class="topline">
+        <p class="best"><span class="sr-only">最高分</span>
+          <svg class="crown" viewBox="0 0 48 40" aria-hidden="true"><defs><linearGradient id="gold" x2="0" y2="1"><stop stop-color="#fff17a"/><stop offset=".5" stop-color="#ffd126"/><stop offset="1" stop-color="#f4a914"/></linearGradient></defs><path d="M7 13 16 22 24 7 32 22 41 13 37 33H11Z" fill="url(#gold)" stroke="#e4a31b" stroke-width="1.5"/><path d="M11 33h26v4H11z" fill="#ffd239"/><path d="m10 16 5 12h18l5-12" fill="none" stroke="#fff5a0" stroke-width="1.5"/><g fill="#ffdf46"><circle cx="6" cy="11" r="4"/><circle cx="24" cy="5" r="4.5"/><circle cx="42" cy="11" r="4"/></g></svg>
+          <strong id="best-score" data-testid="best-score">0</strong>
+        </p>
+        <button class="icon-button" id="settings-open" data-testid="settings-open" aria-label="设置" title="游戏设置" disabled>
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="m9.6 2-.5 2.2-1.6.9-2.2-.6-2.4 4.1L4.6 10v2L3 13.5l2.3 4 2.2-.6 1.6.9.5 2.2h4.8l.5-2.2 1.6-.9 2.2.6 2.4-4.1-1.7-1.4v-2L21 8.5l-2.3-4-2.2.6-1.6-.9-.5-2.2Z" fill="currentColor"/><circle cx="12" cy="11" r="4" fill="#385792"/></svg>
+        </button>
+      </div>
+      <div class="scoreline"><output id="score" data-testid="score" aria-label="本局得分">0</output><p id="combo" data-testid="combo">慢慢来，想好再放</p></div>
     </header>
     <section class="playfield" aria-label="方块棋盘与三个待选方块">
       <canvas id="game-canvas" data-testid="game-canvas" aria-label="8×8 棋盘；拖动下方三个方块填满行或列" tabindex="0"></canvas>
       <p id="feedback" data-testid="feedback" role="status" aria-live="polite"></p>
     </section>
-    <footer><p id="save-status" data-testid="save-status" role="status">正在载入游戏…</p><p>拖动方块填满行或列 · 方向固定 · 无时间限制</p></footer>
+    <footer>
+      <nav aria-label="游戏操作">
+        <button id="pause" data-testid="pause" disabled><span aria-hidden="true">Ⅱ</span> 暂停</button>
+        <button id="new-game" data-testid="new-game" disabled><span aria-hidden="true">↻</span> 新游戏</button>
+      </nav>
+      <p id="save-status" data-testid="save-status" role="status">正在载入游戏…</p>
+    </footer>
   </main>
   <dialog id="menu" data-testid="menu" aria-labelledby="menu-title">
     <h2 id="menu-title">方块小憩</h2><p id="menu-text">放下方块，填满一行或一列即可消除。</p>
@@ -36,13 +46,14 @@
     <p id="final-best"></p><button id="play-again" data-testid="play-again">再来一局</button>
   </dialog>
   <dialog id="settings" data-testid="settings" aria-labelledby="settings-title">
-    <h2 id="settings-title">游戏设置</h2>
-    <label><span>短音效</span><input id="sound" data-testid="sound" type="checkbox" /></label>
-    <label><span>减少动画</span><input id="reduced-motion" data-testid="reduced-motion" type="checkbox" /></label>
+    <div class="dialog-heading"><h2 id="settings-title">游戏设置</h2><button id="settings-close" data-testid="settings-close" class="close-button" aria-label="关闭设置">×</button></div>
+    <div class="settings-body">
+    <label class="setting-row"><span class="setting-label"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3 8h4l6-5v18l-6-5H3Z" fill="currentColor"/><path d="M17 6c5 3 5 9 0 12" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"/></svg>短音效</span><span class="switch"><input id="sound" data-testid="sound" type="checkbox" /><span class="switch-track" aria-hidden="true"></span></span></label>
+    <label class="setting-row"><span class="setting-label"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3 7h12c6 0 6-6 2-5M3 12h16M3 17h10c6 0 6 6 2 5" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"/></svg>减少动画</span><span class="switch"><input id="reduced-motion" data-testid="reduced-motion" type="checkbox" /><span class="switch-track" aria-hidden="true"></span></span></label>
     <p class="muted">本游戏采用自己的计分与公平发牌规则，并非原版隐藏算法。每组提供三种不同朝向的形状。</p>
     <details><summary data-testid="rules-details">计分说明</summary><p>放置每格 +1；消除每格 +10。多线有额外奖励，交叉格只计算一次。连击可间隔两步不消除，第三步断连。</p></details>
     <details><summary data-testid="license-details">开源许可</summary><p>基于 Hao Liu 的 MIT 项目 block-blast-phone，保留其版权。后续修改同样按 MIT 发布。</p><pre id="license"></pre></details>
-    <button id="settings-close" data-testid="settings-close">完成</button>
+    </div>
   </dialog>
   <noscript>此游戏需要启用 JavaScript；没有加载脚本时无法开始。</noscript>
   <script type="module" src="/src/index.ts"></script>

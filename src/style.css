@@ -1,19 +1,88 @@
-:root { font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif; color: #f1f1fb; background: #1a1a2e; color-scheme: dark; }
+:root {
+  font-family: ui-rounded, "SF Pro Rounded", system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  color: #fff; background: #35528e; color-scheme: dark;
+  font-synthesis: none;
+}
 * { box-sizing: border-box; }
-body { margin: 0; overscroll-behavior: none; }
-.game-shell { width: min(100%, 520px); height: 100vh; height: 100svh; height: 100dvh; margin: auto; display: flex; flex-direction: column; padding: max(8px, env(safe-area-inset-top)) max(8px, env(safe-area-inset-right)) max(6px, env(safe-area-inset-bottom)) max(8px, env(safe-area-inset-left)); }
-header { padding: 4px 12px 0; flex: none; }
-.topline, .scoreline { display: flex; align-items: center; justify-content: space-between; gap: 8px; }
-h1 { font-size: 17px; margin: 0; font-weight: 650; } h1 span { display: block; color: #aaaac5; font-size: 11px; margin-top: 2px; font-weight: 400; }
-p { margin: 6px 0; line-height: 1.55; } .topline p { font-size: 12px; color: #c7c7dd; } .topline strong { color: #ffeaa7; margin-left: 4px; font-size: 18px; }
-.eyebrow { color: #aaaac5; font-size: 11px; margin: 3px 0 0; } #score { font-size: clamp(28px, 5vh, 42px); line-height: 1.15; font-weight: 750; font-variant-numeric: tabular-nums; } #combo { font-size: 12px; color: #c8c7e9; }
-nav { display: flex; gap: 8px; margin-top: 7px; }
-button { font: inherit; color: #eeeefa; background: #30304e; border: 1px solid #494969; border-radius: 9px; min-height: 44px; padding: 9px 16px; cursor: pointer; touch-action: manipulation; } button:active { background: #424264; } button:disabled { opacity: 0.45; cursor: default; } nav button { flex: 1; font-size: 13px; padding: 8px; } button:focus-visible, summary:focus-visible { outline: 2px solid #4ecdc4; outline-offset: 3px; }
+body {
+  margin: 0; overscroll-behavior: none;
+  background: radial-gradient(ellipse at 50% 53%, #4866a142, transparent 70%), linear-gradient(#35518c, #3d5b98 55%, #35518c);
+}
+.sr-only { position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px; overflow: hidden; clip-path: inset(50%); white-space: nowrap; border: 0; }
+.game-shell {
+  width: min(100%, 520px); height: 100vh; height: 100svh; height: 100dvh; margin: auto;
+  display: flex; flex-direction: column;
+  padding: max(8px, env(safe-area-inset-top)) max(8px, env(safe-area-inset-right)) max(6px, env(safe-area-inset-bottom)) max(8px, env(safe-area-inset-left));
+}
+header { position: relative; flex: 0 0 clamp(122px, 21.5vh, 194px); padding: clamp(12px, 4.7vh, 44px) 8px 0; }
+.topline { display: flex; align-items: center; justify-content: space-between; gap: 12px; }
+.best { display: flex; align-items: center; gap: 3px; margin: 0; min-width: 0; color: #ffc335; filter: drop-shadow(0 2px 1px #1d366d66); }
+.crown { flex: none; width: 39px; height: 36px; }
+#best-score { font-size: clamp(19px, 5.7vw, 27px); font-weight: 800; font-variant-numeric: tabular-nums; overflow-wrap: anywhere; }
+.scoreline { position: absolute; left: 0; right: 0; bottom: 0; text-align: center; pointer-events: none; }
+#score { display: block; max-width: 100%; font-size: clamp(40px, 6.5vh, 60px); line-height: 1.08; font-weight: 800; letter-spacing: -1.5px; font-variant-numeric: tabular-nums; text-shadow: 0 3px 2px #1d376d66; overflow-wrap: anywhere; }
+#combo { font-size: 11px; line-height: 1.4; color: #d5e2ff; margin: 7px 0 0; }
+button { font: inherit; cursor: pointer; touch-action: manipulation; min-height: 44px; color: #fff; }
+button:disabled { opacity: 0.45; cursor: default; }
+button:focus-visible, summary:focus-visible, canvas:focus-visible { outline: 3px solid #ffe189; outline-offset: 3px; }
+.icon-button { width: 44px; height: 44px; padding: 0; flex: none; border: 0; color: #bbebff; background: transparent; filter: drop-shadow(0 2px 1px #203e7866); }
+.icon-button svg { width: 100%; height: 100%; }
+.icon-button:active { transform: translateY(1px); color: #fff; }
 .playfield { position: relative; flex: 1; min-height: 0; width: 100%; }
 canvas { display: block; width: 100%; height: 100%; touch-action: none; user-select: none; -webkit-user-select: none; -webkit-touch-callout: none; }
-#feedback { position: absolute; top: 4px; left: 0; right: 0; text-align: center; font-size: 13px; pointer-events: none; color: #ffeaa7; }
-footer { flex: none; text-align: center; padding: 0 4px; color: #a0a0bc; font-size: 10px; } footer p { margin: 2px 0; } #save-status { min-height: 15px; }
-dialog { width: min(88vw, 360px); max-height: 86vh; overflow: auto; color: #f1f1fb; background: #262640; border: 1px solid #555577; border-radius: 16px; padding: 24px; box-shadow: 0 16px 60px #0006; } dialog::backdrop { background: #10101fc9; } dialog h2 { margin: 0 0 12px; font-size: 24px; } dialog p { font-size: 14px; color: #d1d1e1; } dialog > button { width: 100%; margin-top: 16px; background: #365b69; border-color: #5a8995; } .muted { color: #aaaac5; font-size: 12px; margin-top: 18px; } .final-score { font-size: 42px; color: #ffeaa7; font-weight: 750; }
-label { display: flex; min-height: 48px; align-items: center; justify-content: space-between; gap: 12px; } input[type="checkbox"] { width: 24px; height: 24px; accent-color: #4ecdc4; } details { margin-top: 12px; font-size: 13px; } summary { cursor: pointer; min-height: 36px; padding: 8px 0; } pre { white-space: pre-wrap; font-size: 10px; line-height: 1.4; color: #aaaac5; }
-@media (max-height: 560px) { h1 span, .eyebrow { display: none; } header { padding-top: 0; } #score { font-size: 26px; } .topline { min-height: 24px; } nav { margin-top: 3px; } footer p:last-child { display: none; } }
+#feedback { position: absolute; bottom: 4px; left: 0; right: 0; margin: 0; text-align: center; font-size: 13px; min-height: 20px; pointer-events: none; color: #ffe697; text-shadow: 0 1px 2px #25437e; }
+footer { flex: none; text-align: center; padding: 0 4px; }
+nav { display: flex; justify-content: center; gap: 18px; }
+nav button { display: inline-flex; align-items: center; justify-content: center; gap: 6px; min-width: 96px; padding: 5px 12px; font-size: 12px; border: 1px solid #a7c3ff30; border-radius: 12px; color: #e2ecff; background: #25457c30; }
+nav button span { font-size: 20px; line-height: 1; }
+nav button:active { background: #25457c77; }
+#save-status { font-size: 10px; line-height: 1.4; margin: 5px 0 0; min-height: 14px; color: #c2d2f2; }
+p { line-height: 1.6; }
+dialog {
+  width: min(88vw, 360px); max-height: calc(100vh - 40px); max-height: calc(100dvh - env(safe-area-inset-top) - env(safe-area-inset-bottom) - 32px);
+  overflow: auto; overscroll-behavior: contain; color: #fff; background: linear-gradient(#6087ef, #5276df);
+  border: 1px solid #98b5ff; border-radius: 19px; padding: 22px;
+  box-shadow: inset 0 1px 1px #c2d5ff, 0 5px 0 #354eab, 0 18px 55px #0c1c4566;
+}
+dialog::backdrop { background: #070f24bf; }
+dialog h2 { margin: 0 0 12px; text-align: center; font-size: 25px; font-weight: 800; text-shadow: 0 2px 1px #324b9b; }
+dialog p { font-size: 14px; color: #edf2ff; margin: 10px 0; }
+dialog > button {
+  width: 100%; margin-top: 16px; padding: 12px 16px; background: linear-gradient(#66d62c, #2eb709);
+  border: 1px solid #298d0c; border-radius: 12px; box-shadow: inset 0 2px 1px #b7f37199, 0 3px 0 #26800e;
+  font-size: 18px; font-weight: 750; text-shadow: 0 2px 1px #23800e;
+}
+dialog > button:active { background: #34b60e; }
+dialog .muted { color: #d3dfff; font-size: 11px; margin-top: 18px; }
+.final-score { text-align: center; font-size: 48px; color: #ffe18a; font-weight: 800; }
+#settings { width: min(82vw, 350px); padding: 0 11px 12px; }
+.dialog-heading { position: sticky; top: 0; z-index: 1; padding: 18px 40px 16px; background: #5c81e8; border-radius: 18px 18px 0 0; }
+.dialog-heading h2 { margin: 0; font-size: 25px; }
+.close-button { position: absolute; top: 8px; right: 0; width: 44px; padding: 0; border: 0; background: transparent; font-size: 38px; line-height: 1; color: #c6e5ff; text-shadow: 0 2px 1px #354ea2; }
+.settings-body { padding: 2px 14px 16px; background: linear-gradient(#36479e, #35469c); border-radius: 12px; box-shadow: inset 0 1px 2px #26378166; }
+.setting-row { display: flex; min-height: 76px; align-items: center; justify-content: space-between; gap: 12px; border-bottom: 1px solid #243680aa; }
+.setting-label { display: flex; align-items: center; gap: 12px; font-weight: 650; font-size: 17px; }
+.setting-label svg { flex: none; width: 26px; height: 26px; }
+.switch { position: relative; flex: none; width: 62px; height: 36px; }
+.switch input { position: absolute; z-index: 1; inset: -4px 0; width: 100%; height: 44px; margin: 0; opacity: 0; cursor: pointer; }
+.switch-track { display: block; width: 100%; height: 100%; border-radius: 24px; background: #2c3c82; border: 1px solid #22336f; box-shadow: inset 0 2px 3px #13245a66, 0 1px 1px #809bef55; }
+.switch-track::after { content: ""; display: block; width: 30px; height: 30px; margin: 2px; border-radius: 50%; background: #fff; box-shadow: 0 1px 3px #18327099; }
+.switch input:checked + .switch-track { background: #63bf56; border-color: #3e9a37; }
+.switch input:checked + .switch-track::after { transform: translateX(26px); }
+.switch input:focus-visible + .switch-track { outline: 3px solid #ffe189; outline-offset: 3px; }
+details { margin-top: 10px; font-size: 13px; border-top: 1px solid #24368088; }
+summary { cursor: pointer; min-height: 44px; padding: 12px 0; color: #fff; }
+pre { white-space: pre-wrap; overflow-wrap: anywhere; font-size: 10px; line-height: 1.5; color: #d3dfff; }
+@supports (height: 100dvh) { header { flex-basis: clamp(122px, 21.5dvh, 194px); padding-top: clamp(12px, 4.7dvh, 44px); } #score { font-size: clamp(40px, 6.5dvh, 60px); } }
+@media (max-height: 650px) {
+  header { flex-basis: 122px; padding-top: 8px; }
+  .scoreline { bottom: 8px; } #score { font-size: 39px; } #combo { margin-top: 4px; font-size: 10px; }
+  .crown { width: 32px; height: 30px; } #best-score { font-size: 21px; }
+  .setting-row { min-height: 64px; }
+}
+@media (max-height: 450px) {
+  header { flex-basis: 72px; padding-top: 0; }
+  .scoreline { left: 30%; right: 30%; bottom: 7px; } #score { font-size: 32px; } #combo { display: none; }
+  footer nav button { min-height: 36px; } #save-status { margin-top: 2px; }
+}
 @media (prefers-reduced-motion: reduce) { * { scroll-behavior: auto; } }

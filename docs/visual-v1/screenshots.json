@@ -1,0 +1,93 @@
+{
+  "capturedAt": "2026-10-24",
+  "engine": "Chromium",
+  "browserVersion": "154.0.8037.57",
+  "realDevice": false,
+  "baseCommit": "1b1c243c967e3dc76281b885d59fc813477c86a6",
+  "screenshots": [
+    {
+      "file": "empty-320x568.png",
+      "project": "iphone-chromium",
+      "cssViewport": {
+        "width": 320,
+        "height": 568
+      },
+      "pixelDimensions": {
+        "width": 960,
+        "height": 1704
+      },
+      "deviceScaleFactor": 3,
+      "sha256": "3bfe75085b38680e6419f4178f282a85479db743c4bc0e70f669af50442313d3"
+    },
+    {
+      "file": "empty-393x852.png",
+      "project": "iphone-chromium",
+      "cssViewport": {
+        "width": 393,
+        "height": 852
+      },
+      "pixelDimensions": {
+        "width": 1179,
+        "height": 2556
+      },
+      "deviceScaleFactor": 3,
+      "sha256": "c9e07ab4505b15cbfba800666362fa7294fc8a2eb32668cb9f2b65c3b2ed539d"
+    },
+    {
+      "file": "empty-412x915.png",
+      "project": "android-chromium",
+      "cssViewport": {
+        "width": 412,
+        "height": 915
+      },
+      "pixelDimensions": {
+        "width": 1082,
+        "height": 2402
+      },
+      "deviceScaleFactor": 2.625,
+      "sha256": "ab8c45c0a54eee9515f8cee0353e7b984775e2036256e719a02f1226e69fd88f"
+    },
+    {
+      "file": "mixed-393x852.png",
+      "project": "iphone-chromium",
+      "cssViewport": {
+        "width": 393,
+        "height": 852
+      },
+      "pixelDimensions": {
+        "width": 1179,
+        "height": 2556
+      },
+      "deviceScaleFactor": 3,
+      "sha256": "73498f3df1a5d1e9ee064ab37cd92eff697e568208611eeacc3e83754fcd3cb3"
+    },
+    {
+      "file": "drag-393x852.png",
+      "project": "iphone-chromium",
+      "cssViewport": {
+        "width": 393,
+        "height": 852
+      },
+      "pixelDimensions": {
+        "width": 1179,
+        "height": 2556
+      },
+      "deviceScaleFactor": 3,
+      "sha256": "bf6c2d36cccb6ab9491cddee28470e5ac1eee51d14e89fd19726e14d495d7244"
+    },
+    {
+      "file": "settings-393x852.png",
+      "project": "iphone-chromium",
+      "cssViewport": {
+        "width": 393,
+        "height": 852
+      },
+      "pixelDimensions": {
+        "width": 1179,
+        "height": 2556
+      },
+      "deviceScaleFactor": 3,
+      "sha256": "f220913f18ac6e07857e78bec9c147e2923fbafe3305ce1528cd04ceb9c0e8b4"
+    }
+  ]
+}
