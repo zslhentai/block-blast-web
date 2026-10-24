@@ -1,40 +1,19 @@
 import type { GameState, Shape } from '../logic/types';
 import type { CanvasConfig } from './canvas';
-import { drawBlock, drawPiece } from './draw';
+import { drawBlock, drawCell, drawPiece } from './draw';
 import { BLOCK_MATERIALS } from './theme';
 import { type FeedbackTimeline } from './feedback';
 import { MOTION } from './motion';
 
 export function drawPreview(ctx: CanvasRenderingContext2D, shape: Shape, target: { row: number; col: number; x: number; y: number },
   valid: boolean, clear: { row: number; col: number }[], config: CanvasConfig): void {
-  const { gridOffsetX: gx, gridOffsetY: gy, cellSize: s } = config;
-  ctx.save(); ctx.beginPath(); ctx.rect(gx, gy, s * 8, s * 8); ctx.clip();
-  ctx.fillStyle = '#ffce6845';
-  for (const p of clear) ctx.fillRect(gx + p.col * s + 1, gy + p.row * s + 1, s - 2, s - 2);
-  ctx.strokeStyle = valid ? '#b8f4ee' : '#ff9999'; ctx.lineWidth = Math.max(1.5, s * 0.045);
-  if (!valid) ctx.setLineDash([s * 0.12, s * 0.08]);
-  for (const [r, c] of shape.cells) {
-    const x = gx + (target.col + c) * s, y = gy + (target.row + r) * s;
-    ctx.fillStyle = valid ? '#b2fff033' : '#ff58583d'; ctx.fillRect(x + 2, y + 2, s - 4, s - 4);
-    ctx.strokeRect(x + 2, y + 2, s - 4, s - 4);
+  // Match the preview in d5690d6: translucent cells and the floating piece,
+  // without V2's extra outlines, tints or invalid-position marker.
+  if (valid) {
+    for (const cell of clear) drawCell(ctx, cell.row, cell.col, shape.color, config, 0.28);
+    for (const [r, c] of shape.cells) drawCell(ctx, target.row + r, target.col + c, shape.color, config, 0.45);
   }
-  ctx.restore();
-  // The floating piece remains exactly at the finger-compensated projection.
-  drawPiece(ctx, shape, target.x, target.y, s, valid ? 0.98 : 0.62);
-  // Keep the snapped outline visible even when the floating face is perfectly
-  // aligned with it. Painting it only underneath hid the valid-drop cue.
-  ctx.save(); ctx.beginPath(); ctx.rect(gx, gy, s * 8, s * 8); ctx.clip();
-  ctx.strokeStyle = valid ? '#b8f4ee' : '#ff9999'; ctx.lineWidth = Math.max(1.5, s * 0.045);
-  if (!valid) ctx.setLineDash([s * 0.12, s * 0.08]);
-  for (const [r, c] of shape.cells) ctx.strokeRect(gx + (target.col + c) * s + 1,
-    gy + (target.row + r) * s + 1, s - 2, s - 2);
-  ctx.restore();
-  if (!valid) {
-    ctx.save(); ctx.fillStyle = '#ffe4e4'; ctx.strokeStyle = '#9f304c'; ctx.lineWidth = 3;
-    ctx.font = `800 ${Math.max(14, s * 0.4)}px system-ui`; ctx.textAlign = 'center';
-    ctx.strokeText('×', target.x + s * 0.5, target.y + s * 0.62);
-    ctx.fillText('×', target.x + s * 0.5, target.y + s * 0.62); ctx.restore();
-  }
+  drawPiece(ctx, shape, target.x, target.y, config.cellSize, valid ? 0.95 : 0.65);
 }
 
 export function drawFeedback(ctx: CanvasRenderingContext2D, state: GameState, config: CanvasConfig,
