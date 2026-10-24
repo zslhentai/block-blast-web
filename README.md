@@ -4,6 +4,8 @@
 
 V2 在同一套静态视觉上增加落点提示、放置轻弹、行列消除、有限粒子、分级 Combo 和加分反馈，支持音效关闭与系统减少动态效果；[动画参数、关键帧与验收记录](docs/feedback-v2/README.md)说明触发条件及真机验证范围。
 
+[现成采样试听库](https://zslhentai.github.io/block-blast-web/audio-lab/samples.html)提供 Kenney / VCSL 的 12 个 CC0 初筛素材，每类 3 个，含原声选段与轻加工 A/B、完整原文件及来源许可。尚未做人工听审、未认定接近原版。[筛选与验证记录](docs/audio-samples/README.md)。正式游戏保持原音效，前两版实验室保留。
+
 音效实验室 V2 提供四类声音各两种原创 PCM 方向，可 [A/B 对比和密集试听](https://zslhentai.github.io/block-blast-web/audio-lab/v2.html)；[设计与验证说明](docs/audio-lab-v2/README.md)。第一版保留，正式游戏声音未接入候选。
 
 音效研究候选在 [独立试听页](https://zslhentai.github.io/block-blast-web/audio-lab/index.html)，支持四类声音、当前版对照和 Combo 等级。正式游戏音效尚未替换，等待真机试听确认。[录屏分析报告](docs/audio-study-2026-10-24/report.md)区分了测量、画面观察与设计推测。

@@ -12,10 +12,12 @@ export default defineConfig({
       this.emitFile({ type: 'asset', fileName: `audio-lab/${name}`,
         source: readFileSync(new URL(`./docs/audio-lab-v2/${name}`, import.meta.url)) });
     }
+    this.emitFile({ type: 'asset', fileName: 'audio-lab/samples-report.md',
+      source: readFileSync(new URL('./docs/audio-samples/README.md', import.meta.url)) });
     this.emitFile({ type: 'asset', fileName: 'audio-lab/v2-report.md',
       source: readFileSync(new URL('./docs/audio-lab-v2/README.md', import.meta.url)) });
   } }],
-  build: { target: 'es2020', rollupOptions: { input: ['index.html', 'audio-lab/index.html', 'audio-lab/v2.html'] } },
+  build: { target: 'es2020', rollupOptions: { input: ['index.html', 'audio-lab/index.html', 'audio-lab/v2.html', 'audio-lab/samples.html'] } },
   server: { port: 3000, strictPort: true },
   preview: { port: 4173, strictPort: true },
 });

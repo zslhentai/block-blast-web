@@ -1,0 +1,774 @@
+{
+  "version": 1,
+  "date": "2026-10-24",
+  "items": [
+    {
+      "id": "place-glass",
+      "group": "place",
+      "code": "P1",
+      "title": "玻璃轻碰",
+      "note": "偏玻璃触感的短起音；原版落子较亮，这个仅作为材质备选。",
+      "pack": "Kenney Impact Sounds",
+      "author": "Kenney",
+      "official": "https://kenney.nl/assets/impact-sounds",
+      "origin": "现成音效；官方未逐项说明录制/制作方法",
+      "repo": "Boyquotes/kenney-impact-sounds-for-godot",
+      "commit": "999dd1684873f8b020a3aa5b26e713da21688924",
+      "path": "addons/kenney impact sounds/impact_glass_light_000.ogg",
+      "url": "https://raw.githubusercontent.com/Boyquotes/kenney-impact-sounds-for-godot/999dd1684873f8b020a3aa5b26e713da21688924/addons/kenney%20impact%20sounds/impact_glass_light_000.ogg",
+      "gitBlob": "d59cffe03da391e6e7b802185c7990f2f2504557",
+      "license": "CC0-1.0",
+      "licenseUrl": "https://creativecommons.org/publicdomain/zero/1.0/",
+      "review": "初筛，未做人工听审；相似度待用户确认",
+      "files": {
+        "A": "preview/place-glass.wav",
+        "B": "edited/place-glass.wav",
+        "original": "original/place-glass.ogg"
+      },
+      "sha256": {
+        "original": "d750cf88097d0c3e69920e6e14496e1444e1a9da01aa4cca8f5ec8cb44c57b4f",
+        "A": "e127355b93271a2c28b457fd0a71a2ec0440bd2bf3dbe0ce49a7474929cde03b",
+        "B": "b7e0f82bc28e6f7275d620e19646584867896441f48e7225e2af68eafa787eb3"
+      },
+      "originalMetrics": {
+        "frames": 11076,
+        "duration": 0.23075,
+        "peak": 0.8383600115776062,
+        "rms": 0.08150694014711928
+      },
+      "previewRange": [
+        0,
+        0.23075
+      ],
+      "editedRange": [
+        0,
+        0.16
+      ],
+      "sharedGainDb": -8.098332302168437,
+      "highpassHz": 80,
+      "lowpassHz": 10000,
+      "eqDbAt3600": -1.5,
+      "fadeOutMs": 30,
+      "baselineEndFadeMs": 5,
+      "stats": {
+        "A": {
+          "frames": 11076,
+          "duration": 0.23075,
+          "peak": 0.33,
+          "rms": 0.03208322185564472
+        },
+        "B": {
+          "frames": 7680,
+          "duration": 0.16,
+          "peak": 0.22364645109715386,
+          "rms": 0.03358070522563097
+        }
+      },
+      "licenseFile": "licenses/impact-CC0.txt"
+    },
+    {
+      "id": "place-wood",
+      "group": "place",
+      "code": "P2",
+      "title": "木质轻碰",
+      "note": "更柔和的实体触感；与原版晶亮方向有差异，保留为低疲劳备选。",
+      "pack": "Kenney Impact Sounds",
+      "author": "Kenney",
+      "official": "https://kenney.nl/assets/impact-sounds",
+      "origin": "现成音效；官方未逐项说明录制/制作方法",
+      "repo": "Boyquotes/kenney-impact-sounds-for-godot",
+      "commit": "999dd1684873f8b020a3aa5b26e713da21688924",
+      "path": "addons/kenney impact sounds/impact_wood_light_000.ogg",
+      "url": "https://raw.githubusercontent.com/Boyquotes/kenney-impact-sounds-for-godot/999dd1684873f8b020a3aa5b26e713da21688924/addons/kenney%20impact%20sounds/impact_wood_light_000.ogg",
+      "gitBlob": "4bf6be62febf1de5f13b8bf33151118d8bb56c34",
+      "license": "CC0-1.0",
+      "licenseUrl": "https://creativecommons.org/publicdomain/zero/1.0/",
+      "review": "初筛，未做人工听审；相似度待用户确认",
+      "files": {
+        "A": "preview/place-wood.wav",
+        "B": "edited/place-wood.wav",
+        "original": "original/place-wood.ogg"
+      },
+      "sha256": {
+        "original": "eb45e35b4bed784d3f120de4afec4b0d6ac09d9e143cce8cfcb7d739e1b1f3c3",
+        "A": "6ac5f43ca940abebac629a350f5136ece72a904b14485321a960b4a6085eafe3",
+        "B": "80364e855c9b6a8dc874bc959c394928d386c2c9fba61a06f4dd4b02c8e95b5b"
+      },
+      "originalMetrics": {
+        "frames": 12610,
+        "duration": 0.2627083333333333,
+        "peak": 0.8799782991409302,
+        "rms": 0.07705893473611003
+      },
+      "previewRange": [
+        0,
+        0.2627083333333333
+      ],
+      "editedRange": [
+        0,
+        0.14
+      ],
+      "sharedGainDb": -8.519160448183039,
+      "highpassHz": 80,
+      "lowpassHz": 10000,
+      "eqDbAt3600": -1.5,
+      "fadeOutMs": 25,
+      "baselineEndFadeMs": 5,
+      "stats": {
+        "A": {
+          "frames": 12610,
+          "duration": 0.2627083333333333,
+          "peak": 0.33,
+          "rms": 0.028897776801566296
+        },
+        "B": {
+          "frames": 6720,
+          "duration": 0.14,
+          "peak": 0.24957698624168953,
+          "rms": 0.03532460233112736
+        }
+      },
+      "licenseFile": "licenses/impact-CC0.txt"
+    },
+    {
+      "id": "place-tick",
+      "group": "place",
+      "code": "P3",
+      "title": "玻璃中碰",
+      "note": "共鸣较多的玻璃碰撞；加工版缩短尾部，判断是否仍偏硬。",
+      "pack": "Kenney Impact Sounds",
+      "author": "Kenney",
+      "official": "https://kenney.nl/assets/impact-sounds",
+      "origin": "现成音效；官方未逐项说明录制/制作方法",
+      "repo": "Boyquotes/kenney-impact-sounds-for-godot",
+      "commit": "999dd1684873f8b020a3aa5b26e713da21688924",
+      "path": "addons/kenney impact sounds/impact_glass_medium_002.ogg",
+      "url": "https://raw.githubusercontent.com/Boyquotes/kenney-impact-sounds-for-godot/999dd1684873f8b020a3aa5b26e713da21688924/addons/kenney%20impact%20sounds/impact_glass_medium_002.ogg",
+      "gitBlob": "8f5efe5d686fedd1d1238b011ea9ef83daeacd32",
+      "license": "CC0-1.0",
+      "licenseUrl": "https://creativecommons.org/publicdomain/zero/1.0/",
+      "review": "初筛，未做人工听审；相似度待用户确认",
+      "files": {
+        "A": "preview/place-tick.wav",
+        "B": "edited/place-tick.wav",
+        "original": "original/place-tick.ogg"
+      },
+      "sha256": {
+        "original": "48616f22c95589ed9fe55babf0fd012721d7b2ef1b9e85c2ad6408a2cd7c164f",
+        "A": "eb480f462988de4fd0b82455af22e789274003f13928c9dc6846e610aca63d2b",
+        "B": "0e6a7e4e8a6f959b86c937bae330f7c623052025fd6ba83ad78aecb42f1176f0"
+      },
+      "originalMetrics": {
+        "frames": 25942,
+        "duration": 0.5404583333333334,
+        "peak": 0.89019376039505,
+        "rms": 0.05230346092129335
+      },
+      "previewRange": [
+        0,
+        0.54
+      ],
+      "editedRange": [
+        0,
+        0.25
+      ],
+      "sharedGainDb": -8.619412119873877,
+      "highpassHz": 80,
+      "lowpassHz": 10000,
+      "eqDbAt3600": -1.5,
+      "fadeOutMs": 45,
+      "baselineEndFadeMs": 5,
+      "stats": {
+        "A": {
+          "frames": 25920,
+          "duration": 0.54,
+          "peak": 0.33,
+          "rms": 0.019396961849785593
+        },
+        "B": {
+          "frames": 12000,
+          "duration": 0.25,
+          "peak": 0.2180657199715058,
+          "rms": 0.019733481024550352
+        }
+      },
+      "licenseFile": "licenses/impact-CC0.txt"
+    },
+    {
+      "id": "single-bell",
+      "group": "single",
+      "code": "S1",
+      "title": "短钟铃",
+      "note": "现成钟铃确认声；可能仍偏提示音，需要实际听审。",
+      "pack": "Kenney Impact Sounds",
+      "author": "Kenney",
+      "official": "https://kenney.nl/assets/impact-sounds",
+      "origin": "现成音效；官方未逐项说明录制/制作方法",
+      "repo": "Boyquotes/kenney-impact-sounds-for-godot",
+      "commit": "999dd1684873f8b020a3aa5b26e713da21688924",
+      "path": "addons/kenney impact sounds/impact_bell_heavy_002.ogg",
+      "url": "https://raw.githubusercontent.com/Boyquotes/kenney-impact-sounds-for-godot/999dd1684873f8b020a3aa5b26e713da21688924/addons/kenney%20impact%20sounds/impact_bell_heavy_002.ogg",
+      "gitBlob": "b1bf91f15024c4add55e44c2753c49330326c822",
+      "license": "CC0-1.0",
+      "licenseUrl": "https://creativecommons.org/publicdomain/zero/1.0/",
+      "review": "初筛，未做人工听审；相似度待用户确认",
+      "files": {
+        "A": "preview/single-bell.wav",
+        "B": "edited/single-bell.wav",
+        "original": "original/single-bell.ogg"
+      },
+      "sha256": {
+        "original": "a4171ed1a4a17fb858a38de1c59b5b42e50d8f046c525706c0e3ac8671f189f5",
+        "A": "b739763506c0243648000c5fda0856f330055a1e6729cfacc948684c4f2f513d",
+        "B": "93090985c8a9001cb0cb386ca3e3b6e30c2c68f519f761242c8284e2392e8b2b"
+      },
+      "originalMetrics": {
+        "frames": 33470,
+        "duration": 0.6972916666666666,
+        "peak": 0.9150056838989258,
+        "rms": 0.06444850240505708
+      },
+      "previewRange": [
+        0,
+        0.697
+      ],
+      "editedRange": [
+        0,
+        0.6
+      ],
+      "sharedGainDb": -8.858197039580444,
+      "highpassHz": 80,
+      "lowpassHz": 10000,
+      "eqDbAt3600": -1.5,
+      "fadeOutMs": 65,
+      "baselineEndFadeMs": 5,
+      "stats": {
+        "A": {
+          "frames": 33457,
+          "duration": 0.6970208333333333,
+          "peak": 0.33,
+          "rms": 0.023248027297064766
+        },
+        "B": {
+          "frames": 28800,
+          "duration": 0.6,
+          "peak": 0.24986153308187062,
+          "rms": 0.022710099188098083
+        }
+      },
+      "licenseFile": "licenses/impact-CC0.txt"
+    },
+    {
+      "id": "multi-glass",
+      "group": "multi",
+      "code": "M1",
+      "title": "玻璃重碰",
+      "note": "偏碎裂/碰撞的纹理备选；不等同原版多行和声，需排除过硬听感。",
+      "pack": "Kenney Impact Sounds",
+      "author": "Kenney",
+      "official": "https://kenney.nl/assets/impact-sounds",
+      "origin": "现成音效；官方未逐项说明录制/制作方法",
+      "repo": "Boyquotes/kenney-impact-sounds-for-godot",
+      "commit": "999dd1684873f8b020a3aa5b26e713da21688924",
+      "path": "addons/kenney impact sounds/impact_glass_heavy_002.ogg",
+      "url": "https://raw.githubusercontent.com/Boyquotes/kenney-impact-sounds-for-godot/999dd1684873f8b020a3aa5b26e713da21688924/addons/kenney%20impact%20sounds/impact_glass_heavy_002.ogg",
+      "gitBlob": "0d65bd0c5fee5ea783845a0963a03cc5d16084cf",
+      "license": "CC0-1.0",
+      "licenseUrl": "https://creativecommons.org/publicdomain/zero/1.0/",
+      "review": "初筛，未做人工听审；相似度待用户确认",
+      "files": {
+        "A": "preview/multi-glass.wav",
+        "B": "edited/multi-glass.wav",
+        "original": "original/multi-glass.ogg"
+      },
+      "sha256": {
+        "original": "4978654ac840ad519692d5d5ba48a8101cabce13b9a577be73ad589185e5e9ed",
+        "A": "7a21ee7db3ba15b7a231324ea313465c3b9b10fa631f020e1c818600fd0ee31f",
+        "B": "1c0276295bff2e86363df70275f9c6cdc22ea8c51d72110cedc9905a6e09f2a3"
+      },
+      "originalMetrics": {
+        "frames": 11725,
+        "duration": 0.24427083333333333,
+        "peak": 0.899935781955719,
+        "rms": 0.0698757958757686
+      },
+      "previewRange": [
+        0,
+        0.244
+      ],
+      "editedRange": [
+        0,
+        0.244
+      ],
+      "sharedGainDb": -8.713951601510441,
+      "highpassHz": 120,
+      "lowpassHz": 9000,
+      "eqDbAt3600": -2,
+      "fadeOutMs": 35,
+      "baselineEndFadeMs": 5,
+      "stats": {
+        "A": {
+          "frames": 11712,
+          "duration": 0.244,
+          "peak": 0.33,
+          "rms": 0.025633715376792807
+        },
+        "B": {
+          "frames": 11712,
+          "duration": 0.244,
+          "peak": 0.2152904427000526,
+          "rms": 0.014370317316871798
+        }
+      },
+      "licenseFile": "licenses/impact-CC0.txt"
+    },
+    {
+      "id": "combo-pizzi",
+      "group": "combo",
+      "code": "C1",
+      "title": "现成拨弦奖励句",
+      "note": "Kenney 现成短奖励句；制作方法未标明，可能仍有电子乐器感。",
+      "pack": "Kenney Music Jingles",
+      "author": "Kenney",
+      "official": "https://kenney.nl/assets/music-jingles",
+      "origin": "现成编制奖励句；不宣称为现场录音",
+      "repo": "Boyquotes/kenney-music-jingles-for-godot",
+      "commit": "1312c1a8ab2b5830136a5f53ea8c570389bd0808",
+      "path": "addons/kenney music jingles/Pizzicato jingles/jingles_pizzi_0.ogg",
+      "url": "https://raw.githubusercontent.com/Boyquotes/kenney-music-jingles-for-godot/1312c1a8ab2b5830136a5f53ea8c570389bd0808/addons/kenney%20music%20jingles/Pizzicato%20jingles/jingles_pizzi_0.ogg",
+      "gitBlob": "1d45f5fa830ffc9be27b54cac57b70a68b5b0686",
+      "license": "CC0-1.0",
+      "licenseUrl": "https://creativecommons.org/publicdomain/zero/1.0/",
+      "review": "初筛，未做人工听审；相似度待用户确认",
+      "files": {
+        "A": "preview/combo-pizzi.wav",
+        "B": "edited/combo-pizzi.wav",
+        "original": "original/combo-pizzi.ogg"
+      },
+      "sha256": {
+        "original": "b442ade3308a2bbda4b8c572c86f9f1071c7bdbcfb1e6f915d35c605b61bd475",
+        "A": "d53d126f29d4e6717dc73799d99e214cee0a41f972dfdfa706b85eea32b4adf6",
+        "B": "2430a5899055961197b7783ae18d7e7e0a58cb2f70406173cf7126a89bc9c139"
+      },
+      "originalMetrics": {
+        "frames": 23721,
+        "duration": 0.4941875,
+        "peak": 0.4946645200252533,
+        "rms": 0.13322257091864095
+      },
+      "previewRange": [
+        0,
+        0.494
+      ],
+      "editedRange": [
+        0,
+        0.494
+      ],
+      "sharedGainDb": -3.9191225346778285,
+      "highpassHz": 60,
+      "lowpassHz": 14000,
+      "eqDbAt3600": 0,
+      "fadeOutMs": 35,
+      "baselineEndFadeMs": 5,
+      "stats": {
+        "A": {
+          "frames": 23712,
+          "duration": 0.494,
+          "peak": 0.3150319742342645,
+          "rms": 0.08485977695246076
+        },
+        "B": {
+          "frames": 23712,
+          "duration": 0.494,
+          "peak": 0.33,
+          "rms": 0.08481341545034779
+        }
+      },
+      "licenseFile": "licenses/jingles-CC0.txt"
+    },
+    {
+      "id": "combo-steel",
+      "group": "combo",
+      "code": "C2",
+      "title": "现成 Steel 奖励句",
+      "note": "完整现成奖励句的另一种编制；不为凑近原版而改调或重配。",
+      "pack": "Kenney Music Jingles",
+      "author": "Kenney",
+      "official": "https://kenney.nl/assets/music-jingles",
+      "origin": "现成编制奖励句；不宣称为现场录音",
+      "repo": "Boyquotes/kenney-music-jingles-for-godot",
+      "commit": "1312c1a8ab2b5830136a5f53ea8c570389bd0808",
+      "path": "addons/kenney music jingles/Steel jingles/jingles_steel_0.ogg",
+      "url": "https://raw.githubusercontent.com/Boyquotes/kenney-music-jingles-for-godot/1312c1a8ab2b5830136a5f53ea8c570389bd0808/addons/kenney%20music%20jingles/Steel%20jingles/jingles_steel_0.ogg",
+      "gitBlob": "90e67d0f36be94f2e46c49e6767072548fb758af",
+      "license": "CC0-1.0",
+      "licenseUrl": "https://creativecommons.org/publicdomain/zero/1.0/",
+      "review": "初筛，未做人工听审；相似度待用户确认",
+      "files": {
+        "A": "preview/combo-steel.wav",
+        "B": "edited/combo-steel.wav",
+        "original": "original/combo-steel.ogg"
+      },
+      "sha256": {
+        "original": "8799eb726d784ae0aa1a9df80648a873ac60015bc00aea12c8e2dd1431a2bd7d",
+        "A": "aedbb6ad6bca8e9d8d07b56157ee713b2a2d5a34b33e9baef743737a1f9a0146",
+        "B": "abcb3421b1dcbc9bd1f711c6bdfe424dc9a0ad41ea2c843ee67247626994a13f"
+      },
+      "originalMetrics": {
+        "frames": 44775,
+        "duration": 0.9328125,
+        "peak": 0.7389770746231079,
+        "rms": 0.11246887224731082
+      },
+      "previewRange": [
+        0,
+        0.9328125
+      ],
+      "editedRange": [
+        0,
+        0.85
+      ],
+      "sharedGainDb": -7.592769232111733,
+      "highpassHz": 60,
+      "lowpassHz": 14000,
+      "eqDbAt3600": 0,
+      "fadeOutMs": 85,
+      "baselineEndFadeMs": 5,
+      "stats": {
+        "A": {
+          "frames": 44775,
+          "duration": 0.9328125,
+          "peak": 0.30831347331078535,
+          "rms": 0.04692384048845736
+        },
+        "B": {
+          "frames": 40800,
+          "duration": 0.85,
+          "peak": 0.33,
+          "rms": 0.04913132311587202
+        }
+      },
+      "licenseFile": "licenses/jingles-CC0.txt"
+    },
+    {
+      "id": "single-chime",
+      "group": "single",
+      "code": "S2",
+      "title": "实录手持音钟 C5",
+      "note": "真实乐器的自然衰减；保留主体，缩到一次消除能容纳的长度。",
+      "pack": "Versilian Community Sample Library",
+      "author": "Versilian Studios / Sam Gossner",
+      "official": "https://github.com/sgossner/VCSL",
+      "origin": "VCSL 实录乐器采样",
+      "repo": "sgossner/VCSL",
+      "commit": "c1ea7bcc3c7309650ab0da9d15c9cd1fbc4a4c7e",
+      "path": "Idiophones/Struck Idiophones/Hand Chimes/sus_C5_r01_main.wav",
+      "url": "https://raw.githubusercontent.com/sgossner/VCSL/c1ea7bcc3c7309650ab0da9d15c9cd1fbc4a4c7e/Idiophones/Struck%20Idiophones/Hand%20Chimes/sus_C5_r01_main.wav",
+      "gitBlob": "b203410a0a37a8f5207d779ef5ba238a59e858d2",
+      "license": "CC0-1.0",
+      "licenseUrl": "https://creativecommons.org/publicdomain/zero/1.0/",
+      "review": "初筛，未做人工听审；相似度待用户确认",
+      "files": {
+        "A": "preview/single-chime.wav",
+        "B": "edited/single-chime.wav",
+        "original": "original/single-chime.wav"
+      },
+      "sha256": {
+        "original": "836f13d448c9d6d685da634368615c2f7c03b6fb5b99ac93627e1fbb40368e58",
+        "A": "56ea023df662df8f752cbf2b115c606da8a2784a51919b9d3908c8cb1aa45761",
+        "B": "c616f319a3c2881e3436ba0adcd316628226677f34a304df0be76048010a43e8"
+      },
+      "originalMetrics": {
+        "frames": 342796,
+        "duration": 7.141583333333333,
+        "peak": 0.1780116856098175,
+        "rms": 0.017436667775140868
+      },
+      "previewRange": [
+        0,
+        1.8
+      ],
+      "editedRange": [
+        0,
+        0.85
+      ],
+      "sharedGainDb": 5.361308545842426,
+      "highpassHz": 60,
+      "lowpassHz": 15000,
+      "eqDbAt3600": 0,
+      "fadeOutMs": 100,
+      "baselineEndFadeMs": 5,
+      "stats": {
+        "A": {
+          "frames": 86400,
+          "duration": 1.8,
+          "peak": 0.33,
+          "rms": 0.06403170102183434
+        },
+        "B": {
+          "frames": 40800,
+          "duration": 0.85,
+          "peak": 0.3268386340315827,
+          "rms": 0.08644930795321805
+        }
+      },
+      "licenseFile": "licenses/vcsl-CC0.txt"
+    },
+    {
+      "id": "single-tree",
+      "group": "single",
+      "code": "S3",
+      "title": "实录音树单击 E5",
+      "note": "独立金属音树单击；比完整扫奏更克制，尚未确认接近原版。",
+      "pack": "Versilian Community Sample Library",
+      "author": "Versilian Studios / Sam Gossner",
+      "official": "https://github.com/sgossner/VCSL",
+      "origin": "VCSL 实录乐器采样",
+      "repo": "sgossner/VCSL",
+      "commit": "c1ea7bcc3c7309650ab0da9d15c9cd1fbc4a4c7e",
+      "path": "Idiophones/Struck Idiophones/Bell Tree/Individual/BellTree_Hit_E5_rr1_Mid.wav",
+      "url": "https://raw.githubusercontent.com/sgossner/VCSL/c1ea7bcc3c7309650ab0da9d15c9cd1fbc4a4c7e/Idiophones/Struck%20Idiophones/Bell%20Tree/Individual/BellTree_Hit_E5_rr1_Mid.wav",
+      "gitBlob": "5be8c35489e1722d2abe778fe121bc4d0437ecba",
+      "license": "CC0-1.0",
+      "licenseUrl": "https://creativecommons.org/publicdomain/zero/1.0/",
+      "review": "初筛，未做人工听审；相似度待用户确认",
+      "files": {
+        "A": "preview/single-tree.wav",
+        "B": "edited/single-tree.wav",
+        "original": "original/single-tree.wav"
+      },
+      "sha256": {
+        "original": "71aeec32c08bc636c16f1271d52fc56ba14ff6e163f014b53538c87deb02e282",
+        "A": "f9c37020b3c19ac95ef5ec9bff9e5165c3373411ac46ff4bff04d8fe28d531c4",
+        "B": "f337d3286b847e8cef8afa4f5138d1c4cb43007b7c8178048d77b57ae361f35b"
+      },
+      "originalMetrics": {
+        "frames": 170556,
+        "duration": 3.55325,
+        "peak": 0.007929804734885693,
+        "rms": 0.00027317523842424526
+      },
+      "previewRange": [
+        0,
+        1.8
+      ],
+      "editedRange": [
+        0,
+        0.85
+      ],
+      "sharedGainDb": 32.38502893167413,
+      "highpassHz": 60,
+      "lowpassHz": 15000,
+      "eqDbAt3600": 0,
+      "fadeOutMs": 100,
+      "baselineEndFadeMs": 5,
+      "stats": {
+        "A": {
+          "frames": 86400,
+          "duration": 1.8,
+          "peak": 0.33,
+          "rms": 0.01596023572061322
+        },
+        "B": {
+          "frames": 40800,
+          "duration": 0.85,
+          "peak": 0.2722831576911229,
+          "rms": 0.021051154976666597
+        }
+      },
+      "licenseFile": "licenses/vcsl-CC0.txt"
+    },
+    {
+      "id": "multi-tree",
+      "group": "multi",
+      "code": "M2",
+      "title": "实录音树扫奏",
+      "note": "一段已录制的多颗粒扫奏，没有重新合成；处理版缩短自然尾声。",
+      "pack": "Versilian Community Sample Library",
+      "author": "Versilian Studios / Sam Gossner",
+      "official": "https://github.com/sgossner/VCSL",
+      "origin": "VCSL 实录乐器采样",
+      "repo": "sgossner/VCSL",
+      "commit": "c1ea7bcc3c7309650ab0da9d15c9cd1fbc4a4c7e",
+      "path": "Idiophones/Struck Idiophones/Bell Tree/Stroke/BellTree_Stroke_1_Mid.wav",
+      "url": "https://raw.githubusercontent.com/sgossner/VCSL/c1ea7bcc3c7309650ab0da9d15c9cd1fbc4a4c7e/Idiophones/Struck%20Idiophones/Bell%20Tree/Stroke/BellTree_Stroke_1_Mid.wav",
+      "gitBlob": "f3e92cad46ba49225c914df5b2d8c8a55ae474a7",
+      "license": "CC0-1.0",
+      "licenseUrl": "https://creativecommons.org/publicdomain/zero/1.0/",
+      "review": "初筛，未做人工听审；相似度待用户确认",
+      "files": {
+        "A": "preview/multi-tree.wav",
+        "B": "edited/multi-tree.wav",
+        "original": "original/multi-tree.wav"
+      },
+      "sha256": {
+        "original": "aae960ec30aaf8217ca6421d540adefd43012ddb12275be3022818f3a0478cdf",
+        "A": "646bdd2aa9410ac694566b826c1e265f52ab877b74823869e5ddceea11c43176",
+        "B": "33320ccb208c418992a55ee5c773f77b6a08d061d5e3ba008432cf6edaea0a84"
+      },
+      "originalMetrics": {
+        "frames": 219056,
+        "duration": 4.563666666666666,
+        "peak": 0.006714463233947754,
+        "rms": 0.0006622094794986132
+      },
+      "previewRange": [
+        0,
+        2
+      ],
+      "editedRange": [
+        0,
+        1.1
+      ],
+      "sharedGainDb": 33.83005279507173,
+      "highpassHz": 60,
+      "lowpassHz": 15000,
+      "eqDbAt3600": 0,
+      "fadeOutMs": 130,
+      "baselineEndFadeMs": 5,
+      "stats": {
+        "A": {
+          "frames": 96000,
+          "duration": 2.0,
+          "peak": 0.33,
+          "rms": 0.048840566350876885
+        },
+        "B": {
+          "frames": 52800,
+          "duration": 1.1,
+          "peak": 0.27392879077896143,
+          "rms": 0.03295525240823244
+        }
+      },
+      "licenseFile": "licenses/vcsl-CC0.txt"
+    },
+    {
+      "id": "multi-chimes",
+      "group": "multi",
+      "code": "M3",
+      "title": "实录风铃下行",
+      "note": "多颗粒下行扫奏的方向备选；与原版的短促和声并不完全相同。",
+      "pack": "Versilian Community Sample Library",
+      "author": "Versilian Studios / Sam Gossner",
+      "official": "https://github.com/sgossner/VCSL",
+      "origin": "VCSL 实录乐器采样",
+      "repo": "sgossner/VCSL",
+      "commit": "c1ea7bcc3c7309650ab0da9d15c9cd1fbc4a4c7e",
+      "path": "Idiophones/Struck Idiophones/Mark Trees/Legacy/windchimes_desc1.wav",
+      "url": "https://raw.githubusercontent.com/sgossner/VCSL/c1ea7bcc3c7309650ab0da9d15c9cd1fbc4a4c7e/Idiophones/Struck%20Idiophones/Mark%20Trees/Legacy/windchimes_desc1.wav",
+      "gitBlob": "ea9425b0ef11467a5c148e2ead235a823b972bf8",
+      "license": "CC0-1.0",
+      "licenseUrl": "https://creativecommons.org/publicdomain/zero/1.0/",
+      "review": "初筛，未做人工听审；相似度待用户确认",
+      "files": {
+        "A": "preview/multi-chimes.wav",
+        "B": "edited/multi-chimes.wav",
+        "original": "original/multi-chimes.wav"
+      },
+      "sha256": {
+        "original": "171d34ccb881e5ece4728faae4e5f25fb8aa30831180457a1dce74e7fbf00c1a",
+        "A": "ca18dc7d2705938618b10c858623f783bd58adbced4e0d56618c59eadb910983",
+        "B": "f6f269ededa8565ccbae5d0460f9ba528822a68f87f154647afb17cf9a48b20c"
+      },
+      "originalMetrics": {
+        "frames": 473977,
+        "duration": 9.874520833333333,
+        "peak": 0.0614456906914711,
+        "rms": 0.004810522421441495
+      },
+      "previewRange": [
+        0,
+        2
+      ],
+      "editedRange": [
+        0,
+        1.2
+      ],
+      "sharedGainDb": 16.486747612133936,
+      "highpassHz": 60,
+      "lowpassHz": 15000,
+      "eqDbAt3600": 0,
+      "fadeOutMs": 160,
+      "baselineEndFadeMs": 5,
+      "stats": {
+        "A": {
+          "frames": 96000,
+          "duration": 2.0,
+          "peak": 0.33,
+          "rms": 0.04518068084592877
+        },
+        "B": {
+          "frames": 57600,
+          "duration": 1.2,
+          "peak": 0.19333097793075676,
+          "rms": 0.029117051105586045
+        }
+      },
+      "licenseFile": "licenses/vcsl-CC0.txt"
+    },
+    {
+      "id": "combo-chimes",
+      "group": "combo",
+      "code": "C3",
+      "title": "实录风铃快速上行",
+      "note": "真实上行扫奏的奖励方向；原片很长，加工版只保留开头一次手势。",
+      "pack": "Versilian Community Sample Library",
+      "author": "Versilian Studios / Sam Gossner",
+      "official": "https://github.com/sgossner/VCSL",
+      "origin": "VCSL 实录乐器采样",
+      "repo": "sgossner/VCSL",
+      "commit": "c1ea7bcc3c7309650ab0da9d15c9cd1fbc4a4c7e",
+      "path": "Idiophones/Struck Idiophones/Mark Trees/Legacy/windchimes_fastAsc1.wav",
+      "url": "https://raw.githubusercontent.com/sgossner/VCSL/c1ea7bcc3c7309650ab0da9d15c9cd1fbc4a4c7e/Idiophones/Struck%20Idiophones/Mark%20Trees/Legacy/windchimes_fastAsc1.wav",
+      "gitBlob": "26a57beb9b7ae9450e93c4ab6e3a34055c1dffc9",
+      "license": "CC0-1.0",
+      "licenseUrl": "https://creativecommons.org/publicdomain/zero/1.0/",
+      "review": "初筛，未做人工听审；相似度待用户确认",
+      "files": {
+        "A": "preview/combo-chimes.wav",
+        "B": "edited/combo-chimes.wav",
+        "original": "original/combo-chimes.wav"
+      },
+      "sha256": {
+        "original": "d10e39040e0a038d15409760b02892d7ce65c1879b8098d0a8dac92820688b49",
+        "A": "397f0ebe0952c521a7694d28e88db4d487051f706225e4712e85d18cdf16660c",
+        "B": "ff8c8c598f90f55a1a1a6a111c60953a10c790a26e6324df360c3f4fb8d989ff"
+      },
+      "originalMetrics": {
+        "frames": 639166,
+        "duration": 13.315958333333333,
+        "peak": 0.15011346340179443,
+        "rms": 0.006506409954556202
+      },
+      "previewRange": [
+        0.045,
+        2.045
+      ],
+      "editedRange": [
+        0.045,
+        1.295
+      ],
+      "sharedGainDb": 7.039093909239053,
+      "highpassHz": 60,
+      "lowpassHz": 15000,
+      "eqDbAt3600": 0,
+      "fadeOutMs": 160,
+      "baselineEndFadeMs": 5,
+      "stats": {
+        "A": {
+          "frames": 96000,
+          "duration": 2.0,
+          "peak": 0.32213030364757683,
+          "rms": 0.03705312828631312
+        },
+        "B": {
+          "frames": 60000,
+          "duration": 1.25,
+          "peak": 0.33,
+          "rms": 0.04410375520008565
+        }
+      },
+      "licenseFile": "licenses/vcsl-CC0.txt"
+    }
+  ]
+}
