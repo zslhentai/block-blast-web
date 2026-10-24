@@ -4,30 +4,34 @@ import { createEmptyBoard } from './state';
 import { checkGameOver } from './gameover';
 import { canPlace, placeShapeOnBoard } from './placement';
 import { checkAndClearLines } from './lineClear';
-import { shapeKey } from './shapes';
 
-test('every solved deal includes a legal replayable witness', () => {
+test('an independent hand on an empty board can be audited with a legal replayable witness', () => {
   for (let seed = 0; seed < 100; seed++) {
     let board = createEmptyBoard(); const deal = dealHand(board, seed, 1);
-    expect(deal.search.status).toBe('solved');
-    expect(new Set(deal.shapes.map(s => shapeKey(s.cells))).size).toBe(3);
-    for (const { slot, row, col } of deal.search.moves) {
+    const search = findSequence(board, deal.shapes, { remaining: 8000 });
+    expect(search.status).toBe('solved');
+    expect(new Set(deal.shapes.map(s => s.id)).size).toBe(3);
+    for (const { slot, row, col } of search.moves) {
       expect(canPlace(board, deal.shapes[slot], row, col)).toBe(true);
       board = checkAndClearLines(placeShapeOnBoard(board, deal.shapes[slot], row, col)).board;
     }
-    expect(deal.search.moves).toHaveLength(3);
+    expect(search.moves).toHaveLength(3);
   }
 });
 test('search budget exhaustion is unknown, never a fake solved result', () => {
   const shapes = dealHand(createEmptyBoard(), 2, 1).shapes;
   expect(findSequence(createEmptyBoard(), shapes, { remaining: 0 }).status).toBe('unknown');
 });
-test('a checkerboard with no adjacent empty cells gets a playable fallback hand', () => {
+test('crowding does not re-roll or repair the hand; an unplayable refill is permitted', () => {
   const board = Array.from({ length: 8 }, (_, r) => Array.from({ length: 8 }, (_, c) => (r + c) % 2));
-  const deal = dealHand(board, 8, 99);
-  expect(checkGameOver(board, deal.shapes)).toBe(false);
-  expect(new Set(deal.shapes.map(s => shapeKey(s.cells))).size).toBe(3);
-  expect(deal.search.status).toBe('unknown');
+  let blocked = 0, fitting = 0;
+  for (let seed=0;seed<128;seed++) {
+    const deal = dealHand(board, seed, 99);
+    expect(deal).toEqual(dealHand(createEmptyBoard(), seed, 99));
+    expect(new Set(deal.shapes.map(s => s.id)).size).toBe(3);
+    if (checkGameOver(board, deal.shapes)) blocked++; else fitting++;
+  }
+  expect(blocked).toBeGreaterThan(0); expect(fitting).toBeGreaterThan(0);
 });
 test('the same state and seed deal identically', () => {
   expect(dealHand(createEmptyBoard(), 12, 1)).toEqual(dealHand(createEmptyBoard(), 12, 1));

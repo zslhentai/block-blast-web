@@ -17,13 +17,25 @@ describe('versioned shape catalogue and seeded sampling', () => {
     expect(shape.cells.length).toBeGreaterThan(0);
     expect(shape.color).toBeGreaterThan(0); expect(shape.color).toBeLessThanOrEqual(7);
   });
-  test('three different orientations in every sampled hand', () => {
+  test('three distinct slot IDs with repeatable geometry, matching the reference hands', () => {
     const rng = createRandom(7);
+    let repeated = 0;
     for (let i = 1; i <= 1000; i++) {
       const shapes = createShapes(3, rng.next, i);
       expect(shapes.length).toBe(3);
-      expect(new Set(shapes.map(s => shapeKey(s.cells))).size).toBe(3);
+      expect(new Set(shapes.map(s => s.id)).size).toBe(3);
+      if(new Set(shapes.map(s => shapeKey(s.cells))).size<3) repeated++;
     }
+    expect(repeated).toBeGreaterThan(0);
+    expect(new Set(createShapes(3,()=>0).map(s=>shapeKey(s.cells))).size).toBe(1);
+  });
+  test.each([[1,.35,.55,.1],[30,.3,.55,.15]])('round %i uses documented family/size weights without board-dependent retries', (round,small,medium,large) => {
+    const rng=createRandom(31), counts={small:0,medium:0,large:0};
+    for(let i=0;i<10000;i++) {
+      const shape=createRandomShape(rng.next,`sample-${i}`,round);
+      counts[CATALOGUE.find(entry=>entry.key===shapeKey(shape.cells))!.group]++;
+    }
+    for(const [group,expected] of [['small',small],['medium',medium],['large',large]] as const) expect(Math.abs(counts[group]/10000-expected)).toBeLessThan(.015);
   });
   test('RNG state can be restored exactly, including zero', () => {
     const first = createRandom(0); first.next();

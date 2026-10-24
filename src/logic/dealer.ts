@@ -1,5 +1,5 @@
 import { type Board, type Shape, BOARD_SIZE } from './types';
-import { CATALOGUE, createRandomShape, createShapes, shapeKey } from './shapes';
+import { createShapes } from './shapes';
 import { createRandom } from './rng';
 import { canPlace, placeShapeOnBoard } from './placement';
 import { checkAndClearLines } from './lineClear';
@@ -29,27 +29,11 @@ export function fitsAnywhere(board: Board, shape: Shape): boolean {
   }
   return false;
 }
-export function dealHand(board: Board, seed: number, round: number) {
+// Transparent replacement policy, not a claim about the original hidden dealer.
+// The board does not re-roll or repair the next hand. A legal game can end on refill.
+export const DEALER_POLICY = 'independent-weighted-v2';
+export function dealHand(_board: Board, seed: number, round: number) {
   const random = createRandom(seed);
-  const budget = { remaining: 8000 };
-  let shapes: Shape[] = [];
-  let search: SearchResult = { status: 'unknown', moves: [] };
-  for (let attempt = 0; attempt < 12 && budget.remaining > 0; attempt++) {
-    shapes = createShapes(3, random.next, round, `r${round}-${seed}`);
-    search = findSequence(board, shapes, budget);
-    if (search.status === 'solved') return { shapes, rngState: random.state(), search };
-  }
-  // Bounded fallback: repair a newly dealt hand, never a hand already shown.
-  const fit = CATALOGUE.filter(e => fitsAnywhere(board, { id: 'probe', color: 1, cells: e.cells }));
-  if (fit.length) {
-    search = { status: 'unknown', moves: [] }; // A repaired hand has no full-sequence proof.
-    const first = createRandomShape(random.next, `r${round}-${seed}-0`, round, fit);
-    const used = new Set([shapeKey(first.cells)]);
-    shapes = [first];
-    for (let i = 1; i < 3; i++) {
-      const shape = createRandomShape(random.next, `r${round}-${seed}-${i}`, round, CATALOGUE.filter(e => !used.has(e.key)));
-      used.add(shapeKey(shape.cells)); shapes.push(shape);
-    }
-  }
-  return { shapes, rngState: random.state(), search };
+  const shapes = createShapes(3, random.next, round, `r${round}-${seed}`);
+  return { shapes, rngState: random.state() };
 }

@@ -1,6 +1,6 @@
 // Offline experience probe. The agent evaluates row masks; every chosen transition
 // is checked against the production placement/clear functions. Never imported by the game.
-import { mkdirSync, writeFileSync } from 'node:fs';
+import { mkdirSync, writeFileSync, readFileSync } from 'node:fs';
 import { dirname } from 'node:path';
 import { execFileSync } from 'node:child_process';
 import { dealHand } from '../src/logic/dealer';
@@ -91,6 +91,7 @@ for (const policy of ['random','compact'] as const) {
   }
   groups[policy]={games,limit,ended,censored,lengths:quantiles(lengths),terminalOccupancy:endings.length?quantiles(endings):null,totalMoves,clears,totalLines,clearEventRate:clears/Math.max(1,totalMoves),clearCounts,refills,immediateEnds,highCrowdingDeals,dealerMs:quantiles(dealerMs),shapeFrequencies:shapesCount};
 }
-const result={commit:execFileSync('git',['rev-parse','HEAD'],{encoding:'utf8'}).trim(),mode,seedRange:[0,games-1],limit,policies:'random legal placement; one-step compact heuristic without dealer witnesses. Offline agents are not human players. Capped games are censored, not wins.',runtime:Bun.version,elapsedMs:performance.now()-started,groups};
+const sourceHashes=Object.fromEntries(['dealer','shapes','placement','lineClear'].map(name=>[name,new Bun.CryptoHasher('sha256').update(readFileSync(`src/logic/${name}.ts`)).digest('hex')]));
+const result={commit:execFileSync('git',['rev-parse','HEAD'],{encoding:'utf8'}).trim(),sourceHashes,mode,seedRange:[0,games-1],limit,policies:'random legal placement; one-step compact heuristic without dealer witnesses. Offline agents are not human players. Capped games are censored, not wins.',runtime:Bun.version,elapsedMs:performance.now()-started,groups};
 mkdirSync(dirname(output),{recursive:true});writeFileSync(output,JSON.stringify(result,null,2)+'\n');
 console.log(JSON.stringify({output,mode,elapsedMs:result.elapsedMs,groups:Object.fromEntries(Object.entries(groups).map(([key,value])=>{const {shapeFrequencies:_shapes,...summary}=value as Record<string,unknown>;return[key,summary];}))},null,2));

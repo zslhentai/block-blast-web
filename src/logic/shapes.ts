@@ -77,10 +77,7 @@ export function createRandomShape(
 }
 
 export function createShapes(count: number, random: () => number, round = 1, prefix = 'shape'): Shape[] {
-  const selected = new Set<string>();
-  return Array.from({ length: count }, (_, i) => {
-    const shape = createRandomShape(random, `${prefix}-${i}`, round, CATALOGUE.filter(e => !selected.has(e.key)));
-    selected.add(shapeKey(shape.cells));
-    return shape;
-  });
+  // IMG_8323 shows two horizontal triominoes; IMG_8326 shows two vertical
+  // dominoes. Same geometry is allowed in separate slots, with distinct IDs.
+  return Array.from({ length: count }, (_, i) => createRandomShape(random, `${prefix}-${i}`, round));
 }
