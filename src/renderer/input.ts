@@ -1,6 +1,7 @@
 import type { Shape } from '../logic/types';
 import type { CanvasConfig, Rect } from './canvas';
 import { shapeBounds } from './draw';
+import { MOTION } from './motion';
 
 export interface DragState {
   pointerId: number;
@@ -21,7 +22,7 @@ export function projectDrag(drag: DragState, config: CanvasConfig) {
   const { rows, cols } = shapeBounds(drag.shape);
   const x = drag.currentX - cols * config.cellSize / 2;
   const y = drag.pointerType === 'touch' || drag.pointerType === 'pen'
-    ? drag.currentY - rows * config.cellSize - config.cellSize * 1.15
+    ? drag.currentY - rows * config.cellSize - config.cellSize * MOTION.touchLiftCells
     : drag.currentY - rows * config.cellSize / 2;
   return { x, y, row: Math.round((y - config.gridOffsetY) / config.cellSize), col: Math.round((x - config.gridOffsetX) / config.cellSize) };
 }

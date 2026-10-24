@@ -2,6 +2,8 @@
 
 面向家人日常娱乐的 8×8 方块消除网页游戏。无广告、无内购、无账号、无必需后端。手机竖屏优先，支持鼠标和触控。视觉 V1.1 在蓝色主题上增强手牌尺寸和格槽层次，收紧布局并弱化底部按钮；[V1 与 V1.1 截图对比及验收记录](docs/visual-v1.1/README.md)说明调整效果及验证边界。
 
+V2 在同一套静态视觉上增加落点提示、放置轻弹、行列消除、有限粒子、分级 Combo 和加分反馈，支持音效关闭与系统减少动态效果；[动画参数、关键帧与验收记录](docs/feedback-v2/README.md)说明触发条件及真机验证范围。
+
 基于 [haoliu-dev/block-blast-phone](https://github.com/haoliu-dev/block-blast-phone)，固定提交 `8cf18eb45c4c4ea7b11283d55c51369e07d11ca4` 二次开发。原始 MIT 许可见 [LICENSE](LICENSE)，来源和改动边界见 [docs/upstream/SOURCE.md](docs/upstream/SOURCE.md)。研究报告见 [docs/research](docs/research)。
 
 ## 开发和验证

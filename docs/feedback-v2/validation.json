@@ -1,0 +1,619 @@
+{
+  "baseCommit": "d5690d6a2f6f3d46e1367e44dca18ca3d9f8b9e0",
+  "browser": "Chromium 154.0.8037.57",
+  "realDevice": false,
+  "keyframeClock": "Playwright virtual clock; image labels are nominal elapsed time, painted at the closest rAF",
+  "typecheck": "passed",
+  "unitTests": 74,
+  "e2eTests": 81,
+  "productionBuild": "passed",
+  "motion": {
+    "touchLiftCells": 1.15,
+    "placementMs": 160,
+    "placementOvershoot": 0.075,
+    "clearHoldMs": 90,
+    "clearMs": 360,
+    "particleMs": 460,
+    "comboMs": 760,
+    "comboAttackMs": 180,
+    "scoreMs": 560,
+    "feedbackTextMs": 1100,
+    "invalidMs": 180,
+    "maxMoves": 3,
+    "particlesPerMove": 24,
+    "maxParticles": 48
+  },
+  "staticComparisons": [
+    {
+      "file": "empty-320x568.png",
+      "project": "iphone-chromium",
+      "pixelsIdenticalToV1_1": true
+    },
+    {
+      "file": "empty-393x852.png",
+      "project": "iphone-chromium",
+      "pixelsIdenticalToV1_1": true
+    },
+    {
+      "file": "empty-412x915.png",
+      "project": "android-chromium",
+      "pixelsIdenticalToV1_1": true
+    }
+  ],
+  "keyframes": [
+    {
+      "file": "preview-valid.png",
+      "project": "iphone-chromium",
+      "cssViewport": {
+        "width": 393,
+        "height": 852
+      },
+      "dpr": 3,
+      "pixelDimensions": [
+        1179,
+        2556
+      ],
+      "sha256": "057d2cf5cadb5166691d160036a19ce729c83ead642540378d6517dcb9a6ac1d"
+    },
+    {
+      "file": "preview-invalid.png",
+      "project": "iphone-chromium",
+      "cssViewport": {
+        "width": 393,
+        "height": 852
+      },
+      "dpr": 3,
+      "pixelDimensions": [
+        1179,
+        2556
+      ],
+      "sha256": "0ad6d0a11b731e9147aaf475a1ab74b5cf3a116e06ec4d037915f99b09b3b5c4"
+    },
+    {
+      "file": "rapid-replacement-032ms.png",
+      "project": "iphone-chromium",
+      "cssViewport": {
+        "width": 393,
+        "height": 852
+      },
+      "dpr": 3,
+      "pixelDimensions": [
+        1179,
+        2556
+      ],
+      "sha256": "94fb8daad75a17cce419514a58baac50942375d17dc013e5ca64ce61aebcff57"
+    },
+    {
+      "file": "single-row-045ms.png",
+      "project": "iphone-chromium",
+      "cssViewport": {
+        "width": 393,
+        "height": 852
+      },
+      "dpr": 3,
+      "pixelDimensions": [
+        1179,
+        2556
+      ],
+      "sha256": "f72b923ac42031f139c2a54268af2f898d6d95252ffe2411721695079e0c62a6"
+    },
+    {
+      "file": "single-row-210ms.png",
+      "project": "iphone-chromium",
+      "cssViewport": {
+        "width": 393,
+        "height": 852
+      },
+      "dpr": 3,
+      "pixelDimensions": [
+        1179,
+        2556
+      ],
+      "sha256": "3df5e70bbb851c5e300b6c1b7293ebb18aef5b086e118bed7fe9687825a97747"
+    },
+    {
+      "file": "single-row-settled.png",
+      "project": "iphone-chromium",
+      "cssViewport": {
+        "width": 393,
+        "height": 852
+      },
+      "dpr": 3,
+      "pixelDimensions": [
+        1179,
+        2556
+      ],
+      "sha256": "3f1a7cd89049f8613c168316f1878fa109345c28badf38f2153329528cc2b029"
+    },
+    {
+      "file": "two-rows-210ms.png",
+      "project": "iphone-chromium",
+      "cssViewport": {
+        "width": 393,
+        "height": 852
+      },
+      "dpr": 3,
+      "pixelDimensions": [
+        1179,
+        2556
+      ],
+      "sha256": "f309859984bfcc75be5860501107c4c91d57c49adbf740de43f988d18c72472d"
+    },
+    {
+      "file": "two-columns-210ms.png",
+      "project": "iphone-chromium",
+      "cssViewport": {
+        "width": 393,
+        "height": 852
+      },
+      "dpr": 3,
+      "pixelDimensions": [
+        1179,
+        2556
+      ],
+      "sha256": "2d536dfd0a169d900810c17b5cddfa4b485e42afa651df5bd5d818cbc7acedb5"
+    },
+    {
+      "file": "cross-045ms.png",
+      "project": "iphone-chromium",
+      "cssViewport": {
+        "width": 393,
+        "height": 852
+      },
+      "dpr": 3,
+      "pixelDimensions": [
+        1179,
+        2556
+      ],
+      "sha256": "592bc86877b31f4becc7558774f236413436fe557a07d8ae88f4b59775ba8194"
+    },
+    {
+      "file": "cross-210ms.png",
+      "project": "iphone-chromium",
+      "cssViewport": {
+        "width": 393,
+        "height": 852
+      },
+      "dpr": 3,
+      "pixelDimensions": [
+        1179,
+        2556
+      ],
+      "sha256": "3ad03b998faa588059a6ba3e0bf24773c7ae8a6df073af62ab5ec90e87e44b54"
+    },
+    {
+      "file": "cross-settled.png",
+      "project": "iphone-chromium",
+      "cssViewport": {
+        "width": 393,
+        "height": 852
+      },
+      "dpr": 3,
+      "pixelDimensions": [
+        1179,
+        2556
+      ],
+      "sha256": "4683abe4d9d20e368ee5aa9968dfb81b75c3475d176d8afac6335ba59872d59e"
+    },
+    {
+      "file": "combo-tier-1-080ms.png",
+      "project": "iphone-chromium",
+      "cssViewport": {
+        "width": 393,
+        "height": 852
+      },
+      "dpr": 3,
+      "pixelDimensions": [
+        1179,
+        2556
+      ],
+      "sha256": "5bd61c91cd95d0e9a14301957d2441859d59c0faf5e5ee276091cf69f5dd1b9c"
+    },
+    {
+      "file": "combo-tier-2-080ms.png",
+      "project": "iphone-chromium",
+      "cssViewport": {
+        "width": 393,
+        "height": 852
+      },
+      "dpr": 3,
+      "pixelDimensions": [
+        1179,
+        2556
+      ],
+      "sha256": "8c4f96c85416c52f1312e7392f4aec73aa17db4f4144c1fb3cda4ebe8e23240b"
+    },
+    {
+      "file": "combo-tier-3-080ms.png",
+      "project": "iphone-chromium",
+      "cssViewport": {
+        "width": 393,
+        "height": 852
+      },
+      "dpr": 3,
+      "pixelDimensions": [
+        1179,
+        2556
+      ],
+      "sha256": "c4202f8c7bd5040b5809b3af403f76c883c43d8213014544d0214c339964bf87"
+    },
+    {
+      "file": "combo-tier-3-240ms.png",
+      "project": "iphone-chromium",
+      "cssViewport": {
+        "width": 393,
+        "height": 852
+      },
+      "dpr": 3,
+      "pixelDimensions": [
+        1179,
+        2556
+      ],
+      "sha256": "f3c2e328d8e8956c310cd3d7d4ac677525de9f1542fedec12f55b669880ffb1c"
+    },
+    {
+      "file": "combo-tier-3-600ms.png",
+      "project": "iphone-chromium",
+      "cssViewport": {
+        "width": 393,
+        "height": 852
+      },
+      "dpr": 3,
+      "pixelDimensions": [
+        1179,
+        2556
+      ],
+      "sha256": "a40aefb5583d258c996ce607b7100796f45a89659b72733096920c1de00167ff"
+    }
+  ],
+  "committedBeforeAnimation": [
+    {
+      "project": "desktop-chromium",
+      "test": "V2 single-row: commit first, highlight, dissipate, then stop rendering",
+      "snapshot": {
+        "score": 81,
+        "cleared": 1,
+        "feedback": {
+          "reducedMotion": false,
+          "activeMoves": 1,
+          "invalid": false,
+          "framePending": true,
+          "moves": [
+            {
+              "revision": 1,
+              "age": 0,
+              "clearedCells": 8,
+              "rows": [
+                6
+              ],
+              "cols": [],
+              "tier": 0,
+              "particles": 16
+            }
+          ],
+          "preview": null
+        }
+      }
+    },
+    {
+      "project": "desktop-chromium",
+      "test": "V2 two-rows: commit first, highlight, dissipate, then stop rendering",
+      "snapshot": {
+        "score": 192,
+        "cleared": 2,
+        "feedback": {
+          "reducedMotion": false,
+          "activeMoves": 1,
+          "invalid": false,
+          "framePending": true,
+          "moves": [
+            {
+              "revision": 1,
+              "age": 0,
+              "clearedCells": 16,
+              "rows": [
+                5,
+                6
+              ],
+              "cols": [],
+              "tier": 0,
+              "particles": 24
+            }
+          ],
+          "preview": null
+        }
+      }
+    },
+    {
+      "project": "desktop-chromium",
+      "test": "V2 two-columns: commit first, highlight, dissipate, then stop rendering",
+      "snapshot": {
+        "score": 192,
+        "cleared": 2,
+        "feedback": {
+          "reducedMotion": false,
+          "activeMoves": 1,
+          "invalid": false,
+          "framePending": true,
+          "moves": [
+            {
+              "revision": 1,
+              "age": 0,
+              "clearedCells": 16,
+              "rows": [],
+              "cols": [
+                5,
+                6
+              ],
+              "tier": 0,
+              "particles": 24
+            }
+          ],
+          "preview": null
+        }
+      }
+    },
+    {
+      "project": "desktop-chromium",
+      "test": "V2 cross: commit first, highlight, dissipate, then stop rendering",
+      "snapshot": {
+        "score": 181,
+        "cleared": 2,
+        "feedback": {
+          "reducedMotion": false,
+          "activeMoves": 1,
+          "invalid": false,
+          "framePending": true,
+          "moves": [
+            {
+              "revision": 1,
+              "age": 0,
+              "clearedCells": 15,
+              "rows": [
+                6
+              ],
+              "cols": [
+                3
+              ],
+              "tier": 0,
+              "particles": 24
+            }
+          ],
+          "preview": null
+        }
+      }
+    },
+    {
+      "project": "iphone-chromium",
+      "test": "V2 single-row: commit first, highlight, dissipate, then stop rendering",
+      "snapshot": {
+        "score": 81,
+        "cleared": 1,
+        "feedback": {
+          "reducedMotion": false,
+          "activeMoves": 1,
+          "invalid": false,
+          "framePending": true,
+          "moves": [
+            {
+              "revision": 1,
+              "age": 0,
+              "clearedCells": 8,
+              "rows": [
+                6
+              ],
+              "cols": [],
+              "tier": 0,
+              "particles": 16
+            }
+          ],
+          "preview": null
+        }
+      }
+    },
+    {
+      "project": "iphone-chromium",
+      "test": "V2 two-rows: commit first, highlight, dissipate, then stop rendering",
+      "snapshot": {
+        "score": 192,
+        "cleared": 2,
+        "feedback": {
+          "reducedMotion": false,
+          "activeMoves": 1,
+          "invalid": false,
+          "framePending": true,
+          "moves": [
+            {
+              "revision": 1,
+              "age": 0,
+              "clearedCells": 16,
+              "rows": [
+                5,
+                6
+              ],
+              "cols": [],
+              "tier": 0,
+              "particles": 24
+            }
+          ],
+          "preview": null
+        }
+      }
+    },
+    {
+      "project": "iphone-chromium",
+      "test": "V2 two-columns: commit first, highlight, dissipate, then stop rendering",
+      "snapshot": {
+        "score": 192,
+        "cleared": 2,
+        "feedback": {
+          "reducedMotion": false,
+          "activeMoves": 1,
+          "invalid": false,
+          "framePending": true,
+          "moves": [
+            {
+              "revision": 1,
+              "age": 0,
+              "clearedCells": 16,
+              "rows": [],
+              "cols": [
+                5,
+                6
+              ],
+              "tier": 0,
+              "particles": 24
+            }
+          ],
+          "preview": null
+        }
+      }
+    },
+    {
+      "project": "iphone-chromium",
+      "test": "V2 cross: commit first, highlight, dissipate, then stop rendering",
+      "snapshot": {
+        "score": 181,
+        "cleared": 2,
+        "feedback": {
+          "reducedMotion": false,
+          "activeMoves": 1,
+          "invalid": false,
+          "framePending": true,
+          "moves": [
+            {
+              "revision": 1,
+              "age": 0,
+              "clearedCells": 15,
+              "rows": [
+                6
+              ],
+              "cols": [
+                3
+              ],
+              "tier": 0,
+              "particles": 24
+            }
+          ],
+          "preview": null
+        }
+      }
+    },
+    {
+      "project": "android-chromium",
+      "test": "V2 single-row: commit first, highlight, dissipate, then stop rendering",
+      "snapshot": {
+        "score": 81,
+        "cleared": 1,
+        "feedback": {
+          "reducedMotion": false,
+          "activeMoves": 1,
+          "invalid": false,
+          "framePending": true,
+          "moves": [
+            {
+              "revision": 1,
+              "age": 0,
+              "clearedCells": 8,
+              "rows": [
+                6
+              ],
+              "cols": [],
+              "tier": 0,
+              "particles": 16
+            }
+          ],
+          "preview": null
+        }
+      }
+    },
+    {
+      "project": "android-chromium",
+      "test": "V2 two-rows: commit first, highlight, dissipate, then stop rendering",
+      "snapshot": {
+        "score": 192,
+        "cleared": 2,
+        "feedback": {
+          "reducedMotion": false,
+          "activeMoves": 1,
+          "invalid": false,
+          "framePending": true,
+          "moves": [
+            {
+              "revision": 1,
+              "age": 0,
+              "clearedCells": 16,
+              "rows": [
+                5,
+                6
+              ],
+              "cols": [],
+              "tier": 0,
+              "particles": 24
+            }
+          ],
+          "preview": null
+        }
+      }
+    },
+    {
+      "project": "android-chromium",
+      "test": "V2 two-columns: commit first, highlight, dissipate, then stop rendering",
+      "snapshot": {
+        "score": 192,
+        "cleared": 2,
+        "feedback": {
+          "reducedMotion": false,
+          "activeMoves": 1,
+          "invalid": false,
+          "framePending": true,
+          "moves": [
+            {
+              "revision": 1,
+              "age": 0,
+              "clearedCells": 16,
+              "rows": [],
+              "cols": [
+                5,
+                6
+              ],
+              "tier": 0,
+              "particles": 24
+            }
+          ],
+          "preview": null
+        }
+      }
+    },
+    {
+      "project": "android-chromium",
+      "test": "V2 cross: commit first, highlight, dissipate, then stop rendering",
+      "snapshot": {
+        "score": 181,
+        "cleared": 2,
+        "feedback": {
+          "reducedMotion": false,
+          "activeMoves": 1,
+          "invalid": false,
+          "framePending": true,
+          "moves": [
+            {
+              "revision": 1,
+              "age": 0,
+              "clearedCells": 15,
+              "rows": [
+                6
+              ],
+              "cols": [
+                3
+              ],
+              "tier": 0,
+              "particles": 24
+            }
+          ],
+          "preview": null
+        }
+      }
+    }
+  ]
+}

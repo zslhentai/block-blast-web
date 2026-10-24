@@ -1,21 +1,23 @@
-import { type GameState, type GameAction, type Point } from '../logic/types';
+import { type GameState, type GameAction } from '../logic/types';
 import { gameReducer } from '../logic/reducer';
 import { canPlace, placeShapeOnBoard } from '../logic/placement';
 import { checkAndClearLines } from '../logic/lineClear';
 import { initCanvas, type CanvasConfig, clearCanvas } from './canvas';
-import { drawBoard, drawState, drawShapes, drawCell, drawPiece } from './draw';
+import { drawBoard, drawState, drawShapes } from './draw';
 import { type DragState, contains, projectDrag, toLocal } from './input';
+import { FeedbackTimeline, moveFeedback } from './feedback';
+import { drawFeedback, drawPreview } from './effects';
 
 interface RendererOptions {
   onStateChange: (state: GameState) => void;
-  onFeedback: (kind: 'place' | 'clear' | 'invalid', points: number) => void;
+  onFeedback: (kind: 'place' | 'clear' | 'invalid', points: number, tier: number) => void;
 }
 export class GameRenderer {
   private readonly ctx: CanvasRenderingContext2D;
   private config: CanvasConfig;
   private drag: DragState | null = null;
   private frame = 0;
-  private flash: { cells: Point[]; until: number } | null = null;
+  private readonly feedback = new FeedbackTimeline();
   private reducedMotion = false;
   private viewport = { width: window.innerWidth, height: window.innerHeight, dpr: window.devicePixelRatio };
   private readonly observer: ResizeObserver;
@@ -36,19 +38,40 @@ export class GameRenderer {
   }
   getState(): GameState { return structuredClone(this.state); }
   getLayout(): CanvasConfig { return structuredClone(this.config); }
-  setReducedMotion(value: boolean): void { this.reducedMotion = value; if (value) this.flash = null; this.requestRender(); }
+  getFeedback() {
+    const now = performance.now();
+    const { frames, rejected } = this.feedback.sample(now);
+    const preview = this.drag ? projectDrag(this.drag, this.config) : null;
+    return { reducedMotion: this.reducedMotion, activeMoves: frames.length, invalid: rejected !== null,
+      framePending: this.frame !== 0,
+      moves: frames.map(f => ({ revision: f.move.revision, age: now - f.start, clearedCells: f.move.cleared.length,
+        rows: [...f.move.rows], cols: [...f.move.cols], tier: f.move.tier, particles: f.particles.length })),
+      preview: preview && this.drag ? { row: preview.row, col: preview.col,
+        x: preview.x, y: preview.y, valid: canPlace(this.state.board, this.drag.shape, preview.row, preview.col) } : null };
+  }
+  setReducedMotion(value: boolean): void {
+    this.reducedMotion = value; if (value) this.feedback.reset(); this.requestRender();
+  }
   dispatch(action: GameAction): void {
     this.cancelDrag();
+    if (action.type !== 'PLACE_SHAPE') {
+      this.feedback.reset(); cancelAnimationFrame(this.frame); this.frame = 0;
+    }
     const before = this.state;
     const after = gameReducer(before, action);
-    if (after === before) return;
+    if (after === before) { this.requestRender(); return; }
     this.state = after;
-    this.flash = null;
     this.options.onStateChange(this.getState());
+    const move = moveFeedback(before, after, action);
+    if (move) {
+      if (!this.reducedMotion && after.status === 'playing') this.feedback.add(move, performance.now());
+      this.options.onFeedback(move.cleared.length ? 'clear' : 'place', move.points, move.tier);
+    }
+    if (after.status !== 'playing') this.feedback.reset();
     this.requestRender();
   }
   private resize = (): void => {
-    this.cancelDrag(); this.flash = null;
+    this.cancelDrag(); this.feedback.reset();
     this.config = initCanvas(this.canvas); this.requestRender();
     this.viewport = { width: window.innerWidth, height: window.innerHeight, dpr: window.devicePixelRatio };
   };
@@ -67,7 +90,8 @@ export class GameRenderer {
   private onMove = (e: PointerEvent): void => {
     if (!this.drag || this.drag.pointerId !== e.pointerId) return;
     e.preventDefault();
-    const { x, y } = this.local(e); this.drag.currentX = x; this.drag.currentY = y;
+    const latest = e.getCoalescedEvents?.().at(-1) ?? e;
+    const { x, y } = this.local(latest); this.drag.currentX = x; this.drag.currentY = y;
     this.requestRender();
   };
   private onUp = (e: PointerEvent): void => {
@@ -82,15 +106,11 @@ export class GameRenderer {
     const { x, y } = this.local(e); drag.currentX = x; drag.currentY = y;
     const { row, col } = projectDrag(drag, this.config);
     const before = this.state;
-    let cleared: Point[] = [];
-    if (canPlace(before.board, drag.shape, row, col)) {
-      cleared = checkAndClearLines(placeShapeOnBoard(before.board, drag.shape, row, col)).cells;
-    }
     this.dispatch({ type: 'PLACE_SHAPE', slot: drag.slot, shapeId: drag.shape.id, revision: drag.revision, row, col });
-    if (this.state !== before) {
-      if (cleared.length && !this.reducedMotion) this.flash = { cells: cleared, until: performance.now() + 180 };
-      this.options.onFeedback(cleared.length ? 'clear' : 'place', this.state.score - before.score);
-    } else this.options.onFeedback('invalid', 0);
+    if (this.state === before) {
+      if (!this.reducedMotion) this.feedback.reject(drag.slot, performance.now());
+      this.options.onFeedback('invalid', 0, 0);
+    }
     this.requestRender();
   };
   private onCancel = (e: PointerEvent): void => { if (this.drag?.pointerId === e.pointerId) this.cancelDrag(); };
@@ -103,34 +123,24 @@ export class GameRenderer {
     }
   };
   private requestRender(): void {
+    if (document.visibilityState === 'hidden') return;
     if (!this.frame) this.frame = requestAnimationFrame(() => { this.frame = 0; this.render(); });
   }
   render(): void {
     clearCanvas(this.ctx, this.config.width, this.config.height);
     drawBoard(this.ctx, this.config); drawState(this.ctx, this.state, this.config);
+    const active = drawFeedback(this.ctx, this.state, this.config, this.feedback, performance.now(), this.drag !== null);
     drawShapes(this.ctx, this.state.shapes, this.config, this.drag?.shape.id);
     if (this.drag) {
       const target = projectDrag(this.drag, this.config);
       const valid = canPlace(this.state.board, this.drag.shape, target.row, target.col);
-      if (valid) {
-        const clear = checkAndClearLines(placeShapeOnBoard(this.state.board, this.drag.shape, target.row, target.col));
-        for (const cell of clear.cells) drawCell(this.ctx, cell.row, cell.col, this.drag.shape.color, this.config, 0.28);
-        for (const [r, c] of this.drag.shape.cells) drawCell(this.ctx, target.row + r, target.col + c, this.drag.shape.color, this.config, 0.45);
-      }
-      drawPiece(this.ctx, this.drag.shape, target.x, target.y, this.config.cellSize, valid ? 0.95 : 0.65);
+      const clear = valid ? checkAndClearLines(placeShapeOnBoard(this.state.board, this.drag.shape, target.row, target.col)).cells : [];
+      drawPreview(this.ctx, this.drag.shape, target, valid, clear, this.config);
     }
-    if (this.flash) {
-      const remaining = this.flash.until - performance.now();
-      if (remaining > 0) {
-        this.ctx.fillStyle = `rgba(255,255,255,${remaining / 180 * 0.4})`;
-        for (const { row, col } of this.flash.cells) this.ctx.fillRect(this.config.gridOffsetX + col * this.config.cellSize,
-          this.config.gridOffsetY + row * this.config.cellSize, this.config.cellSize, this.config.cellSize);
-        this.requestRender();
-      } else this.flash = null;
-    }
+    if (active && this.state.status === 'playing') this.requestRender();
   }
   destroy(): void {
-    this.cancelDrag(); cancelAnimationFrame(this.frame); this.frame = 0; this.observer.disconnect();
+    this.cancelDrag(); this.feedback.reset(); cancelAnimationFrame(this.frame); this.frame = 0; this.observer.disconnect();
     this.canvas.removeEventListener('pointerdown', this.onDown); this.canvas.removeEventListener('pointermove', this.onMove);
     this.canvas.removeEventListener('pointerup', this.onUp); this.canvas.removeEventListener('pointercancel', this.onCancel);
     this.canvas.removeEventListener('lostpointercapture', this.onLostCapture);

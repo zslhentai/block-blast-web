@@ -3,6 +3,7 @@ import { GameRenderer } from './renderer/index';
 import { createInitialState } from './logic/state';
 import { type GameState } from './logic/types';
 import { soundManager } from './audio/sounds';
+import { MOTION } from './renderer/motion';
 import { GameStorage, DEFAULT_SETTINGS, STORAGE_KEY, parseSavedGame, type Settings, type StorageLike } from './storage/localStorage';
 
 function element<T extends HTMLElement>(id: string): T {
@@ -23,8 +24,8 @@ function init(): void {
   } catch { /* The game can still run if session storage is unavailable. */ }
   const storage = new GameStorage(browserStorage, writerId);
   const saved = storage.load();
-  let settings: Settings = saved?.settings ?? { ...DEFAULT_SETTINGS,
-    reducedMotion: window.matchMedia('(prefers-reduced-motion: reduce)').matches };
+  const motionPreference = window.matchMedia('(prefers-reduced-motion: reduce)');
+  let settings: Settings = saved?.settings ?? { ...DEFAULT_SETTINGS, reducedMotion: motionPreference.matches };
   const state = saved?.state ?? createInitialState(storage.best(), randomSeed());
   if (state.status === 'playing') state.status = 'paused';
   let externalUpdate = false;
@@ -43,6 +44,7 @@ function init(): void {
     element('best-score').textContent = String(next.highScore);
     element('combo').textContent = next.combo ? `连击 ×${next.combo}${next.dryMoves ? ` · 已间隔 ${next.dryMoves} 步` : ''}` : '';
     document.body.dataset.status = next.status;
+    if (next.status !== 'playing') { clearTimeout(feedbackTimer); feedback.textContent = ''; soundManager.suspend(); }
     if (next.status === 'gameover') {
       menu.close(); settingsDialog.close();
       element('final-score').textContent = String(next.score);
@@ -52,14 +54,16 @@ function init(): void {
   };
   const renderer = new GameRenderer(element<HTMLCanvasElement>('game-canvas'), state, {
     onStateChange: next => { sync(next); save(next); },
-    onFeedback: (kind, points) => {
+    onFeedback: (kind, points, tier) => {
+      if (renderer.getState().status !== 'playing') return;
       soundManager.play(kind); clearTimeout(feedbackTimer);
-      feedback.textContent = kind === 'invalid' ? '这里放不下，换个位置试试' : kind === 'clear' ? `消除！+${points}` : `+${points}`;
-      feedbackTimer = setTimeout(() => { feedback.textContent = ''; }, 1100);
+      feedback.textContent = kind === 'invalid' ? '这里放不下，换个位置试试' : kind === 'clear'
+        ? `${tier ? '连击！' : '消除！'}+${points}` : `+${points}`;
+      feedbackTimer = setTimeout(() => { feedback.textContent = ''; }, MOTION.feedbackTextMs);
     },
   });
   Object.defineProperty(window, 'blockBlast', { configurable: true,
-    value: Object.freeze({ getState: () => renderer.getState(), getLayout: () => renderer.getLayout() }) });
+    value: Object.freeze({ getState: () => renderer.getState(), getLayout: () => renderer.getLayout(), getFeedback: () => renderer.getFeedback() }) });
   const showMenu = (): void => {
     const current = renderer.getState();
     element('menu-title').textContent = current.status === 'idle' ? '方块小憩' : '休息一下';
@@ -98,12 +102,14 @@ function init(): void {
   for (const dialog of [menu, over]) dialog.addEventListener('cancel', e => e.preventDefault());
   const sound = element<HTMLInputElement>('sound'); const reduced = element<HTMLInputElement>('reduced-motion');
   sound.checked = settings.soundEnabled; reduced.checked = settings.reducedMotion;
-  soundManager.setEnabled(settings.soundEnabled); renderer.setReducedMotion(settings.reducedMotion);
+  const applyMotionPreference = (): void => renderer.setReducedMotion(settings.reducedMotion || motionPreference.matches);
+  soundManager.setEnabled(settings.soundEnabled); applyMotionPreference();
+  motionPreference.addEventListener('change', applyMotionPreference);
   sound.addEventListener('change', () => {
     settings = { ...settings, soundEnabled: sound.checked }; soundManager.setEnabled(sound.checked); soundManager.init(); save(renderer.getState());
   });
   reduced.addEventListener('change', () => {
-    settings = { ...settings, reducedMotion: reduced.checked }; renderer.setReducedMotion(reduced.checked); save(renderer.getState());
+    settings = { ...settings, reducedMotion: reduced.checked }; applyMotionPreference(); save(renderer.getState());
   });
   element('game-canvas').addEventListener('pointerdown', () => soundManager.init());
   const suspend = (): void => {
