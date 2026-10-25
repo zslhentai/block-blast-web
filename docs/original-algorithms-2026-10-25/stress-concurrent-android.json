@@ -1,0 +1,188 @@
+{
+  "project": "android-chromium",
+  "browser": "154.0.8037.57",
+  "placements": 1500,
+  "restarts": 349,
+  "heaps": [
+    2121672,
+    2590676,
+    2718300,
+    2744756
+  ],
+  "postGCHeapGrowth": 623084,
+  "render": {
+    "draws": 568,
+    "p50Ms": 0.6999999999534339,
+    "p95Ms": 5.5,
+    "maxMs": 38.0999999998603,
+    "over16ms": 6
+  },
+  "inputHandlers": {
+    "samples": 1500,
+    "p50Ms": 0.6000000000931323,
+    "p95Ms": 4.599999999860302,
+    "maxMs": 41.4000000001397
+  },
+  "frameIntervals": {
+    "p50Ms": 16.700000000000045,
+    "p95Ms": 50
+  },
+  "longTasksAll": 34,
+  "maxLongTaskAll": 96,
+  "driverLongTasks": [
+    {
+      "start": 599.5,
+      "duration": 52
+    },
+    {
+      "start": 3598.7000000001863,
+      "duration": 60
+    },
+    {
+      "start": 3692.3000000000466,
+      "duration": 52
+    },
+    {
+      "start": 3890.4000000001397,
+      "duration": 52
+    },
+    {
+      "start": 4408.40000000014,
+      "duration": 50
+    },
+    {
+      "start": 4606.90000000014,
+      "duration": 50
+    },
+    {
+      "start": 5778.800000000047,
+      "duration": 63
+    },
+    {
+      "start": 5895.90000000014,
+      "duration": 50
+    },
+    {
+      "start": 6291.600000000093,
+      "duration": 55
+    },
+    {
+      "start": 8194.40000000014,
+      "duration": 54
+    },
+    {
+      "start": 8404.200000000186,
+      "duration": 53
+    },
+    {
+      "start": 8495.800000000047,
+      "duration": 54
+    },
+    {
+      "start": 8605,
+      "duration": 56
+    },
+    {
+      "start": 8706.90000000014,
+      "duration": 55
+    },
+    {
+      "start": 8902.40000000014,
+      "duration": 53
+    },
+    {
+      "start": 9196,
+      "duration": 61
+    },
+    {
+      "start": 9407,
+      "duration": 50
+    },
+    {
+      "start": 9486.100000000093,
+      "duration": 55
+    },
+    {
+      "start": 9602.90000000014,
+      "duration": 50
+    },
+    {
+      "start": 9697.700000000186,
+      "duration": 53
+    },
+    {
+      "start": 9900.600000000093,
+      "duration": 57
+    },
+    {
+      "start": 11300.800000000047,
+      "duration": 52
+    },
+    {
+      "start": 11891,
+      "duration": 55
+    },
+    {
+      "start": 11998.300000000047,
+      "duration": 62
+    },
+    {
+      "start": 12398.40000000014,
+      "duration": 54
+    },
+    {
+      "start": 12592.100000000093,
+      "duration": 53
+    },
+    {
+      "start": 12694.90000000014,
+      "duration": 51
+    },
+    {
+      "start": 12890.5,
+      "duration": 52
+    },
+    {
+      "start": 13598.800000000047,
+      "duration": 52
+    },
+    {
+      "start": 14987,
+      "duration": 59
+    },
+    {
+      "start": 15191.100000000093,
+      "duration": 52
+    },
+    {
+      "start": 15286.300000000047,
+      "duration": 60
+    },
+    {
+      "start": 15491.800000000047,
+      "duration": 52
+    }
+  ],
+  "driverWindows": [
+    [
+      510.9000000001397,
+      4684.100000000093
+    ],
+    [
+      5651.200000000186,
+      10197
+    ],
+    [
+      11109.90000000014,
+      15701.100000000093
+    ]
+  ],
+  "canvasCreated": 1,
+  "userAgent": "Mozilla/5.0 (Linux; Android 14; Pixel 7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/145.0.7632.6 Mobile Safari/537.36",
+  "dpr": 2.625,
+  "viewport": {
+    "width": 412,
+    "height": 839
+  },
+  "limits": "Real-clock Linux Chromium under automation, not device FPS. Synthetic pointer stress, native touch is covered separately. Driver long tasks exclude loading and forced-GC windows. Heap includes browser warm-up and this instrumentation; three batches are a bounded probe, not a 30-minute phone endurance test."
+}

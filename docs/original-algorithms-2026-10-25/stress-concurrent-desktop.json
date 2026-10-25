@@ -1,0 +1,120 @@
+{
+  "project": "desktop-chromium",
+  "browser": "154.0.8037.57",
+  "placements": 1500,
+  "restarts": 348,
+  "heaps": [
+    2090624,
+    2560008,
+    2654756,
+    2712664
+  ],
+  "postGCHeapGrowth": 622040,
+  "render": {
+    "draws": 568,
+    "p50Ms": 0.6000000000931323,
+    "p95Ms": 3.1000000000931323,
+    "maxMs": 39.39999999990687,
+    "over16ms": 4
+  },
+  "inputHandlers": {
+    "samples": 1500,
+    "p50Ms": 0.6000000000931323,
+    "p95Ms": 5.7999999998137355,
+    "maxMs": 41.10000000009313
+  },
+  "frameIntervals": {
+    "p50Ms": 16.700000000000045,
+    "p95Ms": 50
+  },
+  "longTasksAll": 17,
+  "maxLongTaskAll": 247,
+  "driverLongTasks": [
+    {
+      "start": 1127.1999999999534,
+      "duration": 70
+    },
+    {
+      "start": 1226.2999999998137,
+      "duration": 51
+    },
+    {
+      "start": 2917.6999999999534,
+      "duration": 53
+    },
+    {
+      "start": 3008.2999999998137,
+      "duration": 64
+    },
+    {
+      "start": 4897.399999999907,
+      "duration": 76
+    },
+    {
+      "start": 7015.09999999986,
+      "duration": 50
+    },
+    {
+      "start": 7124.799999999814,
+      "duration": 60
+    },
+    {
+      "start": 7221.899999999907,
+      "duration": 59
+    },
+    {
+      "start": 7628,
+      "duration": 56
+    },
+    {
+      "start": 7921.199999999953,
+      "duration": 54
+    },
+    {
+      "start": 9910,
+      "duration": 57
+    },
+    {
+      "start": 10005.299999999814,
+      "duration": 59
+    },
+    {
+      "start": 13024,
+      "duration": 50
+    },
+    {
+      "start": 13623.799999999814,
+      "duration": 52
+    },
+    {
+      "start": 15325.699999999953,
+      "duration": 52
+    },
+    {
+      "start": 15912.09999999986,
+      "duration": 53
+    }
+  ],
+  "driverWindows": [
+    [
+      1068.7999999998137,
+      5524.5
+    ],
+    [
+      6415.09999999986,
+      11081.09999999986
+    ],
+    [
+      11978.199999999953,
+      15927.899999999907
+    ]
+  ],
+  "canvasCreated": 1,
+  "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/145.0.7632.6 Safari/537.36",
+  "dpr": 1,
+  "viewport": {
+    "width": 1280,
+    "height": 720
+  },
+  "limits": "Real-clock Linux Chromium under automation, not device FPS. Synthetic pointer stress, native touch is covered separately. Driver long tasks exclude loading and forced-GC windows. Heap includes browser warm-up and this instrumentation; three batches are a bounded probe, not a 30-minute phone endurance test."
+}

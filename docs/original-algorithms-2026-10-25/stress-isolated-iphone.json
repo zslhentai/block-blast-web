@@ -1,0 +1,60 @@
+{
+  "project": "iphone-chromium",
+  "browser": "154.0.8037.57",
+  "placements": 1500,
+  "restarts": 352,
+  "heaps": [
+    2121656,
+    2627828,
+    2684460,
+    2728236
+  ],
+  "postGCHeapGrowth": 606580,
+  "render": {
+    "draws": 568,
+    "p50Ms": 0.5999999998603016,
+    "p95Ms": 1.4000000001396984,
+    "maxMs": 10.600000000093132,
+    "over16ms": 0
+  },
+  "inputHandlers": {
+    "samples": 1500,
+    "p50Ms": 0.5,
+    "p95Ms": 2.699999999953434,
+    "maxMs": 35.4000000001397
+  },
+  "frameIntervals": {
+    "p50Ms": 16.699999999999818,
+    "p95Ms": 16.800000000000182
+  },
+  "longTasksAll": 2,
+  "maxLongTaskAll": 198,
+  "driverLongTasks": [
+    {
+      "start": 5132.800000000047,
+      "duration": 63
+    }
+  ],
+  "driverWindows": [
+    [
+      862.3000000000466,
+      4106.300000000047
+    ],
+    [
+      4974.600000000093,
+      8118.600000000093
+    ],
+    [
+      8964.199999999953,
+      12070.100000000093
+    ]
+  ],
+  "canvasCreated": 1,
+  "userAgent": "Mozilla/5.0 (iPhone; CPU iPhone OS 16_0 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/26.0 Mobile/15E148 Safari/604.1",
+  "dpr": 3,
+  "viewport": {
+    "width": 390,
+    "height": 664
+  },
+  "limits": "Real-clock Linux Chromium under automation, not device FPS. Synthetic pointer stress, native touch is covered separately. Driver long tasks exclude loading and forced-GC windows. Heap includes browser warm-up and this instrumentation; three batches are a bounded probe, not a 30-minute phone endurance test."
+}

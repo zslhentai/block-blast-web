@@ -1,0 +1,1238 @@
+[
+  {
+    "device": "Desktop Chrome",
+    "browser": "154.0.8037.57",
+    "samples": 80,
+    "throttle": 4,
+    "medianMs": 0.8000000000465661,
+    "p95Ms": 2.300000000046566,
+    "maxMs": 3.6000000000931323,
+    "samplesDetail": [
+      {
+        "ms": 2.9000000001396984,
+        "work": 18,
+        "mode": "random"
+      },
+      {
+        "ms": 1.5999999998603016,
+        "work": 27,
+        "mode": "random"
+      },
+      {
+        "ms": 1.6999999999534339,
+        "work": 31,
+        "mode": "random"
+      },
+      {
+        "ms": 1.6000000000931323,
+        "work": 34,
+        "mode": "random"
+      },
+      {
+        "ms": 0.6000000000931323,
+        "work": 205,
+        "mode": "random"
+      },
+      {
+        "ms": 2.8999999999068677,
+        "work": 512,
+        "mode": "random"
+      },
+      {
+        "ms": 2.9000000001396984,
+        "work": 512,
+        "mode": "random"
+      },
+      {
+        "ms": 3.6000000000931323,
+        "work": 512,
+        "mode": "random"
+      },
+      {
+        "ms": 1.2999999998137355,
+        "work": 18,
+        "mode": "random"
+      },
+      {
+        "ms": 0.7999999998137355,
+        "work": 20,
+        "mode": "random"
+      },
+      {
+        "ms": 1,
+        "work": 83,
+        "mode": "random"
+      },
+      {
+        "ms": 0.8000000000465661,
+        "work": 158,
+        "mode": "random"
+      },
+      {
+        "ms": 1.5,
+        "work": 418,
+        "mode": "random"
+      },
+      {
+        "ms": 1,
+        "work": 512,
+        "mode": "random"
+      },
+      {
+        "ms": 1.1999999999534339,
+        "work": 245,
+        "mode": "random"
+      },
+      {
+        "ms": 1.4000000001396984,
+        "work": 512,
+        "mode": "random"
+      },
+      {
+        "ms": 1.0999999998603016,
+        "work": 18,
+        "mode": "random"
+      },
+      {
+        "ms": 1.6999999999534339,
+        "work": 30,
+        "mode": "random"
+      },
+      {
+        "ms": 2.0999999998603016,
+        "work": 31,
+        "mode": "random"
+      },
+      {
+        "ms": 0.10000000009313226,
+        "work": 81,
+        "mode": "random"
+      },
+      {
+        "ms": 1.5,
+        "work": 375,
+        "mode": "random"
+      },
+      {
+        "ms": 1,
+        "work": 446,
+        "mode": "random"
+      },
+      {
+        "ms": 0.8999999999068677,
+        "work": 512,
+        "mode": "random"
+      },
+      {
+        "ms": 0.6999999999534339,
+        "work": 468,
+        "mode": "random"
+      },
+      {
+        "ms": 0.8000000000465661,
+        "work": 18,
+        "mode": "random"
+      },
+      {
+        "ms": 1,
+        "work": 33,
+        "mode": "random"
+      },
+      {
+        "ms": 0.19999999995343387,
+        "work": 77,
+        "mode": "random"
+      },
+      {
+        "ms": 0.7999999998137355,
+        "work": 234,
+        "mode": "random"
+      },
+      {
+        "ms": 0.5,
+        "work": 494,
+        "mode": "random"
+      },
+      {
+        "ms": 1.7999999998137355,
+        "work": 512,
+        "mode": "random"
+      },
+      {
+        "ms": 0.20000000018626451,
+        "work": 512,
+        "mode": "random"
+      },
+      {
+        "ms": 2.300000000046566,
+        "work": 512,
+        "mode": "random"
+      },
+      {
+        "ms": 0.7999999998137355,
+        "work": 18,
+        "mode": "random"
+      },
+      {
+        "ms": 1.1999999999534339,
+        "work": 25,
+        "mode": "random"
+      },
+      {
+        "ms": 0.8000000000465661,
+        "work": 80,
+        "mode": "random"
+      },
+      {
+        "ms": 0.8000000000465661,
+        "work": 85,
+        "mode": "random"
+      },
+      {
+        "ms": 0.19999999995343387,
+        "work": 80,
+        "mode": "random"
+      },
+      {
+        "ms": 2.1000000000931323,
+        "work": 512,
+        "mode": "random"
+      },
+      {
+        "ms": 0.8000000000465661,
+        "work": 512,
+        "mode": "random"
+      },
+      {
+        "ms": 1,
+        "work": 512,
+        "mode": "random"
+      },
+      {
+        "ms": 0.09999999986030161,
+        "work": 18,
+        "mode": "random"
+      },
+      {
+        "ms": 0.10000000009313226,
+        "work": 26,
+        "mode": "random"
+      },
+      {
+        "ms": 2.0999999998603016,
+        "work": 35,
+        "mode": "random"
+      },
+      {
+        "ms": 0.5,
+        "work": 164,
+        "mode": "random"
+      },
+      {
+        "ms": 0.6999999999534339,
+        "work": 210,
+        "mode": "random"
+      },
+      {
+        "ms": 0.10000000009313226,
+        "work": 479,
+        "mode": "random"
+      },
+      {
+        "ms": 0.10000000009313226,
+        "work": 512,
+        "mode": "random"
+      },
+      {
+        "ms": 1,
+        "work": 372,
+        "mode": "random"
+      },
+      {
+        "ms": 1.4000000001396984,
+        "work": 18,
+        "mode": "random"
+      },
+      {
+        "ms": 0.8000000000465661,
+        "work": 23,
+        "mode": "random"
+      },
+      {
+        "ms": 1.1999999999534339,
+        "work": 35,
+        "mode": "random"
+      },
+      {
+        "ms": 0.5,
+        "work": 236,
+        "mode": "random"
+      },
+      {
+        "ms": 0.5999999998603016,
+        "work": 193,
+        "mode": "random"
+      },
+      {
+        "ms": 0.8000000000465661,
+        "work": 333,
+        "mode": "random"
+      },
+      {
+        "ms": 1.1999999999534339,
+        "work": 250,
+        "mode": "random"
+      },
+      {
+        "ms": 0,
+        "work": 219,
+        "mode": "random"
+      },
+      {
+        "ms": 1.6000000000931323,
+        "work": 18,
+        "mode": "random"
+      },
+      {
+        "ms": 0.8000000000465661,
+        "work": 26,
+        "mode": "random"
+      },
+      {
+        "ms": 0.8000000000465661,
+        "work": 79,
+        "mode": "random"
+      },
+      {
+        "ms": 1.0999999998603016,
+        "work": 82,
+        "mode": "random"
+      },
+      {
+        "ms": 0.5,
+        "work": 224,
+        "mode": "random"
+      },
+      {
+        "ms": 0.09999999986030161,
+        "work": 181,
+        "mode": "random"
+      },
+      {
+        "ms": 2.199999999953434,
+        "work": 512,
+        "mode": "random"
+      },
+      {
+        "ms": 1,
+        "work": 463,
+        "mode": "random"
+      },
+      {
+        "ms": 1.3999999999068677,
+        "work": 18,
+        "mode": "random"
+      },
+      {
+        "ms": 0.8000000000465661,
+        "work": 25,
+        "mode": "random"
+      },
+      {
+        "ms": 0.6999999999534339,
+        "work": 80,
+        "mode": "random"
+      },
+      {
+        "ms": 1.5,
+        "work": 82,
+        "mode": "random"
+      },
+      {
+        "ms": 0.09999999986030161,
+        "work": 325,
+        "mode": "random"
+      },
+      {
+        "ms": 1.8999999999068677,
+        "work": 253,
+        "mode": "random"
+      },
+      {
+        "ms": 1,
+        "work": 512,
+        "mode": "random"
+      },
+      {
+        "ms": 0.19999999995343387,
+        "work": 512,
+        "mode": "random"
+      },
+      {
+        "ms": 0.5,
+        "work": 18,
+        "mode": "random"
+      },
+      {
+        "ms": 0.8000000000465661,
+        "work": 36,
+        "mode": "random"
+      },
+      {
+        "ms": 0.6000000000931323,
+        "work": 84,
+        "mode": "random"
+      },
+      {
+        "ms": 0.6999999999534339,
+        "work": 82,
+        "mode": "random"
+      },
+      {
+        "ms": 0.8999999999068677,
+        "work": 327,
+        "mode": "random"
+      },
+      {
+        "ms": 0.8000000000465661,
+        "work": 512,
+        "mode": "random"
+      },
+      {
+        "ms": 0.19999999995343387,
+        "work": 512,
+        "mode": "random"
+      },
+      {
+        "ms": 1.8999999999068677,
+        "work": 512,
+        "mode": "random"
+      }
+    ],
+    "limits": "Linux Chromium CPU throttling and emulated viewport, not actual device/Safari timing."
+  },
+  {
+    "device": "iPhone 14",
+    "browser": "154.0.8037.57",
+    "samples": 80,
+    "throttle": 4,
+    "medianMs": 0.7999999998137355,
+    "p95Ms": 3.1000000000931323,
+    "maxMs": 6.2000000001862645,
+    "samplesDetail": [
+      {
+        "ms": 6.100000000093132,
+        "work": 14,
+        "mode": "random"
+      },
+      {
+        "ms": 1.6999999999534339,
+        "work": 19,
+        "mode": "random"
+      },
+      {
+        "ms": 0.19999999995343387,
+        "work": 19,
+        "mode": "random"
+      },
+      {
+        "ms": 0.20000000018626451,
+        "work": 31,
+        "mode": "random"
+      },
+      {
+        "ms": 3.1000000000931323,
+        "work": 113,
+        "mode": "random"
+      },
+      {
+        "ms": 1.5999999998603016,
+        "work": 122,
+        "mode": "random"
+      },
+      {
+        "ms": 1.5,
+        "work": 156,
+        "mode": "random"
+      },
+      {
+        "ms": 6.2000000001862645,
+        "work": 512,
+        "mode": "random"
+      },
+      {
+        "ms": 2.4000000001396984,
+        "work": 14,
+        "mode": "random"
+      },
+      {
+        "ms": 1.4000000001396984,
+        "work": 15,
+        "mode": "random"
+      },
+      {
+        "ms": 2.699999999953434,
+        "work": 25,
+        "mode": "random"
+      },
+      {
+        "ms": 0.19999999995343387,
+        "work": 28,
+        "mode": "random"
+      },
+      {
+        "ms": 1.9000000001396984,
+        "work": 103,
+        "mode": "random"
+      },
+      {
+        "ms": 0.5999999998603016,
+        "work": 112,
+        "mode": "random"
+      },
+      {
+        "ms": 1.3000000000465661,
+        "work": 113,
+        "mode": "random"
+      },
+      {
+        "ms": 0.9000000001396984,
+        "work": 267,
+        "mode": "random"
+      },
+      {
+        "ms": 0.19999999995343387,
+        "work": 14,
+        "mode": "random"
+      },
+      {
+        "ms": 3.3999999999068677,
+        "work": 17,
+        "mode": "random"
+      },
+      {
+        "ms": 0.6999999999534339,
+        "work": 22,
+        "mode": "random"
+      },
+      {
+        "ms": 0.8000000000465661,
+        "work": 35,
+        "mode": "random"
+      },
+      {
+        "ms": 1.0999999998603016,
+        "work": 120,
+        "mode": "random"
+      },
+      {
+        "ms": 0.8999999999068677,
+        "work": 123,
+        "mode": "random"
+      },
+      {
+        "ms": 0.09999999986030161,
+        "work": 114,
+        "mode": "random"
+      },
+      {
+        "ms": 1.9000000001396984,
+        "work": 512,
+        "mode": "random"
+      },
+      {
+        "ms": 0.19999999995343387,
+        "work": 14,
+        "mode": "random"
+      },
+      {
+        "ms": 0.6000000000931323,
+        "work": 28,
+        "mode": "random"
+      },
+      {
+        "ms": 1,
+        "work": 22,
+        "mode": "random"
+      },
+      {
+        "ms": 0.6999999999534339,
+        "work": 48,
+        "mode": "random"
+      },
+      {
+        "ms": 0.8999999999068677,
+        "work": 122,
+        "mode": "random"
+      },
+      {
+        "ms": 1,
+        "work": 431,
+        "mode": "random"
+      },
+      {
+        "ms": 0.8999999999068677,
+        "work": 156,
+        "mode": "random"
+      },
+      {
+        "ms": 0.19999999995343387,
+        "work": 215,
+        "mode": "random"
+      },
+      {
+        "ms": 0.09999999986030161,
+        "work": 14,
+        "mode": "random"
+      },
+      {
+        "ms": 1.3999999999068677,
+        "work": 19,
+        "mode": "random"
+      },
+      {
+        "ms": 0.6999999999534339,
+        "work": 22,
+        "mode": "random"
+      },
+      {
+        "ms": 0.8000000000465661,
+        "work": 30,
+        "mode": "random"
+      },
+      {
+        "ms": 1.7999999998137355,
+        "work": 44,
+        "mode": "random"
+      },
+      {
+        "ms": 1.3000000000465661,
+        "work": 110,
+        "mode": "random"
+      },
+      {
+        "ms": 1,
+        "work": 311,
+        "mode": "random"
+      },
+      {
+        "ms": 0.19999999995343387,
+        "work": 276,
+        "mode": "random"
+      },
+      {
+        "ms": 0.19999999995343387,
+        "work": 14,
+        "mode": "random"
+      },
+      {
+        "ms": 0,
+        "work": 17,
+        "mode": "random"
+      },
+      {
+        "ms": 0.30000000004656613,
+        "work": 28,
+        "mode": "random"
+      },
+      {
+        "ms": 0.19999999995343387,
+        "work": 31,
+        "mode": "random"
+      },
+      {
+        "ms": 0.10000000009313226,
+        "work": 47,
+        "mode": "random"
+      },
+      {
+        "ms": 0.19999999995343387,
+        "work": 119,
+        "mode": "random"
+      },
+      {
+        "ms": 3.300000000046566,
+        "work": 213,
+        "mode": "random"
+      },
+      {
+        "ms": 1.1000000000931323,
+        "work": 149,
+        "mode": "random"
+      },
+      {
+        "ms": 0.19999999995343387,
+        "work": 14,
+        "mode": "random"
+      },
+      {
+        "ms": 1.1999999999534339,
+        "work": 16,
+        "mode": "random"
+      },
+      {
+        "ms": 1.3999999999068677,
+        "work": 29,
+        "mode": "random"
+      },
+      {
+        "ms": 0.09999999986030161,
+        "work": 41,
+        "mode": "random"
+      },
+      {
+        "ms": 0.6000000000931323,
+        "work": 32,
+        "mode": "random"
+      },
+      {
+        "ms": 0.6999999999534339,
+        "work": 111,
+        "mode": "random"
+      },
+      {
+        "ms": 0.5,
+        "work": 131,
+        "mode": "random"
+      },
+      {
+        "ms": 0.39999999990686774,
+        "work": 120,
+        "mode": "random"
+      },
+      {
+        "ms": 0.10000000009313226,
+        "work": 14,
+        "mode": "random"
+      },
+      {
+        "ms": 0.10000000009313226,
+        "work": 20,
+        "mode": "random"
+      },
+      {
+        "ms": 1.6999999999534339,
+        "work": 20,
+        "mode": "random"
+      },
+      {
+        "ms": 1,
+        "work": 33,
+        "mode": "random"
+      },
+      {
+        "ms": 0.09999999986030161,
+        "work": 50,
+        "mode": "random"
+      },
+      {
+        "ms": 1,
+        "work": 59,
+        "mode": "random"
+      },
+      {
+        "ms": 0,
+        "work": 128,
+        "mode": "random"
+      },
+      {
+        "ms": 1.4000000001396984,
+        "work": 264,
+        "mode": "random"
+      },
+      {
+        "ms": 0.19999999995343387,
+        "work": 14,
+        "mode": "random"
+      },
+      {
+        "ms": 0.6999999999534339,
+        "work": 20,
+        "mode": "random"
+      },
+      {
+        "ms": 0.9000000001396984,
+        "work": 17,
+        "mode": "random"
+      },
+      {
+        "ms": 0.19999999995343387,
+        "work": 33,
+        "mode": "random"
+      },
+      {
+        "ms": 1.1000000000931323,
+        "work": 54,
+        "mode": "random"
+      },
+      {
+        "ms": 1,
+        "work": 111,
+        "mode": "random"
+      },
+      {
+        "ms": 0,
+        "work": 512,
+        "mode": "random"
+      },
+      {
+        "ms": 0,
+        "work": 203,
+        "mode": "random"
+      },
+      {
+        "ms": 1.1999999999534339,
+        "work": 14,
+        "mode": "random"
+      },
+      {
+        "ms": 0.4000000001396984,
+        "work": 21,
+        "mode": "random"
+      },
+      {
+        "ms": 0,
+        "work": 31,
+        "mode": "random"
+      },
+      {
+        "ms": 1.1999999999534339,
+        "work": 47,
+        "mode": "random"
+      },
+      {
+        "ms": 0.7999999998137355,
+        "work": 54,
+        "mode": "random"
+      },
+      {
+        "ms": 0.10000000009313226,
+        "work": 128,
+        "mode": "random"
+      },
+      {
+        "ms": 1.1000000000931323,
+        "work": 122,
+        "mode": "random"
+      },
+      {
+        "ms": 0.10000000009313226,
+        "work": 444,
+        "mode": "random"
+      }
+    ],
+    "limits": "Linux Chromium CPU throttling and emulated viewport, not actual device/Safari timing."
+  },
+  {
+    "device": "Pixel 7",
+    "browser": "154.0.8037.57",
+    "samples": 80,
+    "throttle": 4,
+    "medianMs": 0.8000000000465661,
+    "p95Ms": 2,
+    "maxMs": 4.900000000139698,
+    "samplesDetail": [
+      {
+        "ms": 3.2999999998137355,
+        "work": 16,
+        "mode": "random"
+      },
+      {
+        "ms": 1.1000000000931323,
+        "work": 23,
+        "mode": "random"
+      },
+      {
+        "ms": 1.9000000001396984,
+        "work": 19,
+        "mode": "random"
+      },
+      {
+        "ms": 1.6000000000931323,
+        "work": 38,
+        "mode": "random"
+      },
+      {
+        "ms": 0.8999999999068677,
+        "work": 40,
+        "mode": "random"
+      },
+      {
+        "ms": 0.20000000018626451,
+        "work": 56,
+        "mode": "random"
+      },
+      {
+        "ms": 0.19999999995343387,
+        "work": 55,
+        "mode": "random"
+      },
+      {
+        "ms": 0.30000000004656613,
+        "work": 512,
+        "mode": "random"
+      },
+      {
+        "ms": 4.899999999906868,
+        "work": 16,
+        "mode": "random"
+      },
+      {
+        "ms": 0.30000000004656613,
+        "work": 17,
+        "mode": "random"
+      },
+      {
+        "ms": 0.30000000004656613,
+        "work": 27,
+        "mode": "random"
+      },
+      {
+        "ms": 0.10000000009313226,
+        "work": 32,
+        "mode": "random"
+      },
+      {
+        "ms": 0.30000000004656613,
+        "work": 57,
+        "mode": "random"
+      },
+      {
+        "ms": 0.30000000004656613,
+        "work": 56,
+        "mode": "random"
+      },
+      {
+        "ms": 0.19999999995343387,
+        "work": 56,
+        "mode": "random"
+      },
+      {
+        "ms": 0.19999999995343387,
+        "work": 140,
+        "mode": "random"
+      },
+      {
+        "ms": 0.30000000004656613,
+        "work": 16,
+        "mode": "random"
+      },
+      {
+        "ms": 0.19999999995343387,
+        "work": 27,
+        "mode": "random"
+      },
+      {
+        "ms": 0.19999999995343387,
+        "work": 24,
+        "mode": "random"
+      },
+      {
+        "ms": 4.900000000139698,
+        "work": 33,
+        "mode": "random"
+      },
+      {
+        "ms": 0.19999999995343387,
+        "work": 48,
+        "mode": "random"
+      },
+      {
+        "ms": 1.6999999999534339,
+        "work": 72,
+        "mode": "random"
+      },
+      {
+        "ms": 1.1000000000931323,
+        "work": 63,
+        "mode": "random"
+      },
+      {
+        "ms": 1.2999999998137355,
+        "work": 512,
+        "mode": "random"
+      },
+      {
+        "ms": 1.1000000000931323,
+        "work": 16,
+        "mode": "random"
+      },
+      {
+        "ms": 1.3000000000465661,
+        "work": 25,
+        "mode": "random"
+      },
+      {
+        "ms": 1.5999999998603016,
+        "work": 19,
+        "mode": "random"
+      },
+      {
+        "ms": 1.1000000000931323,
+        "work": 38,
+        "mode": "random"
+      },
+      {
+        "ms": 1.6000000000931323,
+        "work": 127,
+        "mode": "random"
+      },
+      {
+        "ms": 1.1999999999534339,
+        "work": 23,
+        "mode": "random"
+      },
+      {
+        "ms": 0.19999999995343387,
+        "work": 512,
+        "mode": "random"
+      },
+      {
+        "ms": 1.8000000000465661,
+        "work": 133,
+        "mode": "random"
+      },
+      {
+        "ms": 1,
+        "work": 16,
+        "mode": "random"
+      },
+      {
+        "ms": 1.4000000001396984,
+        "work": 26,
+        "mode": "random"
+      },
+      {
+        "ms": 1.7999999998137355,
+        "work": 26,
+        "mode": "random"
+      },
+      {
+        "ms": 0.8000000000465661,
+        "work": 41,
+        "mode": "random"
+      },
+      {
+        "ms": 0.8999999999068677,
+        "work": 36,
+        "mode": "random"
+      },
+      {
+        "ms": 0.20000000018626451,
+        "work": 57,
+        "mode": "random"
+      },
+      {
+        "ms": 0.9000000001396984,
+        "work": 132,
+        "mode": "random"
+      },
+      {
+        "ms": 0.19999999995343387,
+        "work": 170,
+        "mode": "random"
+      },
+      {
+        "ms": 0.39999999990686774,
+        "work": 16,
+        "mode": "random"
+      },
+      {
+        "ms": 0.19999999995343387,
+        "work": 20,
+        "mode": "random"
+      },
+      {
+        "ms": 0.09999999986030161,
+        "work": 26,
+        "mode": "random"
+      },
+      {
+        "ms": 0.2999999998137355,
+        "work": 34,
+        "mode": "random"
+      },
+      {
+        "ms": 0.8999999999068677,
+        "work": 38,
+        "mode": "random"
+      },
+      {
+        "ms": 1.6999999999534339,
+        "work": 61,
+        "mode": "random"
+      },
+      {
+        "ms": 0.19999999995343387,
+        "work": 36,
+        "mode": "random"
+      },
+      {
+        "ms": 0.19999999995343387,
+        "work": 80,
+        "mode": "random"
+      },
+      {
+        "ms": 0,
+        "work": 16,
+        "mode": "random"
+      },
+      {
+        "ms": 2.300000000046566,
+        "work": 17,
+        "mode": "random"
+      },
+      {
+        "ms": 0.10000000009313226,
+        "work": 28,
+        "mode": "random"
+      },
+      {
+        "ms": 0.10000000009313226,
+        "work": 34,
+        "mode": "random"
+      },
+      {
+        "ms": 0.20000000018626451,
+        "work": 27,
+        "mode": "random"
+      },
+      {
+        "ms": 1.0999999998603016,
+        "work": 85,
+        "mode": "random"
+      },
+      {
+        "ms": 1,
+        "work": 116,
+        "mode": "random"
+      },
+      {
+        "ms": 1.1999999999534339,
+        "work": 512,
+        "mode": "random"
+      },
+      {
+        "ms": 1,
+        "work": 16,
+        "mode": "random"
+      },
+      {
+        "ms": 0.6999999999534339,
+        "work": 20,
+        "mode": "random"
+      },
+      {
+        "ms": 0.10000000009313226,
+        "work": 21,
+        "mode": "random"
+      },
+      {
+        "ms": 0,
+        "work": 32,
+        "mode": "random"
+      },
+      {
+        "ms": 2,
+        "work": 57,
+        "mode": "random"
+      },
+      {
+        "ms": 0.9000000001396984,
+        "work": 47,
+        "mode": "random"
+      },
+      {
+        "ms": 1,
+        "work": 512,
+        "mode": "random"
+      },
+      {
+        "ms": 0.39999999990686774,
+        "work": 469,
+        "mode": "random"
+      },
+      {
+        "ms": 0,
+        "work": 16,
+        "mode": "random"
+      },
+      {
+        "ms": 0,
+        "work": 25,
+        "mode": "random"
+      },
+      {
+        "ms": 0.10000000009313226,
+        "work": 19,
+        "mode": "random"
+      },
+      {
+        "ms": 0.8000000000465661,
+        "work": 35,
+        "mode": "random"
+      },
+      {
+        "ms": 1.5,
+        "work": 53,
+        "mode": "random"
+      },
+      {
+        "ms": 0.8999999999068677,
+        "work": 35,
+        "mode": "random"
+      },
+      {
+        "ms": 0,
+        "work": 187,
+        "mode": "random"
+      },
+      {
+        "ms": 0.8000000000465661,
+        "work": 110,
+        "mode": "random"
+      },
+      {
+        "ms": 0.39999999990686774,
+        "work": 16,
+        "mode": "random"
+      },
+      {
+        "ms": 1,
+        "work": 30,
+        "mode": "random"
+      },
+      {
+        "ms": 0,
+        "work": 35,
+        "mode": "random"
+      },
+      {
+        "ms": 1,
+        "work": 65,
+        "mode": "random"
+      },
+      {
+        "ms": 0,
+        "work": 68,
+        "mode": "random"
+      },
+      {
+        "ms": 1,
+        "work": 162,
+        "mode": "random"
+      },
+      {
+        "ms": 1,
+        "work": 512,
+        "mode": "random"
+      },
+      {
+        "ms": 0.10000000009313226,
+        "work": 512,
+        "mode": "random"
+      }
+    ],
+    "limits": "Linux Chromium CPU throttling and emulated viewport, not actual device/Safari timing."
+  }
+]

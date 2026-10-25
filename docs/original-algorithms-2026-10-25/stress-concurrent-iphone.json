@@ -1,0 +1,136 @@
+{
+  "project": "iphone-chromium",
+  "browser": "154.0.8037.57",
+  "placements": 1500,
+  "restarts": 349,
+  "heaps": [
+    2121460,
+    2622736,
+    2687544,
+    2777316
+  ],
+  "postGCHeapGrowth": 655856,
+  "render": {
+    "draws": 568,
+    "p50Ms": 0.6000000000931323,
+    "p95Ms": 4.300000000046566,
+    "maxMs": 36.300000000046566,
+    "over16ms": 4
+  },
+  "inputHandlers": {
+    "samples": 1500,
+    "p50Ms": 0.6000000000931323,
+    "p95Ms": 5,
+    "maxMs": 40.800000000046566
+  },
+  "frameIntervals": {
+    "p50Ms": 16.700000000000045,
+    "p95Ms": 50
+  },
+  "longTasksAll": 22,
+  "maxLongTaskAll": 156,
+  "driverLongTasks": [
+    {
+      "start": 1013.6999999999534,
+      "duration": 56
+    },
+    {
+      "start": 1412.1999999999534,
+      "duration": 53
+    },
+    {
+      "start": 3010,
+      "duration": 51
+    },
+    {
+      "start": 4093.399999999907,
+      "duration": 63
+    },
+    {
+      "start": 4317.300000000047,
+      "duration": 61
+    },
+    {
+      "start": 4519.199999999953,
+      "duration": 90
+    },
+    {
+      "start": 6031.600000000093,
+      "duration": 50
+    },
+    {
+      "start": 7212.300000000047,
+      "duration": 54
+    },
+    {
+      "start": 7413.5,
+      "duration": 60
+    },
+    {
+      "start": 7502.300000000047,
+      "duration": 57
+    },
+    {
+      "start": 7621,
+      "duration": 59
+    },
+    {
+      "start": 7705.300000000047,
+      "duration": 68
+    },
+    {
+      "start": 7807.199999999953,
+      "duration": 51
+    },
+    {
+      "start": 8017.399999999907,
+      "duration": 50
+    },
+    {
+      "start": 8212.600000000093,
+      "duration": 53
+    },
+    {
+      "start": 8404.800000000047,
+      "duration": 56
+    },
+    {
+      "start": 13811.300000000047,
+      "duration": 61
+    },
+    {
+      "start": 14125.300000000047,
+      "duration": 57
+    },
+    {
+      "start": 14300.199999999953,
+      "duration": 61
+    },
+    {
+      "start": 14610.600000000093,
+      "duration": 55
+    }
+  ],
+  "driverWindows": [
+    [
+      695.6000000000931,
+      5073.600000000093
+    ],
+    [
+      5923.199999999953,
+      10295.300000000047
+    ],
+    [
+      11260.5,
+      15395.100000000093
+    ]
+  ],
+  "canvasCreated": 1,
+  "userAgent": "Mozilla/5.0 (iPhone; CPU iPhone OS 16_0 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/26.0 Mobile/15E148 Safari/604.1",
+  "dpr": 3,
+  "viewport": {
+    "width": 390,
+    "height": 664
+  },
+  "limits": "Real-clock Linux Chromium under automation, not device FPS. Synthetic pointer stress, native touch is covered separately. Driver long tasks exclude loading and forced-GC windows. Heap includes browser warm-up and this instrumentation; three batches are a bounded probe, not a 30-minute phone endurance test."
+}

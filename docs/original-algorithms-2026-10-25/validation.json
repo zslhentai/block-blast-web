@@ -1,0 +1,192 @@
+{
+  "implementationCommit": "f45755d36ea17a56e04e957a595590421ef93fc1",
+  "base": "334de15131dc027c65fc543d5454f71869c6f9db",
+  "branch": "research/block-blast-original-algorithms",
+  "localChecks": {
+    "typecheck": "passed",
+    "unit": {
+      "passed": 136,
+      "failed": 0,
+      "files": 20
+    },
+    "e2e": {
+      "passed": 210,
+      "failed": 0,
+      "skipped": 0,
+      "flaky": 0,
+      "scope": "Linux Chromium 154.0.8037.57; desktop + iPhone/Pixel emulation; no real Safari/Android test"
+    },
+    "guard": "blocking JS correctly fails real boot E2E",
+    "portable": "six placements after disconnect and full online reload restoration; no external requests/runtime errors",
+    "devDiagnostics": "explicit DEV query gate; pure preview; real touch refill in three contexts; 80 boards each at 4× CPU",
+    "production": "built; DEV global/diagnostic and research classifier strings absent from Vite JS and portable HTML"
+  },
+  "simulation": {
+    "calibration": "calibration.json",
+    "holdout": "holdout.json",
+    "longHorizon": "long-horizon.json",
+    "logicalReplay": "Two 40,000-game runs have identical non-time statistics; repeated runs are not additional independent samples.",
+    "completeCataloguesObserved": 39,
+    "limits": "Robots, step counts and systematically audited subsets, not observed human play duration or original game statistics."
+  },
+  "screenshots": [
+    {
+      "path": "screenshots/refill-iphone.png",
+      "pixels": [
+        1170,
+        1992
+      ],
+      "sha256": "293d46f7c6254009ce84d6d011aa53069faf729f13192f4770c41227607f1268"
+    },
+    {
+      "path": "screenshots/refill-desktop.png",
+      "pixels": [
+        1280,
+        720
+      ],
+      "sha256": "b735774cd043ef2fc8ded7a9c895abdb1fe89a517af23e210d564dbb40b9e739"
+    },
+    {
+      "path": "screenshots/refill-android.png",
+      "pixels": [
+        1082,
+        2202
+      ],
+      "sha256": "bc0eb94c7ef425fc991542c49d44de301159843f7f46d5945862a99f0e7af318"
+    }
+  ],
+  "earlierConcurrentBrowserProbe": {
+    "scope": "Recorded during active simulation; raw earlier per-sample file was replaced by the final run; these are observed summaries, not final isolated-device results.",
+    "desktop": {
+      "p95Ms": 2.9,
+      "maxMs": 18.6
+    },
+    "iphone": {
+      "p95Ms": 5.7,
+      "maxMs": 33.8
+    },
+    "android": {
+      "p95Ms": 4.1,
+      "maxMs": 31.3
+    }
+  },
+  "sourceHashes": {
+    ".github/workflows/tests.yml": "33e09621e27f8521b44936365e93b7e36e710df87163881e4ceac5d3c12323c4",
+    "package.json": "fdfae56fba6097a8a5932b96416a8c00f8a67e813862b78f31b89bc0ee882f3c",
+    "scripts/build-audio-lab-v2.ts": "5c68da2416925326d4c91ddf23bb122ffc3df57cb7f2ac2b162de5e3da9a13eb",
+    "scripts/build-portable.ts": "4afef6e82c9272a671fbd0e6e386374fc8399540ae4c56161a6ff9518bc6f9c3",
+    "scripts/check-algorithm-diagnostics.ts": "9d4507a206845e16533e069bb6e43d7b10a035cdb9a8bc71dab9adaf93e17630",
+    "scripts/check-e2e-guard.ts": "07df4755efff47ee984ac2b24b48b07929fbf03f7eebf6ccbb27d0b1f1056f78",
+    "scripts/check-portable.ts": "7048e30b1c8e6755f8584f7361eb3d4dbdb092112ad31c646deaf94cecfbe079",
+    "scripts/prepare-sample-library.py": "730615302c0794ceb0c2f82e387bfe3c369db46bf07cc2ee54104985584c6ee7",
+    "scripts/sample-recipes.json": "de3a0b6fce1a8ccce595cfd17a250f45eb8ede0ad036f99d6280b17824302622",
+    "scripts/serve-dist.ts": "f236d6e0be67e639a30f65851ae230145cbf240e1610a1873a7b610278e5774d",
+    "scripts/setup-cloud.sh": "8c01be4f79de13999134ad711ab2873455be2f35979592e8ef1646d91c0a4f85",
+    "scripts/simulate-classic.ts": "2065ea13797711d0d59f5f5e35250f2f29e69a83d185790edbe1932ddc11dbe8",
+    "src/audio/audition-cues.test.ts": "4c46d4d6aa4935527c9468797c62040611f1bd478831b182830f4c72f0fbae79",
+    "src/audio/audition-cues.ts": "35e2a76d7b175286c929fc6a7e1e1c9351729897d654059b125ce0a69a7f481d",
+    "src/audio/audition-player.ts": "f2f94f9e2c95ce19a8f9607e3b4780653a5708e60768e1bc8d6b1dcf8cd313c9",
+    "src/audio/game-feedback.test.ts": "e22577f4f65d6ecac2d841f64be92943f66b8a8fa9ca0c848c19979c4aa64eb1",
+    "src/audio/game-feedback.ts": "f3d6139b725804137122b02415d3480b64903d153e55f7fd3cdccb21c47f7fdb",
+    "src/audio/lab-v2/mixer.test.ts": "2b09e05ed4bc406d62935d0d67a6ce26f144efe72ce3d79c8757e0772ef1d168",
+    "src/audio/lab-v2/mixer.ts": "12ca0e8ed3e045fed65214f510ce7173b7683be3f04cd9fe88f56c4a43579a63",
+    "src/audio/lab-v2/pcm.test.ts": "1358b122f13e1326ce4ba6e273c9d414c3968bfb8ec96a2dc4ef934ca5e6cfb8",
+    "src/audio/lab-v2/pcm.ts": "37a092cb8e3420179c5eae11c8d8d203342357d3928347a7380c85c8e0af1782",
+    "src/audio/lab-v2/player.ts": "bb4c20e484d13ef1dc0599f3ad25bff693e1bec08d42a2e80b057443a196b0a7",
+    "src/audio/scenes.ts": "5c6ec21487385dafa6ce4187888acc6ab5c22e2d9619c80736b7a9dc372596eb",
+    "src/audio/sounds.test.ts": "59b7807b467ebfb368ca0b69e62212a6cd4f5b1f5caf153a9df2935767f9c399",
+    "src/audio/sounds.ts": "a36ed6c795a5a74317b8d2f336f9cae02fa6775b526350a5a3ba297534ee3f29",
+    "src/audio-lab/main.ts": "72e2f882ff76443b528799c1a400f156b486d673d49c3ab1d64ba3e694aba1ba",
+    "src/audio-lab/scenes.css": "d08e15ab71dc6d0e52194cd32b5a84f883d5fa20a62b55c99fc47b742feb0fd7",
+    "src/audio-lab/scenes.ts": "e078164f7c682b8495d5fe29a52d0b2b2827159501fafbdc551ed633c60bd259",
+    "src/audio-lab/style.css": "41db50b4ce13c7515f8bbceb822fb3b80de815fdf0c6292f7c671fd1f14176bd",
+    "src/audio-lab/v2.css": "39f7582b8c5d88c5659b59b02039dd4ee1a03af6cb4de463ddd543f89519d928",
+    "src/audio-lab/v2.ts": "7e29f7770296f4a904498b948dc21a8549f87ec3d2104ad847fac039ee0adfc3",
+    "src/audio-samples/catalog.test.ts": "5660439dd169b1969766225b44c1bdf080300e953900252748190f42117e8b1e",
+    "src/audio-samples/catalog.ts": "e7d2ec8217c05b30d366f9c90290de39b251d568aad400ea9cda1d3b9274cbe2",
+    "src/audio-samples/main.ts": "1293d9fb450968bf09a07ad7dfdb073565bce220561f5aea1b76e04b29d7941c",
+    "src/audio-samples/player.ts": "cf7bc7c5b7cfb227268fffb8b5049625bf701640d29242f263f4f11906d307d4",
+    "src/audio-samples/style.css": "5fbd8d95bde6d3b774d84a18a63ef5b584935d8e52f44faf5628efa33acb8a79",
+    "src/dev/algorithms.ts": "ce3217db4f4c4ebc62322226bf22a379d24865c8d3ede02f7dd38fc2c40abd90",
+    "src/env.d.ts": "d9254f61c6bc28bcd6fb57551059937dee3f1e8ec4574ddd0b90dd6df82d3758",
+    "src/index.ts": "18b9b8bc6293248054a57d28e235ef66e4586009e407d2b8bf46394a353bc03c",
+    "src/logic/adaptive-dealer.test.ts": "9495103da9f65ca7adf925b9f210fdedabbb44cd5dc2db91703d43d209d62015",
+    "src/logic/adaptive-dealer.ts": "8b09810bf75d3c6ae7671ca065fe147a8be2704efb9da53601343e6a9c732b2a",
+    "src/logic/board-search.test.ts": "80f4c3d761469e9ff8853c47a7ffb7f5e775a0939b9531641f43e398c165328c",
+    "src/logic/board-search.ts": "c7211854bdcd64329e3e4a27a0a0f4f92c1a6a248e198436098f338f4a5007c8",
+    "src/logic/dealer-memory.ts": "a41c7b81bc59ce6e78e7d3f04d4f11f4c9b39140846989341addf92af9bc9687",
+    "src/logic/dealer.test.ts": "d72c2ddd190ccda2d4acd8c4326f1de2329f2800d8fc51a34844460b8021caa5",
+    "src/logic/dealer.ts": "7c261dfb0208dbb6edcf315ddf22a6361be74cb29ba7ea135e4075a07c54dcb7",
+    "src/logic/diagonal.test.ts": "24521250a710808dde89b499c2c8cb73dc1f89d66116e8607ce9993a4339c322",
+    "src/logic/gameover.test.ts": "db915e361c4349cf4a3fbb31278513cac81d44bad5fd98ed641445e83245f2fb",
+    "src/logic/gameover.ts": "9086d92ea6dce6da0e88ca840140a1070b1d04c780d993fce0fb617b05e86999",
+    "src/logic/lethal-study.ts": "4b8e5198ed35c5185c2f1491a424e734aa2bac69bb718553e8cbb0586e9403ad",
+    "src/logic/lineClear.test.ts": "86990ecd5523fe5fecf1019fffeb8cb873bc5885f1f740213aec9ce20ab7709a",
+    "src/logic/lineClear.ts": "65d419e341792d1c4499d190a5113ce99c7e15d902abb36cdcb6d0bea169fee3",
+    "src/logic/placement.test.ts": "b9fbd3b06a65a085b063bd09aa65a1ea15fb2af2f3ce37eaec0e69226cbbea65",
+    "src/logic/placement.ts": "58569cb6d61c374efdf1c069bd5e57450e6a852856ce8a48ae361b671c5709ce",
+    "src/logic/reducer.test.ts": "5d831840d7ea2162cda215ca97e5f953252ae97cf14c7ded4497a50fa2e19441",
+    "src/logic/reducer.ts": "5278e6131331d22dd26133ad5b926f4a807b7932c0a177f85bf23c3e5191cbed",
+    "src/logic/rng.ts": "8d23bf9541ccab6d6af70c73ba4ccccf89572a5ff68c90ee9d0e671df7e16a06",
+    "src/logic/scoring.test.ts": "617b9076167103b2a7817dd9ab3f0c35ebb88fe82f16e34104d3177f5ceee8e6",
+    "src/logic/scoring.ts": "eef8ae9c45179cb93a5798fa33bf210aa7d9ab21f8bc8d6b4258668b5ea5c400",
+    "src/logic/shapes.test.ts": "9c8be80d9a57dd6e006588ccf444636d4739e0da12f3736223999cd10eda3757",
+    "src/logic/shapes.ts": "ee94dd79a5f1460d2cc448e8a2007cd210203e5f1d423319f0030ba7fdd14788",
+    "src/logic/state.test.ts": "db9bbb69211ae63775b7b6df8a3c9d6c275464ea68b6ad327592dfe1e84dbffe",
+    "src/logic/state.ts": "9bc381f313261f3f44038a4752b518c11ce9b45868484d5ebe538578f176e2cb",
+    "src/logic/types.ts": "cd2e0e0026981c398f388920153c851696131c8079e4a7889671b1c69022dc8c",
+    "src/renderer/canvas.ts": "4cbdd66cb6bd4d4eafacb4e0d7a662c773c71781e71fe4afd811370c48c2b4a8",
+    "src/renderer/draw.ts": "c0132d51bfefa36230d45bb46c03eba061ab7cea1bf85e563437c1e48aac1115",
+    "src/renderer/effects.ts": "1ab6e5356b20562f225d3379cdd7ef15da67f01ff3e7dc12187a817c201a3e82",
+    "src/renderer/feedback.test.ts": "26cbd1d7f3a922057e1e403c3158b70c48d1343fe05dd45063876405ccf8f9ac",
+    "src/renderer/feedback.ts": "d6572435780cbabd7aea3f5883cc3433171f3968cefb5e742d2b6204a1437806",
+    "src/renderer/index.test.ts": "992f01f17355e5a782bd19bac74915e242c3414dfa0e05665ff50988f42d5dd6",
+    "src/renderer/index.ts": "5655bd4811e925aebfe751266205e83278bb1ae2cdda34df36df613dbb33a0c8",
+    "src/renderer/input.ts": "246522bf15b8a96a52deca133cd169031aa09c5187668742efefdc3cf9e66ee5",
+    "src/renderer/motion.ts": "86985589c9fc6894f716f5d7cd41e746f4f24335c3ea2755b2bbe549e5253260",
+    "src/renderer/theme.ts": "9908004c37ac98c1f8f7d4b70a7ab672fdb6a919478bb57c119341d5545bb970",
+    "src/storage/localStorage.test.ts": "f6f81444bfebbe284ce4cba27f6faacfe0863a0c2a69394c0131111d6e6f1050",
+    "src/storage/localStorage.ts": "b2be8529f064244816bde522b8556224a4885d67e3cc465fb7ba9b86e07b6653",
+    "src/style.css": "02f38147f1a0655333b331b450b4ac846f48a60027f11c743db7596c46071add",
+    "tests/e2e/algorithms.spec.ts": "aca5abf023d740f017ae79d638c327ae44f1e41cd861c0c5419ac251c895bd21",
+    "tests/e2e/audio-lab-v2.spec.ts": "599c5b55349a81f0c6ef6ce279a6f51dc40eb4d1c732c0846960c57b224fbb79",
+    "tests/e2e/audio-lab.spec.ts": "cbf94ad1c25339d610bfa19883bed8c89284989722f0577103b2d6083bdeb62a",
+    "tests/e2e/audio-samples.spec.ts": "92e1631bf35c8590f2290922fe2ec71fe7d29d7caec874842318325e2a8a3980",
+    "tests/e2e/audio-scenes.spec.ts": "b0782df4b59ca7cd2fc1365237e8ea33d40986b30cd0249b530acabb647f0569",
+    "tests/e2e/diagonal.spec.ts": "4e8598db45d8976acccccea00f0591bd2474376cce5a8016fa3ff120f99725ed",
+    "tests/e2e/experience.spec.ts": "91d23bbbd39eb028385379897f8497d8fa952c4b03fb98c5aa1d3ea4e8ebe9d1",
+    "tests/e2e/feedback.spec.ts": "c6d0e2b3225935d012cab5b592e0bfac0dfe9bfcba8296c03bc227706e916d99",
+    "tests/e2e/game.spec.ts": "531712854b7f70200b8d6e061a69c95aba250060e75b26479e38a9f1a8e52304",
+    "tests/e2e/helpers.ts": "80d24cb6291b3190bf4aa5b10117a8f0199f3fa3986f3091b61aa3f09bedb6dc",
+    "tests/e2e/replica.spec.ts": "bdbf8830a6fda740e0959c6c5fd426a44af8380c43d0b066a804b79df2a3712e",
+    "tests/e2e/visual.spec.ts": "054c9763c15b1ea9a6eb2446790ee9858bbf2bd6a743b97599659de99ac56e9b"
+  },
+  "release": "Research branch only. Existing work Pages deployment is not replaced. See final branch Actions run for independent verification and portable-preview artifact.",
+  "performanceFiles": {
+    "concurrent": [
+      "stress-concurrent-desktop.json",
+      "stress-concurrent-iphone.json",
+      "stress-concurrent-android.json"
+    ],
+    "withoutOfflineSimulation": [
+      "stress-isolated-desktop.json",
+      "stress-isolated-iphone.json",
+      "stress-isolated-android.json"
+    ],
+    "CPUThrottled": "browser-performance.json"
+  },
+  "isolatedStressCheck": "3 passed, same assertions and production build; rerun to investigate long-task contention, no parameter changes.",
+  "protectedFilesUnchanged": [
+    "LICENSE",
+    "docs/upstream/SOURCE.md",
+    "src/logic/shapes.ts",
+    "src/logic/scoring.ts",
+    "src/logic/placement.ts",
+    "src/logic/lineClear.ts",
+    "src/logic/gameover.ts",
+    "src/renderer/",
+    "src/style.css",
+    "src/audio/",
+    "public/audio-samples/"
+  ]
+}

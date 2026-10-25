@@ -1,0 +1,55 @@
+{
+  "project": "desktop-chromium",
+  "browser": "154.0.8037.57",
+  "placements": 1500,
+  "restarts": 349,
+  "heaps": [
+    2090600,
+    2586812,
+    2652520,
+    2712552
+  ],
+  "postGCHeapGrowth": 621952,
+  "render": {
+    "draws": 568,
+    "p50Ms": 0.5999999998603016,
+    "p95Ms": 2.2999999998137355,
+    "maxMs": 5.800000000046566,
+    "over16ms": 0
+  },
+  "inputHandlers": {
+    "samples": 1500,
+    "p50Ms": 0.5999999998603016,
+    "p95Ms": 4,
+    "maxMs": 38.800000000046566
+  },
+  "frameIntervals": {
+    "p50Ms": 16.699999999999818,
+    "p95Ms": 16.700000000000728
+  },
+  "longTasksAll": 1,
+  "maxLongTaskAll": 189,
+  "driverLongTasks": [],
+  "driverWindows": [
+    [
+      985.0999999998603,
+      4206.59999999986
+    ],
+    [
+      5043.09999999986,
+      8138.699999999953
+    ],
+    [
+      8979.199999999953,
+      12076.199999999953
+    ]
+  ],
+  "canvasCreated": 1,
+  "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/145.0.7632.6 Safari/537.36",
+  "dpr": 1,
+  "viewport": {
+    "width": 1280,
+    "height": 720
+  },
+  "limits": "Real-clock Linux Chromium under automation, not device FPS. Synthetic pointer stress, native touch is covered separately. Driver long tasks exclude loading and forced-GC windows. Heap includes browser warm-up and this instrumentation; three batches are a bounded probe, not a 30-minute phone endurance test."
+}
