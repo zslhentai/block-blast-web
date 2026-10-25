@@ -1,5 +1,5 @@
 import { test, expect } from 'bun:test';
-import { dealHand, findSequence } from './dealer';
+import { dealHand, dealRandomHand, findSequence } from './dealer';
 import { createEmptyBoard } from './state';
 import { checkGameOver } from './gameover';
 import { canPlace, placeShapeOnBoard } from './placement';
@@ -22,12 +22,12 @@ test('search budget exhaustion is unknown, never a fake solved result', () => {
   const shapes = dealHand(createEmptyBoard(), 2, 1).shapes;
   expect(findSequence(createEmptyBoard(), shapes, { remaining: 0 }).status).toBe('unknown');
 });
-test('crowding does not re-roll or repair the hand; an unplayable refill is permitted', () => {
+test('the frozen random baseline ignores crowding and still permits an unplayable refill', () => {
   const board = Array.from({ length: 8 }, (_, r) => Array.from({ length: 8 }, (_, c) => (r + c) % 2));
   let blocked = 0, fitting = 0;
   for (let seed=0;seed<128;seed++) {
-    const deal = dealHand(board, seed, 99);
-    expect(deal).toEqual(dealHand(createEmptyBoard(), seed, 99));
+    const deal = dealRandomHand(board, seed, 99);
+    expect(deal).toEqual(dealRandomHand(createEmptyBoard(), seed, 99));
     expect(new Set(deal.shapes.map(s => s.id)).size).toBe(3);
     if (checkGameOver(board, deal.shapes)) blocked++; else fitting++;
   }

@@ -1,6 +1,7 @@
 import { type GameState, type Shape, BOARD_SIZE, COLORS, RULE_VERSION, CATALOGUE_VERSION } from '../logic/types';
 import { CATALOGUE, shapeKey } from '../logic/shapes';
 import { checkGameOver } from '../logic/gameover';
+import { parseDealerMemory } from '../logic/dealer-memory';
 
 export const STORAGE_KEY = 'block-blast-web:run:v1';
 export const BACKUP_KEY = `${STORAGE_KEY}:backup`;
@@ -55,6 +56,11 @@ export function parseSavedGame(raw: string | null): SavedGame | null {
         typeof value.settings.soundEnabled !== 'boolean' || typeof value.settings.reducedMotion !== 'boolean') return null;
     // Recompute derived termination; never trust a stale persisted flag.
     const parsed = value as unknown as SavedGame;
+    if (state.dealer !== undefined) {
+      const memory = parseDealerMemory(state.dealer);
+      if (memory) parsed.state.dealer = memory;
+      else delete parsed.state.dealer; // An old/unknown control history must not discard a valid game.
+    }
     const over = checkGameOver(parsed.state.board, parsed.state.shapes);
     parsed.state.status = over ? 'gameover' : parsed.state.status === 'gameover' ? 'playing' : parsed.state.status;
     return parsed;

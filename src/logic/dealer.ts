@@ -1,8 +1,7 @@
 import { type Board, type Shape, BOARD_SIZE } from './types';
-import { createShapes } from './shapes';
-import { createRandom } from './rng';
 import { canPlace } from './placement';
 import { searchHand } from './board-search';
+import { ADAPTIVE_POLICY, generateAdaptiveHand, randomHand, type HandDealer, type DealReport } from './adaptive-dealer';
 
 export interface WitnessMove { slot: number; row: number; col: number }
 export interface SearchResult { status: 'solved' | 'unsolvable' | 'unknown'; moves: WitnessMove[] }
@@ -17,11 +16,14 @@ export function fitsAnywhere(board: Board, shape: Shape): boolean {
   }
   return false;
 }
-// Transparent replacement policy, not a claim about the original hidden dealer.
-// The board does not re-roll or repair the next hand. A legal game can end on refill.
-export const DEALER_POLICY = 'independent-weighted-v2';
-export function dealHand(_board: Board, seed: number, round: number) {
-  const random = createRandom(seed);
-  const shapes = createShapes(3, random.next, round, `r${round}-${seed}`);
-  return { shapes, rngState: random.state() };
-}
+export { randomHand as dealRandomHand };
+export type { HandDealer };
+export const DEALER_POLICY = ADAPTIVE_POLICY;
+let observer: ((report: DealReport & { elapsedMs: number }) => void) | undefined;
+export function observeDeals(next: typeof observer): () => void { observer = next; return () => { if (observer === next) observer = undefined; }; }
+export const dealHand: HandDealer = (board, seed, round, context) => {
+  const start = observer ? performance.now() : 0;
+  const report = generateAdaptiveHand(board, seed, round, context);
+  observer?.({ ...report, elapsedMs: performance.now() - start });
+  return report.deal;
+};

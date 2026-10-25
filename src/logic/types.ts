@@ -9,6 +9,15 @@ export interface Shape {
 
 export type GameStatus = 'idle' | 'playing' | 'paused' | 'gameover';
 
+export type DealerMode = 'random' | 'assisted' | 'challenge';
+export interface DealerMemory {
+  version: 1;
+  mode: DealerMode;
+  assistStreak: number;
+  challengeStreak: number;
+  recentFamilies: number[];
+}
+
 export interface GameState {
   board: Board;
   shapes: (Shape | null)[];
@@ -22,6 +31,7 @@ export interface GameState {
   moves: number;
   rngState: number;
   revision: number;
+  dealer?: DealerMemory;
 }
 
 export interface Point {
