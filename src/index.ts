@@ -6,6 +6,7 @@ import { GameAudioFeedback } from './audio/game-feedback';
 import { readAudioScene,audioSceneState } from './audio/scenes';
 import { MOTION } from './renderer/motion';
 import { GameStorage, DEFAULT_SETTINGS, STORAGE_KEY, parseSavedGame, type Settings, type StorageLike } from './storage/localStorage';
+import { installAlgorithmDiagnostics } from './dev/algorithms';
 
 function element<T extends HTMLElement>(id: string): T {
   const node = document.getElementById(id);
@@ -68,6 +69,7 @@ function init(): void {
   });
   Object.defineProperty(window, 'blockBlast', { configurable: true,
     value: Object.freeze({ getState: () => renderer.getState(), getLayout: () => renderer.getLayout(), getFeedback: () => renderer.getFeedback(), getAudio:()=>soundManager.snapshot() }) });
+  if (import.meta.env.DEV && new URLSearchParams(location.search).get('algorithmDebug') === '1') installAlgorithmDiagnostics(() => renderer.getState());
   const showMenu = (): void => {
     const current = renderer.getState();
     element('menu-title').textContent = current.status === 'idle' ? '方块小憩' : '休息一下';

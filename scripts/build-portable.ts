@@ -2,6 +2,7 @@
 export {};
 const result = await Bun.build({
   entrypoints: ['src/index.ts'], target: 'browser', format: 'iife', minify: true,
+  define: { 'import.meta.env.DEV': 'false' },
   plugins: [{ name: 'inline-css-in-html', setup(build) {
     build.onLoad({ filter: /\.css$/ }, () => ({ contents: '', loader: 'js' }));
   } }],

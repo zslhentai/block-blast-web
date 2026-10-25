@@ -11,12 +11,13 @@
     "test:e2e": "playwright test",
     "build": "vite build",
     "preview": "vite preview --host 0.0.0.0",
-    "check": "bun run typecheck && bun run test && bun run test:e2e && bun run test:e2e:guard && bun run build:portable && bun run test:portable",
+    "check": "bun run typecheck && bun run test && bun run test:e2e && bun run test:e2e:guard && bun run build:portable && bun run test:portable && bun run test:algorithms",
     "build:portable": "bun scripts/build-portable.ts",
     "test:e2e:guard": "bun scripts/check-e2e-guard.ts",
     "test:portable": "bun scripts/check-portable.ts",
     "test:balance": "bun scripts/simulate-classic.ts --games=1000 --limit=240",
-    "test:experience": "playwright test tests/e2e/replica.spec.ts tests/e2e/experience.spec.ts tests/e2e/audio-scenes.spec.ts"
+    "test:experience": "playwright test tests/e2e/replica.spec.ts tests/e2e/experience.spec.ts tests/e2e/audio-scenes.spec.ts",
+    "test:algorithms": "bun scripts/check-algorithm-diagnostics.ts"
   },
   "devDependencies": {
     "@playwright/test": "1.58.2",

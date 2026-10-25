@@ -20,6 +20,7 @@ jobs:
       - run: bun run typecheck
       - run: bun run test
       - run: bunx playwright install --with-deps chromium
+      - run: bun run test:algorithms
       - run: bun run test:e2e
       - run: bun run test:e2e:guard
       - run: bun run build:portable
