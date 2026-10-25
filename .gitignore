@@ -39,6 +39,7 @@ build/Release
 
 # Dependency directories
 node_modules/
+/node_modules
 jspm_packages/
 
 # Snowpack dependency directory (https://snowpack.dev/)
@@ -147,4 +148,5 @@ test-results/
 playwright-report/
 
 .tools/
+/.tools
 artifacts/
